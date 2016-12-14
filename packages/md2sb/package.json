@@ -1,0 +1,32 @@
+{
+  "name": "md2sb",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "bin": {
+    "md2sb": "dist/command.js"
+  },
+  "repository": {
+    "url": "ssh://git@github.com/pastak/md2sb.git",
+    "type": "git"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d dist",
+    "test": "./node_modules/.bin/ava"
+  },
+  "author": "pastak <pasta0915@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "commander": "^2.9.0",
+    "markdown-to-ast": "^3.4.0"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  }
+}
