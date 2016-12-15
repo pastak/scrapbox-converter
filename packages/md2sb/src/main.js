@@ -1,4 +1,5 @@
 import {parse} from 'markdown-to-ast'
+import generateCodeBlock from './libs/generateCodeBlock'
 
 export default class {
   convert (input) {
@@ -29,11 +30,13 @@ export default class {
       case 'BlockQuote':
         result += '> ' + this.parse(node.children, parents).split('\n').join('\n> ' + result)
         break
+      case 'CodeBlock':
+        result += generateCodeBlock(node)
+        break
       case 'Paragraph':
         result += this.parse(node.children, parents)
         break
       case 'Str':
-        console.log(node.value)
         result += node.value
         break
     }
