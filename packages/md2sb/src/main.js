@@ -13,18 +13,34 @@ export default class {
     return this.parse(parse(mdText)) + '\n'
   }
 
-  parse (ast) {
-    return [...(ast.children || ast)].map((node) => this.node2SbText(node)).join('\n\n')
+  parse (ast, parents = []) {
+    return [...(ast.children || ast)].map((node) => this.node2SbText(node, parents.slice(0))).join('\n')
   }
 
-  node2SbText (node) {
+  node2SbText (node, parents) {
+    let result = ''
     switch (node.type) {
       case 'Header':
-        return `[[${this.parse(node.children)}]]`
+        result += `[[${this.parse(node.children, parents)}]]\n`
+        break
       case 'Strong':
-        return `[[${this.parse(node.children)}]]`
+        result += `[[${this.parse(node.children, parents)}]]`
+        break
+      case 'BlockQuote':
+        result += '> ' + this.parse(node.children, parents).split('\n').join('\n> ' + result)
+        break
+      case 'Paragraph':
+        result += this.parse(node.children, parents)
+        break
       case 'Str':
-        return node.value
+        console.log(node.value)
+        result += node.value
+        break
     }
+    if (parents.includes('BlockQuote')) {
+      result = '> '.repeat(parents.filter((i) => i === 'BlockQuote').length - 1) + result
+    }
+    parents.push(node.type)
+    return result
   }
 }
