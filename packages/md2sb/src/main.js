@@ -21,6 +21,9 @@ export default class {
   node2SbText (node, parents) {
     let result = ''
     switch (node.type) {
+      case 'HorizontalRule':
+        result += '[/icons/hr.icon]'
+        break
       case 'Header':
         result += `[[${this.parse(node.children, parents)}]]`
         break
