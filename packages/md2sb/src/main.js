@@ -22,7 +22,7 @@ export default class {
     let result = ''
     switch (node.type) {
       case 'Header':
-        result += `[[${this.parse(node.children, parents)}]]\n`
+        result += `[[${this.parse(node.children, parents)}]]`
         break
       case 'Strong':
         result += `[[${this.parse(node.children, parents)}]]`
