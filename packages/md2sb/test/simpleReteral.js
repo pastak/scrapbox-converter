@@ -11,6 +11,6 @@ const generateReteralTest = async (t, type) => {
 }
 
 // ['blockquote', 'codeblock', 'heading', 'hr', 'list', 'paragraph', 'table']
-  ['blockquote', 'codeblock', 'heading', 'hr', 'paragraph'].forEach((type) => {
+  ['blockquote', 'codeblock', 'heading', 'hr', 'list', 'paragraph'].forEach((type) => {
     test('convert ' + type, (t) => generateReteralTest(t, type))
   })
