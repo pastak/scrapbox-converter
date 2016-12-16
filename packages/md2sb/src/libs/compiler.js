@@ -1,50 +1,60 @@
+import toHAST from 'mdast-util-to-hast'
+import deepcopy from 'deepcopy'
 import generateCodeBlock from './generateCodeBlock'
+import addListItemCount from './addListItemCount'
 
 export default class {
-  compile (ast, parents = []) {
-    let result =  [...(ast.children || ast)].map((node) => this.node2SbText(node, parents.slice(0))).join('\n')
+  compile (ast, _context = {}) {
+    let result =  [...(ast.children || ast)].map((node) => this.node2SbText(
+      node,
+      deepcopy(Object.assign(_context, {parents: (_context.parents || []).slice(0)}))
+    )).join('\n')
     if (ast.type && ast.type === 'root' && result.charAt(result.length - 1) !== '\n') {
       result += '\n'
     }
     return result
   }
 
-  node2SbText (node, parents) {
+  node2SbText (node, context) {
     let result = ''
     switch (node.type) {
       case 'thematicBreak':
         result += '[/icons/hr.icon]'
         break
       case 'heading':
-        result += `[[${this.compile(node.children, parents)}]]`
+        result += `[[${this.compile(node.children, context)}]]`
         break
       case 'Strong':
-        result += `[[${this.compile(node.children, parents)}]]`
+        result += `[[${this.compile(node.children, context)}]]`
         break
       case 'blockquote':
-        result += '> ' + this.compile(node.children, parents).split('\n').join('\n> ' + result)
+        result += '> ' + this.compile(node.children, context).split('\n').join('\n> ' + result)
         break
       case 'code':
         result += generateCodeBlock(node)
         break
-      case 'List':
-        parents.push('List')
-        result += this.compile(node.children, parents)
+      case 'list':
+        const tagName = toHAST(node).tagName
+        context.listItemCount = 0
+        context.parents.push(tagName)
+        result += this.compile(tagName === 'ol' ? addListItemCount(node.children) : node.children, context)
         break
-      case 'ListItem':
-        result += ' '.repeat(parents.filter((i) => i === 'List').length) + this.compile(node.children, parents)
+      case 'listItem':
+        result += ' '.repeat(context.parents.filter((i) => i === 'ol' || i === 'ul').length)
+          + (context.parents[context.parents.length - 1] === 'ol' ? node.listItemCount + '. ' : '')
+          + this.compile(node.children, context)
         break
       case 'paragraph':
-        result += this.compile(node.children, parents)
+        result += this.compile(node.children, context)
         break
       case 'text':
         result += node.value
         break
     }
-    if (parents.includes('BlockQuote')) {
-      result = '> '.repeat(parents.filter((i) => i === 'BlockQuote').length - 1) + result
+    if (context.parents.includes('BlockQuote')) {
+      result = '> '.repeat(context.parents.filter((i) => i === 'BlockQuote').length - 1) + result
     }
-    parents.push(node.type)
+    context.parents.push(node.type)
     return result
   }
 }

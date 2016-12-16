@@ -1,5 +1,4 @@
 import remark from 'remark'
-import toHAST from 'mdast-util-to-hast'
 import Compiler from './libs/compiler'
 
 export default async (input) => {
