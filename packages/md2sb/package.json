@@ -18,14 +18,17 @@
   "dependencies": {
     "ava": "^0.17.0",
     "babel-cli": "^6.18.0",
+    "babel-polyfill": "^6.20.0",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
     "commander": "^2.9.0",
-    "markdown-to-ast": "^3.4.0"
+    "mdast-util-to-hast": "^2.1.1",
+    "remark": "^6.2.0"
   },
   "ava": {
     "require": [
-      "babel-register"
+      "babel-register",
+      "babel-polyfill"
     ],
     "babel": "inherit"
   }
