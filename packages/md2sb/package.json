@@ -6,6 +6,7 @@
   "bin": {
     "md2sb": "dist/command"
   },
+  "files": ["dist"],
   "repository": {
     "url": "ssh://git@github.com/pastak/md2sb.git",
     "type": "git"
