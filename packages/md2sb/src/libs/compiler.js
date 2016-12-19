@@ -19,6 +19,7 @@ export default class {
   }
 
   node2SbText (node, context) {
+    console.log(node)
     let result = ''
     if (context.parents.length === 0) {
       result += '\n'.repeat(node.position.start.line - this.lastElmEndLine)
@@ -34,13 +35,20 @@ export default class {
         result += '[/icons/hr.icon]'
         break
       case 'emphasis':
-        result += `[\\ ${this.compile(node.children, context)}]`
+        result += `[/ ${this.compile(node.children, context)}]`
         break
       case 'delete':
         result += `[- ${this.compile(node.children, context)}]`
         break
       case 'strong':
-        result += `[* ${this.compile(node.children, context)}]`
+        if (node.children.filter((_) => _.type === 'emphasis').length) {
+          result += node.children.map((n) => {
+            if (n.type === 'emphasis') return `[/ [[${this.compile(n.children, context)}]]]`
+            return `[[]]`
+          }).join('${this.compile(node.children, context)}')
+        } else {
+          result += `[[${this.compile(node.children, context)}]]`
+        }
         break
       case 'heading':
         result += `[[${this.compile(node.children, context)}]]`

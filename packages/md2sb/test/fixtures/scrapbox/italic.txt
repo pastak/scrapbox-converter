@@ -1,3 +1,3 @@
-[\ italic]
+[/ italic]
 
-[\ alt italic]
+[/ alt italic]
