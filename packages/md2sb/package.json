@@ -1,10 +1,10 @@
 {
   "name": "md2sb",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Encode Markdown to Scrapbox.io style text",
   "main": "dist/index.js",
   "bin": {
-    "md2sb": "dist/command"
+    "md2sb": "dist/command/index.js"
   },
   "files": ["dist"],
   "repository": {
