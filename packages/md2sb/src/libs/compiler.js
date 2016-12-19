@@ -46,8 +46,8 @@ export default class {
       case 'heading':
         result += `[[${this.compile(node.children, context)}]]`
         break
-      case 'Strong':
-        result += `[[${this.compile(node.children, context)}]]`
+      case 'link':
+        result += `[${this.compile(node.children, context)} ${node.url}]`
         break
       case 'blockquote':
         const depth = context.parents.filter((p) => p === 'blockquote').length
