@@ -33,6 +33,17 @@ export default class {
       case 'code':
         result += generateCodeBlock(node)
         break
+      case 'table':
+        result += 'table:\n'
+        result += ' ' + node.children.map((tableRow) => tableRow.children.map(
+          (tableCell) => {
+            context.parents.push('tableCell')
+            return this.compile(tableCell.children, context)
+          })
+          .join('\t')
+        )
+        .join('\n ')
+        break
       case 'list':
         const tagName = toHAST(node).tagName
         context.listItemCount = 0
@@ -48,7 +59,9 @@ export default class {
         result += this.compile(node.children, context)
         break
       case 'text':
-        result += node.value
+        let textValue = node.value
+        if (context.parents.includes('tableCell')) textValue = node.value.replace(/(\s|\t)+$/, '')
+        result += textValue
         break
     }
     if (context.parents.includes('BlockQuote')) {
