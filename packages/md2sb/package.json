@@ -1,9 +1,10 @@
 {
   "name": "md2sb",
   "version": "0.1.0",
+  "description": "Encode Markdown to Scrapbox.io style text",
   "main": "dist/index.js",
   "bin": {
-    "md2sb": "dist/command.js"
+    "md2sb": "dist/command"
   },
   "repository": {
     "url": "ssh://git@github.com/pastak/md2sb.git",
