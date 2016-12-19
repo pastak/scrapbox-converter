@@ -19,7 +19,6 @@ export default class {
   }
 
   node2SbText (node, context) {
-    console.log(node)
     let result = ''
     if (context.parents.length === 0) {
       result += '\n'.repeat(node.position.start.line - this.lastElmEndLine)
@@ -100,6 +99,7 @@ export default class {
         result += ' '.repeat(context.parents.filter((i) => i === 'ol' || i === 'ul').length)
           + (node.listItemCount ? node.listItemCount + '. ' : '')
           + this.compile(node.children, context)
+          + '\n'
         break
       case 'paragraph':
         result += this.compile(node.children, context)
@@ -107,7 +107,7 @@ export default class {
       case 'text':
         let textValue = node.value
         if (context.parents.includes('tableCell')) textValue = node.value.replace(/(\s|\t)+$/, '')
-        if (context.parents.includes('listItem')) textValue = node.value + '\n'
+        if (context.parents.includes('listItem')) textValue = node.value
         result += textValue
         break
     }
