@@ -43,7 +43,7 @@ export default class {
         result += generateCodeBlock(node)
         break
       case 'table':
-        result += 'table:\n'
+        result += 'table:table\n'
         result += ' ' + node.children.map((tableRow) => tableRow.children.map(
           (tableCell) => {
             context.parents.push('tableCell')
