@@ -11,7 +11,7 @@ export default (node) => {
       result += ` (${node.lang})\n`
     }
   } else {
-    result += '\n'
+    result += '_\n'
   }
   result += ' ' + node.value.split('\n').join('\n ')
   return result

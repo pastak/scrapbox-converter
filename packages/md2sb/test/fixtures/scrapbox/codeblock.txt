@@ -1,4 +1,4 @@
-code:
+code:_
  def hoge
    p :foooo
  end
