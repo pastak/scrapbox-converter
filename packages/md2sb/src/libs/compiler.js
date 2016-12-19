@@ -51,6 +51,9 @@ export default class {
       case 'image':
         result += `[${node.url}]`
         break
+      case 'inlineCode':
+        result += `\`${node.value}\``
+        break
       case 'blockquote':
         const depth = context.parents.filter((p) => p === 'blockquote').length
         const quoteMark = '> '.repeat(Math.max(depth - 1, 1))
