@@ -46,7 +46,14 @@ export default class {
         result += `[[${this.compile(node.children, context)}]]`
         break
       case 'link':
-        result += `[${this.compile(node.children, context)} ${node.url}]`
+        if (node.children.filter((_) => _.type === 'image').length) {
+          result += node.children.map((n) => {
+            if (n.type === 'image') return `[${n.url} ${node.url}]`
+            return `[${this.compile(n, context)} ${node.url}]`
+          }).join('')
+        } else {
+          result += `[${this.compile(node.children, context)} ${node.url}]`
+        }
         break
       case 'image':
         result += `[${node.url}]`
