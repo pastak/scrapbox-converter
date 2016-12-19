@@ -21,6 +21,15 @@ export default class {
       case 'thematicBreak':
         result += '[/icons/hr.icon]'
         break
+      case 'emphasis':
+        result += `[\\ ${this.compile(node.children, context)}]`
+        break
+      case 'delete':
+        result += `[- ${this.compile(node.children, context)}]`
+        break
+      case 'strong':
+        result += `[* ${this.compile(node.children, context)}]`
+        break
       case 'heading':
         result += `[[${this.compile(node.children, context)}]]`
         break
