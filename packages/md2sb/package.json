@@ -11,7 +11,8 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/babel src -d dist",
-    "test": "./node_modules/.bin/ava"
+    "test": "./node_modules/.bin/ava -v",
+    "test:watch": "yarn test -- --watch"
   },
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",

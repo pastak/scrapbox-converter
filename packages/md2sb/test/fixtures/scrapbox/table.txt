@@ -1,4 +1,4 @@
-table:
+table:table
  Left align	Right align	Center align
  This	This	This
  column	column	column
