@@ -20,7 +20,6 @@ export default class {
 
   node2SbText (node, context) {
     let result = ''
-    let willChangeListType = false
     if (context.parents.length === 0) {
       result += '\n'.repeat(node.position.start.line - this.lastElmEndLine)
       this.lastElmEndLine = node.position.end.line
@@ -48,6 +47,9 @@ export default class {
         break
       case 'link':
         result += `[${this.compile(node.children, context)} ${node.url}]`
+        break
+      case 'image':
+        result += `[${node.url}]`
         break
       case 'blockquote':
         const depth = context.parents.filter((p) => p === 'blockquote').length
