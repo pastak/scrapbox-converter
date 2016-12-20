@@ -1,4 +1,3 @@
-import toHAST from 'mdast-util-to-hast'
 import deepcopy from 'deepcopy'
 import generateCodeBlock from './generateCodeBlock'
 import addListItemCount from './addListItemCount'
@@ -90,7 +89,7 @@ export default class {
         .join('\n ')
         break
       case 'list':
-        const tagName = toHAST(node).tagName
+        const tagName = node.ordered ? 'ol' : 'ul'
         context.listItemCount = 0
         context.parents[context.parents.length -1] = tagName
         result += this.compile(tagName === 'ol' ? addListItemCount(node.children) : node.children, context)
