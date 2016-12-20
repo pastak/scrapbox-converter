@@ -1,0 +1,24 @@
+{
+  "name": "import-markdowns-to-scrapbox",
+  "version": "0.1.0",
+  "bin": {
+    "import-markdowns-to-scrapbox": "dist/index.js"
+  },
+  "repository": {
+    "url": "ssh://git@github.com/pastak/import-markdowns-to-scrapbox.git",
+    "type": "git"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d dist",
+    "watch": "yarn run build -- --watch"
+  },
+  "author": "pastak <pasta0915@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "md2sb": "^0.2.2"
+  }
+}
