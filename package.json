@@ -1,11 +1,11 @@
 {
-  "name": "import-markdowns-to-scrapbox",
+  "name": "import-markdown-to-scrapbox",
   "version": "0.1.0",
   "bin": {
-    "import-markdowns-to-scrapbox": "dist/index.js"
+    "import-markdown-to-scrapbox": "dist/index.js"
   },
   "repository": {
-    "url": "ssh://git@github.com/pastak/import-markdowns-to-scrapbox.git",
+    "url": "ssh://git@github.com/pastak/import-markdown-to-scrapbox.git",
     "type": "git"
   },
   "scripts": {
