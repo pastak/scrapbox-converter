@@ -1,1 +1,1 @@
-# import-markdowns-to-scrapbox
+# import-markdown-to-scrapbox
