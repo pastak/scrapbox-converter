@@ -22,5 +22,8 @@ export default async (input) => {
   if (metas.keywords) {
     result += '\n' + metas.keywords.split(',').map((_) => '#' + _.trim()).join(' ')
   }
+  if (result.charAt(result.length - 1) !== '\n') {
+    result += '\n'
+  }
   return result
 }

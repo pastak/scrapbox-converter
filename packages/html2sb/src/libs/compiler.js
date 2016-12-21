@@ -25,8 +25,11 @@ export default class {
       case 'img':
         result += `[${node.attribs.src}]`
         break
+      case 'hr':
+        result += '[/icons/hr.icon]\n'
+        break
       case 'table':
-        result = 'table:\n'
+        result = 'table:_\n'
           + this.compile(node.children).result
         break
       case 'tr':
