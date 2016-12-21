@@ -20,7 +20,8 @@
     "babel-polyfill": "^6.20.0",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "htmlparser2": "^3.9.2"
   },
   "ava": {
     "require": [
