@@ -1,12 +1,11 @@
 export default class {
   constructor () {
-    this.title = ''
+    this.metas = {}
   }
   compile (ast) {
     let result =  [...(ast.children || ast)].map((node) => this.node2sb(node))
       .join('')
-    if (this.title) result.unshift(this.title)
-    return result
+    return {result, metas: this.metas}
   }
 
   node2sb (node) {
@@ -15,7 +14,10 @@ export default class {
     if (node.type === 'directive') return ''
     switch (node.name) {
       case 'title':
-        this.title = node.data
+        this.metas.title = this.compile(node.children).result
+        break
+      case 'meta':
+        this.metas[node.attribs.name] = node.attribs.content
         break
       case 'br':
         result += '\n'
@@ -25,22 +27,22 @@ export default class {
         break
       case 'table':
         result = 'table:\n'
-          + this.compile(node.children)
+          + this.compile(node.children).result
         break
       case 'tr':
       case 'thead':
-        result += ' ' + node.children.map((_) => this.compile(_)).join('\t') + '\n'
+        result += ' ' + node.children.map((_) => this.compile(_).result).join('\t') + '\n'
         break
       case 'b':
       case 'strong':
-        result += `[[${this.compile(node.children)}]]`
+        result += `[[${this.compile(node.children).result}]]`
         break
       case 'i':
       case 'em':
-        result += `[/ ${this.compile(node.children)}]`
+        result += `[/ ${this.compile(node.children).result}]`
         break
       case 'a':
-        result += `[${node.attribs.href} ${this.compile(node.children)}]`
+        result += `[${node.attribs.href} ${this.compile(node.children).result}]`
         break
       case 'ol':
         let count = 1
@@ -48,15 +50,15 @@ export default class {
           if(n.name !== 'li') return n
           n.listNumber = count++
           return n
-        }))
+        })).result
         break
       case 'li':
         result += ' '.repeat(this.countListLevel(node))
         + (node.listNumber ? node.listNumber + '. ' : '')
-        + this.compile(node.children) + '\n'
+        + this.compile(node.children).result + '\n'
         break
       default:
-        result += this.compile(node.children)
+        result += this.compile(node.children).result
     }
     if (this.isChildOf('body', node)) {
       result += '\n'

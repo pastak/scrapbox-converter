@@ -15,5 +15,12 @@ export default async (input) => {
   parser.parseComplete(htmlString)
   const parsedData = handler.dom
   const compiler = new Compiler()
-  return compiler.compile(parsedData)
+  let {result, metas} = compiler.compile(parsedData)
+  if (metas.title) {
+    result = metas.title + '\n' + result
+  }
+  if (metas.keywords) {
+    result += '\n' + metas.keywords.split(',').map((_) => '#' + _.trim()).join(' ')
+  }
+  return result
 }
