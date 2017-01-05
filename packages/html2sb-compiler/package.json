@@ -1,6 +1,6 @@
 {
   "name": "html2sb-compiler",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "dist/index.js",
   "repository": {
     "url": "ssh://git@github.com/pastak/html2sb-compiler.git",

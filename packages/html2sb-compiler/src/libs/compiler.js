@@ -86,7 +86,7 @@ export default class {
         break
       default:
         if (this.extended[node.name]) {
-          result += this.extended[node.name](node.children, this.compile)
+          result += this.extended[node.name](node, this.compile)
         } else {
           result += this.compile(node.children).result
         }
