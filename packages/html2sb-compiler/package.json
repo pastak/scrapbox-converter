@@ -1,0 +1,36 @@
+{
+  "name": "html2sb-compler",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "repository": {
+    "url": "ssh://git@github.com/pastak/html2sb-compler.git",
+    "type": "git"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d dist",
+    "watch": "yarn run build -- --watch",
+    "test": "./node_modules/.bin/ava -v",
+    "test:watch": "yarn test -- --watch"
+  },
+  "author": "pastak <pasta0915@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.18.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "commander": "^2.9.0",
+    "htmlparser2": "^3.9.2"
+  },
+  "ava": {
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "babel": "inherit"
+  }
+}
