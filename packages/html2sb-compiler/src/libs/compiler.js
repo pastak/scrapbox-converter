@@ -1,8 +1,17 @@
+import htmlparser from 'htmlparser2'
+
 export default class {
-  constructor () {
+  constructor (input) {
+    if (input) {
+      const handler = new htmlparser.DomHandler()
+      const parser = new htmlparser.Parser(handler)
+      parser.parseComplete(input)
+      this.parsed = handler.dom
+    }
     this.metas = {}
   }
   compile (ast) {
+    if (!ast) ast = this.parsed
     let result =  [...(ast.children || ast)].map((node) => this.node2sb(node))
       .join('')
     return {result, metas: this.metas}
