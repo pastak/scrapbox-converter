@@ -23,7 +23,11 @@ export default class {
         result += '\n'
         break
       case 'img':
-        result += `[${node.attribs.src}]`
+        if (this.isChildOf('a', node)) {
+          result = node.attribs.src
+        } else {
+          result += `[${node.attribs.src}]`
+        }
         break
       case 'hr':
         result += '[/icons/hr.icon]\n'
@@ -38,7 +42,12 @@ export default class {
         break
       case 'b':
       case 'strong':
-        result += `[[${this.compile(node.children).result}]]`
+        result += node.children.map((child) => {
+          if (child.name === 'i' || child.name === 'em') {
+            return `[/ [[${this.compile(child.children).result}]]]`
+          }
+          return `[[${this.compile(node.children).result}]]`
+        }).join('')
         break
       case 'i':
       case 'em':
@@ -69,12 +78,13 @@ export default class {
     return result
   }
 
-  isChildOf (type, node) {
+  isChildOf (name, node) {
     if (!node.parent) return false
     const {parent} = node
-    if (parent.name === type) return true
-    this.isChildOf(type, parent)
+    if (parent.name === name) return true
+    this.isChildOf(name, parent)
   }
+
   countListLevel (node, count = 0) {
     if (!node.parent) return count
     if (node.parent.name === 'ul' || node.parent.name === 'ol') {
