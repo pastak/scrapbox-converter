@@ -12,6 +12,7 @@
   "scripts": {
     "build": "./node_modules/.bin/babel src -d dist",
     "watch": "yarn run build -- --watch",
+    "mypublish": "rm -rf dist/* && yarn run build && yarn publish",
     "test": "./node_modules/.bin/ava -v",
     "test:watch": "yarn test -- --watch"
   },
