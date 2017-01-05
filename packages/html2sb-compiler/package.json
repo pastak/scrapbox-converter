@@ -1,9 +1,9 @@
 {
-  "name": "html2sb-compler",
+  "name": "html2sb-compiler",
   "version": "0.2.0",
   "main": "dist/index.js",
   "repository": {
-    "url": "ssh://git@github.com/pastak/html2sb-compler.git",
+    "url": "ssh://git@github.com/pastak/html2sb-compiler.git",
     "type": "git"
   },
   "files": [
