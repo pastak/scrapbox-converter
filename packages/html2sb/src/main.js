@@ -1,5 +1,5 @@
 import htmlparser from 'htmlparser2'
-import Compiler from './libs/compiler'
+import Compiler from 'html2sb-compiler'
 
 export default async (input) => {
   let htmlString = input
@@ -10,12 +10,8 @@ export default async (input) => {
       throw new Error('It allows string or buffer')
     }
   }
-  const handler = new htmlparser.DomHandler()
-  const parser = new htmlparser.Parser(handler)
-  parser.parseComplete(htmlString)
-  const parsedData = handler.dom
-  const compiler = new Compiler()
-  let {result, metas} = compiler.compile(parsedData)
+  const compiler = new Compiler(htmlString)
+  let {result, metas} = compiler.compile()
   if (metas.title) {
     result = metas.title + '\n' + result
   }
