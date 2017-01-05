@@ -9,7 +9,13 @@ export default class {
       this.parsed = handler.dom
     }
     this.metas = {}
+    this.extended = {}
   }
+
+  extend (nodeName, func) {
+    this.extended[nodeName] = func
+  }
+
   compile (ast) {
     if (!ast) ast = this.parsed
     let result =  [...(ast.children || ast)].map((node) => this.node2sb(node))
@@ -79,7 +85,11 @@ export default class {
         + this.compile(node.children).result + '\n'
         break
       default:
-        result += this.compile(node.children).result
+        if (this.extended[node.name]) {
+          result += this.extended[node.name](node.children, this.compile)
+        } else {
+          result += this.compile(node.children).result
+        }
     }
     if (this.isChildOf('body', node)) {
       result += '\n'
