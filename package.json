@@ -1,12 +1,12 @@
 {
-  "name": "import-markdown-to-scrapbox",
+  "name": "scrapbox-converter",
   "version": "0.1.1",
   "bin": {
-    "import-markdown-to-scrapbox": "dist/index.js"
+    "scrapbox-converter": "dist/index.js"
   },
   "files": ["dist"],
   "repository": {
-    "url": "ssh://git@github.com/pastak/import-markdown-to-scrapbox.git",
+    "url": "ssh://git@github.com/pastak/scrapbox-converter.git",
     "type": "git"
   },
   "scripts": {
