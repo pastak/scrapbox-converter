@@ -7,6 +7,8 @@ import scrapbox from markdown|html|enex files
 - Markdown
 - Enex
   - Evernote's XML Export Format
+  - If you want to convert this format, you should set `GYAZO_ACCESS_TOKEN` to OAuth access token get from https://gyazo.com/oauth/applications .
+    - It uses to upload embeded images to gyazo.com
 - HTML (experimental)
 
 ## Usage
