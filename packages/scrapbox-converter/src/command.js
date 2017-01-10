@@ -1,29 +1,6 @@
-import path from 'path'
-import fs from 'fs'
 import command from 'commander'
 import settings from '../package.json'
-import loadMdFile from './loadMdFile'
-
-const findAndLoadMarkdown = async (files, basePath = './') => await Promise.all(
-  (Array.isArray(files) ? files : [files])
-    .map(async (file) => {
-      const fullPath = path.resolve(basePath, file)
-      const stats = fs.lstatSync(fullPath)
-      const isFile = stats.isFile()
-      const isDir = stats.isDirectory()
-      if (isFile) {
-        const ext = path.extname(fullPath)
-        if (!(/\.(?:markdown|md)/.test(ext))) return
-        const title = path.basename(fullPath, ext)
-        const scrapboxStyleText = await loadMdFile(fullPath)
-        let lines = scrapboxStyleText.split('\n')
-        lines.unshift(title)
-        return {title, lines}
-      } else if (isDir) {
-        return findAndLoadMarkdown(fs.readdirSync(fullPath), fullPath)
-      }
-    })
-)
+import findAndLoadFiles from './libs/findAndLoadFiles'
 
 const finalize = (pages) => {
   const flatten = (arr) => arr.reduce((a, b) => {
@@ -36,10 +13,10 @@ const finalize = (pages) => {
 command
   .version(settings.version)
   .description(settings.description)
-  .usage('import-markdowns-to-scrapbox <...files>')
-  .arguments('<...files>')
+  .usage('scrapbox-converter <...files>')
+  .arguments('<files...>')
   .action(async (files) => {
-    const pages = finalize(await findAndLoadMarkdown(files))
+    const pages = finalize(await findAndLoadFiles(files))
     const json = {pages}
     console.log(JSON.stringify(json))
   })

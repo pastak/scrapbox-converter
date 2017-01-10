@@ -1,10 +1,12 @@
 {
   "name": "scrapbox-converter",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "bin": {
     "scrapbox-converter": "dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "url": "ssh://git@github.com/pastak/scrapbox-converter.git",
     "type": "git"
@@ -20,6 +22,8 @@
     "babel-polyfill": "^6.20.0",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
+    "enex2sb": "^0.1.0",
+    "html2sb-compiler": "^0.3.1",
     "md2sb": "^0.2.2"
   }
 }
