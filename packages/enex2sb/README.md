@@ -5,7 +5,7 @@ Encode XML exported by Evernote to Scrapbox.io style text
 
 ### CLI
 
-You should set `GYAZO_ACCESS_TOKEN` to OAuth access token get from https://gyazo.com/oauth/applications before exec command.
+You should set `GYAZO_ACCESS_TOKEN` to OAuth access token get from https://gyazo.com/oauth/applications before exec command.(It uses to upload embeded images to gyazo.com)
 
 - `% npm install -g enex2sb`
 - `% md2sb hoge.enex > hoge.txt`
