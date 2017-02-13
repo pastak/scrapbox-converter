@@ -118,7 +118,7 @@ export default class {
     if (this.isDecorateElement(node) && !context.parents.slice(0, -1).filter((_) => this.isDecorateElement(_)).length) {
       result = `[${this.decorate.join('')} ${result}]`
       if (node.type === 'heading') {
-        result = '\n'.repeat(node.position.start.line - this.lastElmEndLine) + result
+        result = '\n'.repeat(Math.max(node.position.start.line - this.lastElmEndLine, 0)) + result
         this.lastElmEndLine = node.position.end.line
       }
       this.decorate = []
