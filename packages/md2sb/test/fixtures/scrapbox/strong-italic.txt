@@ -1,1 +1,1 @@
-[/ [[strong italic]]]
+[*/ strong italic]

@@ -5,7 +5,15 @@ import addListItemCount from './addListItemCount'
 export default class {
   constructor () {
     this.lastElmEndLine = 1
+    this.decorate = []
   }
+
+  isDecorateElement (node) {
+    return ['emphasis', 'delete', 'strong', 'heading'].includes(
+      typeof node === 'string' ? node : node.type
+    )
+  }
+
   compile (ast, _context = {}) {
     let result =  [...(ast.children || ast)].map((node) => this.node2SbText(
       node,
@@ -19,7 +27,7 @@ export default class {
 
   node2SbText (node, context) {
     let result = ''
-    if (context.parents.length === 0) {
+    if (context.parents.length === 0 && node.type !== 'heading') {
       result += '\n'.repeat(node.position.start.line - this.lastElmEndLine)
       this.lastElmEndLine = node.position.end.line
     } else if (node.type === 'listItem') {
@@ -33,23 +41,20 @@ export default class {
         result += '[/icons/hr.icon]'
         break
       case 'emphasis':
-        result += `[/ ${this.compile(node.children, context)}]`
+        this.decorate.push('/')
+        result += this.compile(node.children, context)
         break
       case 'delete':
-        result += `[- ${this.compile(node.children, context)}]`
+        this.decorate.push('-')
+        result += this.compile(node.children, context)
         break
       case 'strong':
-        if (node.children.filter((_) => _.type === 'emphasis').length) {
-          result += node.children.map((n) => {
-            if (n.type === 'emphasis') return `[/ [[${this.compile(n.children, context)}]]]`
-            return `[[]]`
-          }).join('${this.compile(node.children, context)}')
-        } else {
-          result += `[[${this.compile(node.children, context)}]]`
-        }
+        this.decorate.push('*')
+        result += this.compile(node.children, context)
         break
       case 'heading':
-        result += `[[${this.compile(node.children, context)}]]`
+        this.decorate.push('*'.repeat(8 - node.depth))
+        result += this.compile(node.children, context)
         break
       case 'link':
         if (node.children.filter((_) => _.type === 'image').length) {
@@ -109,6 +114,14 @@ export default class {
         if (context.parents.includes('listItem')) textValue = node.value
         result += textValue
         break
+    }
+    if (this.isDecorateElement(node) && !context.parents.slice(0, -1).filter((_) => this.isDecorateElement(_)).length) {
+      result = `[${this.decorate.join('')} ${result}]`
+      if (node.type === 'heading') {
+        result = '\n'.repeat(node.position.start.line - this.lastElmEndLine) + result
+        this.lastElmEndLine = node.position.end.line
+      }
+      this.decorate = []
     }
     return result
   }
