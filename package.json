@@ -1,6 +1,6 @@
 {
   "name": "scrapbox-converter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "bin": {
     "scrapbox-converter": "dist/index.js"
   },
@@ -24,6 +24,6 @@
     "babel-register": "^6.18.0",
     "enex2sb": "^0.1.0",
     "html2sb-compiler": "^0.3.1",
-    "md2sb": "^0.2.2"
+    "md2sb": "^0.3.0"
   }
 }
