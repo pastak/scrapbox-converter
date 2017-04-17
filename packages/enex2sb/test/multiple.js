@@ -8,10 +8,11 @@ const enex2sb = proxyquire.noCallThru().load('../src/main', {
   })
 }).default
 
-test ('convert example xml', async (t) => {
-  const expected = fs.readFileSync(path.resolve('test/fixtures/example.sb.txt')).toString()
-  const input = await enex2sb(fs.readFileSync(path.resolve('test/fixtures/example.enex')))
-  t.truthy(Array.isArray(input))
-  t.is(expected, input[0].body)
-  t.is('test', input[0].title)
+test('convet multiple note in one enex', async (t) => {
+  t.plan(4)
+  const input = await enex2sb(fs.readFileSync(path.resolve('test/fixtures/multiple.enex')))
+  t.is(input.length, 3)
+  input.forEach((note, index) => {
+    t.is(note.title, 'ノート' + (index + 1))
+  })
 })

@@ -1,5 +1,5 @@
 # enex2sb
-Encode XML exported by Evernote to Scrapbox.io style text
+Encode XML exported by Evernote to Scrapbox.io style importable json
 
 ## Usage
 
@@ -8,9 +8,9 @@ Encode XML exported by Evernote to Scrapbox.io style text
 You should set `GYAZO_ACCESS_TOKEN` to OAuth access token get from https://gyazo.com/oauth/applications before exec command.(It uses to upload embeded images to gyazo.com)
 
 - `% npm install -g enex2sb`
-- `% enex2sb hoge.enex > hoge.txt`
+- `% nenx2sb hoge.enex > hoge.json`
   - You can pass filename as option
-- `% cat hoge.enex | enex2sb > hoge.txt`
+- `% cat hoge.enex | enex2sb > hoge.json`
 
 ### API
 
