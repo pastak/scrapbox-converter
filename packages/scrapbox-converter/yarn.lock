@@ -1270,9 +1270,9 @@ empower-core@^0.6.1:
     call-signature "0.0.2"
     core-js "^2.0.0"
 
-enex2sb@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/enex2sb/-/enex2sb-0.1.0.tgz#c9447d73d997e90a13ed7c343613321e39dfcf08"
+enex2sb@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/enex2sb/-/enex2sb-1.0.0.tgz#adb29266c14ec16e166496416a5c3fcda6c5ba6b"
   dependencies:
     ava "^0.17.0"
     babel-cli "^6.18.0"
@@ -2064,9 +2064,9 @@ max-timeout@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/max-timeout/-/max-timeout-1.0.0.tgz#b68f69a2f99e0b476fd4cb23e2059ca750715e1f"
 
-md2sb@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/md2sb/-/md2sb-0.3.0.tgz#a9b24240b00e0c897376808fb71d2ae213f0959a"
+md2sb@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/md2sb/-/md2sb-0.3.1.tgz#9893ae0c8c25205bf01f7214d11347b62cf72748"
   dependencies:
     ava "^0.17.0"
     babel-cli "^6.18.0"

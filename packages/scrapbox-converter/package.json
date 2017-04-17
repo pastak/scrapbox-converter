@@ -22,8 +22,8 @@
     "babel-polyfill": "^6.20.0",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
-    "enex2sb": "^0.1.0",
+    "enex2sb": "^1.0.0",
     "html2sb-compiler": "^0.3.1",
-    "md2sb": "^0.3.0"
+    "md2sb": "^0.3.1"
   }
 }
