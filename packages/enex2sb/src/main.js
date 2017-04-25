@@ -1,4 +1,4 @@
-import md5 from 'md5'
+import md5 from 'nano-md5'
 import htmlparser from 'htmlparser2'
 import Html2SbCompiler from 'html2sb-compiler'
 import intoStream from 'into-stream'
@@ -32,7 +32,7 @@ export default async (input) => {
       const mimeType = find('mime', resource).children[0].data
       if (/^image\/.*/.test(mimeType)) {
         const file = new Buffer(find('data', resource).children[0].data, 'base64')
-        const calculatedMd5 = md5(file)
+        const calculatedMd5 = md5.fromBytes(file.toString('latin1')).toHex()
         const res = await uploadImage(intoStream(file))
         resources[calculatedMd5] = res.data.permalink_url
       }

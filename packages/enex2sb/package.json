@@ -33,7 +33,7 @@
     "html2sb-compiler": "^0.3.1",
     "htmlparser2": "^3.9.2",
     "into-stream": "^3.1.0",
-    "md5": "^2.2.1",
+    "nano-md5": "^1.0.3",
     "proxyquire": "^1.7.10"
   },
   "ava": {
