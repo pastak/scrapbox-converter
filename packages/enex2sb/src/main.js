@@ -1,7 +1,7 @@
-import fs from 'fs'
 import md5 from 'md5'
 import htmlparser from 'htmlparser2'
 import Html2SbCompiler from 'html2sb-compiler'
+import intoStream from 'into-stream'
 import {find, findAll} from './libs/utils'
 import uploadImage from './libs/uploadImage'
 
@@ -28,20 +28,12 @@ export default async (input) => {
 
     let resources = {}
 
-    const tmpDir = '/tmp/enex2sb-image-tmp-' + Date.now()
-    try {
-      fs.mkdirSync(tmpDir)
-    } catch (e) {
-
-    }
     await Promise.all(findAll('resource', note).map(async (resource) => {
       const mimeType = find('mime', resource).children[0].data
       if (/^image\/.*/.test(mimeType)) {
         const file = new Buffer(find('data', resource).children[0].data, 'base64')
         const calculatedMd5 = md5(file)
-        const filepath = `${tmpDir}/${calculatedMd5}.${mimeType.split('/')[1]}`
-        fs.appendFileSync(filepath, file)
-        const res = await uploadImage(filepath)
+        const res = await uploadImage(intoStream(file))
         resources[calculatedMd5] = res.data.permalink_url
       }
     }))

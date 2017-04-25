@@ -32,6 +32,7 @@
     "html2sb": "^0.1.3",
     "html2sb-compiler": "^0.3.1",
     "htmlparser2": "^3.9.2",
+    "into-stream": "^3.1.0",
     "md5": "^2.2.1",
     "proxyquire": "^1.7.10"
   },
