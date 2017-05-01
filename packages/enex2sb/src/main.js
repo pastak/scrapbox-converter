@@ -2,9 +2,8 @@ import md5 from 'nano-md5'
 import htmlparser from 'htmlparser2'
 import Html2SbCompiler from 'html2sb-compiler'
 import {find, findAll} from './libs/utils'
-import uploadImage from './libs/uploadImage'
 
-export default async (input) => {
+export default async (uploadImage, input) => {
   let xmlString = input
   if (typeof input === 'object') {
     if (input instanceof Buffer) {
