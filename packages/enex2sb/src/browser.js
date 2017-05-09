@@ -1,6 +1,6 @@
 require('babel-register')
 
 import main from './main'
-import uploadImage from './libs/uploadImage'
+import uploadImage from './browser/uploadImage'
 
 export default main.bind(null, uploadImage)
