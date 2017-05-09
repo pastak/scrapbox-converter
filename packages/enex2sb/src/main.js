@@ -1,9 +1,9 @@
 import md5 from 'nano-md5'
 import htmlparser from 'htmlparser2'
-import Html2SbCompiler from 'html2sb-compiler'
+import Html2SbCompiler from 'html2sb-compiler/dist/libs/compiler.js'
 import {find, findAll} from './libs/utils'
 
-export default async (uploadImage, input) => {
+export default async (uploadImage, input, options) => {
   let xmlString = input
   if (typeof input === 'object') {
     if (input instanceof Buffer) {
@@ -31,7 +31,7 @@ export default async (uploadImage, input) => {
       if (/^image\/.*/.test(mimeType)) {
         const file = new Buffer(find('data', resource).children[0].data, 'base64')
         const calculatedMd5 = md5.fromBytes(file.toString('latin1')).toHex()
-        const res = await uploadImage(file)
+        const res = await uploadImage(file, options)
         resources[calculatedMd5] = res.data.permalink_url
       }
     }))
@@ -57,7 +57,7 @@ export default async (uploadImage, input) => {
 
     const tags = findAll('tag', note).map((_) => '#' + _.children[0].data)
 
-    const body = title + '\n' + result + '\n\n' + tags.join(' ') + '\n'
-    return {body, title}
+    const lines = (title + '\n' + result + '\n\n' + tags.join(' ') + '\n').split('\n')
+    return {lines, title}
   }))
 }
