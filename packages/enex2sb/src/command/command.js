@@ -1,20 +1,10 @@
 import path from 'path'
 import fs from 'fs'
 import command from 'commander'
-import enex2sb from './../main'
+import enex2sb from './../node'
 import settings from '../../package.json'
 
 let stdin = ''
-
-const parsedResult = (result) => {
-  return result.map((note) => {
-    const lines = note.body.split('\n')
-    return {
-      title: note.title,
-      lines: lines
-    }
-  })
-}
 
 command
   .version(settings.version)
@@ -23,8 +13,8 @@ command
   .arguments('[file]')
   .action(async (file) => {
     if (!process.env.GYAZO_ACCESS_TOKEN) return console.error('You should set env-value GYAZO_ACCESS_TOKEN to your Gyazo access token get from https://gyazo.com/oauth/applications')
-    const result = await enex2sb(fs.readFileSync(path.resolve(file)))
-    console.log(JSON.stringify({pages: parsedResult(result)}, null, 2))
+    const pages = await enex2sb(fs.readFileSync(path.resolve(file)))
+    console.log(JSON.stringify({pages}, null, 2))
   })
 
 if(process.stdin.isTTY) {
@@ -38,6 +28,6 @@ if(process.stdin.isTTY) {
   })
   process.stdin.on('end', async () => {
     if (!process.env.GYAZO_ACCESS_TOKEN) return console.error('You should set env-value GYAZO_ACCESS_TOKEN to your Gyazo access token get from https://gyazo.com/oauth/applications')
-    console.log(JSON.stringify({pages: parsedResult(await enex2sb(stdin))}, null, 2))
+    console.log(JSON.stringify({pages: (await enex2sb(stdin))}, null, 2))
   })
 }
