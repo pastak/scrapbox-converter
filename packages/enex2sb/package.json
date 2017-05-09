@@ -1,6 +1,6 @@
 {
   "name": "enex2sb",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "repository": {
     "url": "ssh://git@github.com/pastak/enex2sb.git",
