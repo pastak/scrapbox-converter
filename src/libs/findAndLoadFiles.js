@@ -23,7 +23,7 @@ const findAndLoadFiles = async (files, basePath = './') => await Promise.all(
         } else if ((/\.(?:html|htm)/.test(ext))) {
           const res = await loadHtmlFile(fullPath)
           title = res.title || path.basename(fullPath, ext)
-          lines = res.body.split('\n')
+          lines = res.lines
           lines.unshift(title)
         } else if ((/\.(?:enex)/.test(ext))) {
           try {
