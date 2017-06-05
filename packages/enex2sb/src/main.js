@@ -1,7 +1,5 @@
 import md5 from 'nano-md5'
-import htmlparser from 'htmlparser2'
-import Html2SbCompiler from 'html2sb-compiler/dist/libs/compiler.js'
-import {find, findAll} from './libs/utils'
+import {parse, toScrapbox, guessTitle} from 'html2sb-compiler'
 
 export default async (uploadImage, input, options) => {
   let xmlString = input
@@ -12,52 +10,29 @@ export default async (uploadImage, input, options) => {
       throw new Error('It allows string or buffer')
     }
   }
-  const handler = new htmlparser.DomHandler()
-  const parser = new htmlparser.Parser(handler)
-  parser.parseComplete(xmlString)
-  const parsedData = handler.dom
-  const notes = findAll('note', find('en-export', parsedData)).reverse()
-  return await Promise.all(notes.map(async (note) => {
-    const title = find('title', note).children[0].data
-    const content = find('content', note)
 
-    const ENNoteData = content.children[0].data
-    const ENNoteXML = ENNoteData.match(/\[CDATA\[([.\s\S]+)]]/)[1]
-
-    let resources = {}
-
-    await Promise.all(findAll('resource', note).map(async (resource) => {
-      const mimeType = find('mime', resource).children[0].data
-      if (/^image\/.*/.test(mimeType)) {
-        const file = new Buffer(find('data', resource).children[0].data, 'base64')
-        const calculatedMd5 = md5.fromBytes(file.toString('latin1')).toHex()
-        const res = await uploadImage(file, options)
-        resources[calculatedMd5] = res.data.permalink_url
-      }
-    }))
-
-    const compiler = new Html2SbCompiler(ENNoteXML)
-    compiler.extend('en-media', (node, defaultCompile) => {
-      const resourceUrl = resources[node.attribs.hash]
-      switch (node.attribs.type) {
-        case 'image/gif':
-        case 'image/jpeg':
-        case 'image/png':
-          return `[${resourceUrl}]`
-          break
-        case 'audio/wav':
-        case 'audio/mpeg':
-        case 'audio/amr':
-        case 'application/pdf':
-          // Nothing to do
-          break
-      }
+  const allNotes = parse(xmlString, {evernote: true})
+  return await Promise.all(allNotes.map(async (noteTokens) => {
+    if (noteTokens.resources) {
+      await Promise.all(Object.keys(noteTokens.resources).map(async (resourceKey) => {
+        const resource = noteTokens.resources[resourceKey]
+        const mimeType = resource.mime
+        if (/^image\/.*/.test(mimeType)) {
+          const file = new Buffer(resource.data, 'base64')
+          const res = await uploadImage(file, options)
+          noteTokens.resources[resourceKey] = {
+            type: 'img',
+            href: resource.href,
+            src: res.data.permalink_url
+          }
+        }
+      }).filter(Boolean))
+    }
+    const sb = toScrapbox(noteTokens)
+    sb.title = guessTitle(noteTokens, sb, function (pageTokens, foundTitle, template) {
+      var named = 'Untitled'
+      return foundTitle || template(named) || named
     })
-    const {result} = compiler.compile()
-
-    const tags = findAll('tag', note).map((_) => '#' + _.children[0].data)
-
-    const lines = (title + '\n' + result + '\n\n' + tags.join(' ') + '\n').split('\n')
-    return {lines, title}
+    return sb
   }))
 }

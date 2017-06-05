@@ -1,6 +1,6 @@
 {
   "name": "enex2sb",
-  "version": "1.1.1",
+  "version": "2.0.1",
   "main": "dist/index.js",
   "repository": {
     "url": "ssh://git@github.com/pastak/enex2sb.git",
@@ -25,9 +25,7 @@
     "commander": "^2.9.0",
     "gyazo-api": "^0.3.1",
     "gyazo-browser-upload": "^1.0.0",
-    "html2sb": "^0.1.3",
-    "html2sb-compiler": "^0.3.1",
-    "htmlparser2": "^3.9.2",
+    "html2sb-compiler": "^1.0.3",
     "into-stream": "^3.1.0",
     "nano-md5": "^1.0.3"
   },
@@ -39,9 +37,10 @@
     "babel": "inherit"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
+    "ava": "^0.19.1",
     "babel-cli": "^6.18.0",
     "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.18.0",
     "babelify": "^7.3.0",
