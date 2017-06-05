@@ -18,12 +18,12 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-register": "^6.18.0",
-    "enex2sb": "^1.0.0",
-    "html2sb-compiler": "^0.3.1",
+    "babel-cli": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "enex2sb": "^2.0.3",
+    "html2sb-compiler": "^1.0.3",
     "md2sb": "^0.3.1"
   }
 }
