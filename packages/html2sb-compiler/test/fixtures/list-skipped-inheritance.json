@@ -1,0 +1,104 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "list",
+      "variant": "ul",
+      "children": [
+        {
+          "type": "text",
+          "text": "list item"
+        },
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "level1"
+            },
+            {
+              "type": "list",
+              "variant": "ul",
+              "children": [
+                {
+                  "type": "text",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "level2"
+                    },
+                    {
+                      "type": "list",
+                      "variant": "ul",
+                      "children": [
+                        {
+                          "type": "text",
+                          "children": [
+                            {
+                              "type": "list",
+                              "variant": "ul",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "text": "level4"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "variant": "ol",
+      "children": [
+        {
+          "type": "text",
+          "text": "ordered list"
+        },
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "second"
+            },
+            {
+              "type": "list",
+              "variant": "ol",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "level2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "list",
+              "variant": "ul",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "non ordered"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+Untitled
+[http://example.com http://example.com/example.png]
+[http://example.com/example2.png] [http://example.com Some text other than an image [* and bold] as well]

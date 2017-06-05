@@ -1,37 +1,30 @@
 {
   "name": "html2sb-compiler",
-  "version": "0.3.1",
-  "main": "dist/index.js",
+  "version": "1.0.3",
+  "main": "./index.js",
   "repository": {
     "url": "ssh://git@github.com/pastak/html2sb-compiler.git",
     "type": "git"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "./node_modules/.bin/babel src -d dist",
-    "watch": "yarn run build -- --watch",
-    "mypublish": "rm -rf dist/* && yarn run build && yarn publish",
-    "test": "./node_modules/.bin/ava -v",
-    "test:watch": "yarn test -- --watch"
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "./node_modules/.bin/standard",
+    "test:unit": "./node_modules/.bin/tape test/*.js | ./node_modules/.bin/tap-difflet",
+    "test:watch": "./node_modules/.bin/tape-watch test/*.js | ./node_modules/.bin/tap-difflet"
   },
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ava": "^0.17.0",
-    "babel-cli": "^6.18.0",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-register": "^6.18.0",
-    "commander": "^2.9.0",
-    "htmlparser2": "^3.9.2"
+    "htmlparser2": "^3.9.2",
+    "lodash.trim": "^4.5.1",
+    "nano-md5": "^1.0.3",
+    "style-parser": "^1.1.1"
   },
-  "ava": {
-    "require": [
-      "babel-register",
-      "babel-polyfill"
-    ],
-    "babel": "inherit"
+  "devDependencies": {
+    "standard": "^10.0.2",
+    "tap-diff": "^0.1.1",
+    "tap-difflet": "^0.7.0",
+    "tape": "^4.6.3",
+    "tape-watch": "^2.3.0"
   }
 }

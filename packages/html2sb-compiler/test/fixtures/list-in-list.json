@@ -1,0 +1,100 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "list",
+      "variant": "ol",
+      "children": [
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "bold": true,
+              "text": "France"
+            },
+            {
+              "type": "br"
+            },
+            {
+              "type": "list",
+              "variant": "ul",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Baguette"
+                },
+                {
+                  "type": "text",
+                  "text": "Camenbert"
+                },
+                {
+                  "type": "text",
+                  "text": "Ganache"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "Italy"
+            },
+            {
+              "type": "list",
+              "variant": "ul",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Parmegiano"
+                },
+                {
+                  "type": "text",
+                  "text": "Prociutto"
+                },
+                {
+                  "type": "text",
+                  "text": "Ricotta"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "Norway"
+            },
+            {
+              "type": "list",
+              "variant": "ul",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Nothing"
+                },
+                {
+                  "type": "text",
+                  "text": "comes"
+                },
+                {
+                  "type": "text",
+                  "text": "to"
+                },
+                {
+                  "type": "text",
+                  "text": "mind"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

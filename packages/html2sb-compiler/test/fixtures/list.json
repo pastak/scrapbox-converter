@@ -1,0 +1,33 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "list",
+      "variant": "ol",
+      "children": [
+        { "type": "text", "text": "France" },
+        { "type": "text", "text": "Italy" },
+        { "type": "text", "text": "Norway" }
+      ]
+    },
+    {
+      "type": "list",
+      "variant": "ul",
+      "children": [
+        { "type": "text", "text": "Tiles" },
+        { "type": "text", "text": "Bottles" },
+        { "type": "text", "text": "Sofas" }
+      ]
+    },
+    {
+      "type": "list",
+      "variant": "ul",
+      "children": [
+        { "type": "check", "checked": false, "children": [{ "type": "text", "text": "Item 1" }] },
+        { "type": "check", "checked": false, "children": [{ "type": "text", "text": "Item 2" }] },
+        { "type": "check", "checked": true, "children": [{ "type": "text", "text": "Item 3 (selected)" }] },
+        { "type": "check", "checked": false, "children": [{ "type": "text", "text": "Item 4" }] }
+      ]
+    }
+  ]
+}
