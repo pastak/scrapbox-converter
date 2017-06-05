@@ -26,11 +26,16 @@ const findAndLoadFiles = async (files, basePath = './') => await Promise.all(
           lines = res.body.split('\n')
           lines.unshift(title)
         } else if ((/\.(?:enex)/.test(ext))) {
-          return (await loadEnexFile(fullPath)).map((res) => {
-            title = res.title || path.basename(fullPath, ext)
-            lines = res.body.split('\n')
-            return {title, lines}
-          })
+          try {
+            return (await loadEnexFile(fullPath)).map((res) => {
+              title = res.title || path.basename(fullPath, ext)
+              lines = res.lines
+              return {title, lines}
+            })
+          } catch (e) {
+            console.log(e.message)
+            process.exit(1)
+          }
         } else {
           return
         }
