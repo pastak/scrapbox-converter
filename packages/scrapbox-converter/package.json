@@ -1,6 +1,6 @@
 {
   "name": "scrapbox-converter",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "bin": {
     "scrapbox-converter": "dist/index.js"
   },
