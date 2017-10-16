@@ -1,1 +1,2 @@
-module.exports = require('./main')
+import main from './main'
+export default main
