@@ -1,6 +1,6 @@
 {
   "name": "md2sb",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Encode Markdown to Scrapbox.io style text",
   "main": "dist/index.js",
   "bin": {
