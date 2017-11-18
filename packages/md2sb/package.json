@@ -22,12 +22,12 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ava": "^0.17.0",
-    "babel-cli": "^6.18.0",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-register": "^6.18.0",
-    "commander": "^2.9.0",
+    "ava": "^0.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "commander": "^2.11.0",
     "deepcopy": "^0.6.3",
     "remark": "^6.2.0"
   },
