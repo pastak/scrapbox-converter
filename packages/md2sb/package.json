@@ -25,7 +25,7 @@
     "ava": "^0.23.0",
     "babel-cli": "^6.26.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "commander": "^2.11.0",
     "deepcopy": "^0.6.3",

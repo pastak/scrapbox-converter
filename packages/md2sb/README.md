@@ -12,7 +12,8 @@ Encode Markdown to Scrapbox.io style text
 
 ### CLI
 
-- `% npm install -g md2sb`
+- `% yarn install -g md2sb`
+  - I recommend yarn but you can use `npm`.
 - `% md2sb hoge.md > hoge.txt`
   - You can pass filename as option
 - `% cat hoge.md | md2sb > hoge.txt`
