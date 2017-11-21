@@ -12,7 +12,7 @@ Encode Markdown to Scrapbox.io style text
 
 ### CLI
 
-- `% yarn install -g md2sb`
+- `% yarn global add md2sb`
   - I recommend yarn but you can use `npm`.
 - `% md2sb hoge.md > hoge.txt`
   - You can pass filename as option
