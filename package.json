@@ -12,18 +12,19 @@
     "type": "git"
   },
   "scripts": {
-    "build": "./node_modules/.bin/babel src -d dist",
+    "build": "babel src -d dist",
     "watch": "yarn run build -- --watch"
   },
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
-    "babel-register": "^6.24.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "enex2sb": "^2.0.3",
     "html2sb-compiler": "^1.0.3",
-    "md2sb": "^0.3.1"
+    "md2sb": "^1.0.1"
   }
 }

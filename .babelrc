@@ -1,1 +1,7 @@
-{ "presets": ["latest"] }
+{"presets":[
+  ["@babel/preset-env", {
+    "targets": {
+      "node": true
+    }
+  }]
+]}
