@@ -53,7 +53,7 @@ export default class {
         result += this.compile(node.children, context)
         break
       case 'heading':
-        this.decorate.push('*'.repeat(8 - node.depth))
+        this.decorate.push('*'.repeat(5 - node.depth))
         result += this.compile(node.children, context)
         break
       case 'link':
