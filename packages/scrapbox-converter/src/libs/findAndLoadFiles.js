@@ -30,6 +30,7 @@ const findAndLoadFiles = async (files, basePath = './') => await Promise.all(
             return (await loadEnexFile(fullPath)).map((res) => {
               title = res.title || path.basename(fullPath, ext)
               lines = res.lines
+              lines.unshift(title)
               return {title, lines}
             })
           } catch (e) {
