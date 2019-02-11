@@ -1,0 +1,36 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "img",
+      "href": "http://example.com",
+      "src": "http://example.com/example.png"
+    },
+    {
+      "type": "br"
+    },
+    {
+      "type": "img",
+      "src": "http://example.com/example2.png"
+    },
+    {
+      "type": "text",
+      "href": "http://example.com",
+      "children": [
+        {
+          "type": "text",
+          "text": "Some text other than an image"
+        },
+        {
+          "type": "text",
+          "text": "and bold",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "as well"
+        }
+      ]
+    }
+  ]
+}

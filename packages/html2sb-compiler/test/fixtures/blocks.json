@@ -1,0 +1,79 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "And some more text..."
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Lets align it right"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "and align it center"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Indent a little"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "text",
+              "text": "A little bit of this, a little bit of that, a little bit of everything lets me"
+            }
+          ]
+        }
+      ],
+      "blockquote": 1
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "text",
+              "text": "Indent a little further"
+            }
+          ]
+        }
+      ],
+      "blockquote": 2
+    }
+  ]
+}

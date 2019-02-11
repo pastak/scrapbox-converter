@@ -1,0 +1,61 @@
+{
+      "title": null,
+      "children": [
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "text",
+              "text": "super script"
+            },
+            {
+              "type": "text",
+              "text": "works as well as"
+            },
+            {
+              "type": "text",
+              "text": "subscript"
+            },
+            {
+              "type": "text",
+              "text": "and"
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "br"
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "text",
+              "text": "how about a little"
+            },
+            {
+              "type": "text",
+              "text": "font change or"
+            },
+            {
+              "type": "text",
+              "enlarge": 1,
+              "bold": true,
+              "text": "size change?"
+            },
+            {
+              "type": "text",
+              "text": "colors can"
+            },
+            {
+              "type": "text",
+              "text": "be changed as well"
+            }
+          ]
+        }
+      ]
+    }

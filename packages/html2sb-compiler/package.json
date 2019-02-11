@@ -1,0 +1,30 @@
+{
+  "name": "html2sb-compiler",
+  "version": "3.0.0",
+  "main": "./index.js",
+  "scripts": {
+    "build": "exit 0",
+    "test": "npm run test:unit",
+    "test:unit": "tape test/*.js | tap-difflet",
+    "test:watch": "tape-watch test/*.js | tap-difflet"
+  },
+  "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb-compiler#readme",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/pastak/scrapbox-converter.git"
+  },
+  "author": "pastak <pasta0915@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "htmlparser2": "^3.9.2",
+    "lodash.trim": "^4.5.1",
+    "nano-md5": "^1.0.3",
+    "style-parser": "^1.1.1"
+  },
+  "devDependencies": {
+    "tap-diff": "^0.1.1",
+    "tap-difflet": "^0.7.0",
+    "tape": "^4.6.3",
+    "tape-watch": "^2.3.0"
+  }
+}

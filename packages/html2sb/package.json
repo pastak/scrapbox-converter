@@ -1,0 +1,42 @@
+{
+  "name": "html2sb",
+  "version": "3.0.0",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "bin": {
+    "html2sb": "dist/command/index.js"
+  },
+  "scripts": {
+    "build": "babel src -d dist",
+    "watch": "npm run build -- --watch",
+    "prepublishOnly": "rm -rf dist/* && npm run build",
+    "test": "ava -v",
+    "test:watch": "npm test -- --watch"
+  },
+  "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb#readme",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/pastak/scrapbox-converter.git"
+  },
+  "author": "pastak <pasta0915@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "ava": "^1.0.0",
+    "commander": "^2.11.0",
+    "enex2sb": "^3.0.0",
+    "html2sb-compiler": "^3.0.0"
+  },
+  "ava": {
+    "require": [
+      "@babel/register",
+      "@babel/polyfill"
+    ]
+  }
+}

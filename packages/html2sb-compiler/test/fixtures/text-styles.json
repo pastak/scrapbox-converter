@@ -1,0 +1,68 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "text",
+      "bold": true,
+      "italic": true,
+      "text": "text"
+    },
+    {
+      "type": "text",
+      "italic": true,
+      "bold": true,
+      "text": "text"
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "text",
+          "bold": true,
+          "text": "a text"
+        },
+        {
+          "type": "text",
+          "text": "not really but"
+        },
+        {
+          "type": "text",
+          "bold": true,
+          "text": "b text"
+        }
+      ],
+      "italic": true
+    },
+    {
+      "type": "br"
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "text",
+          "strike": true,
+          "text": "Strikethrough text"
+        },
+        {
+          "type": "text",
+          "text": "and"
+        }
+      ],
+      "bold": true
+    },
+    {
+      "type": "br"
+    },
+    {
+      "type": "text",
+      "italic": true,
+      "underline": true,
+      "text": "Italic underline text too!"
+    },
+    {
+      "type": "text",
+      "text": "some unknown tag"
+    }
+  ]
+}

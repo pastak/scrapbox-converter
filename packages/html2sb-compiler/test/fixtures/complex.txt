@@ -1,0 +1,73 @@
+This is a fancy titled
+Don't you think?
+Regular Text
+Header 5
+[** Header 4]
+[*** Header 3]
+[**** Header 2]
+[***** Header 1]
+[****** Header 0]
+I think this [* bold] text is better than the [/ italic] one, but certainly its better than the [_ underlined] or [- striked-through] one.
+[/ This is italic text with some [* bold] text in-between, maybe [* twice] .]
+[* This is bold text with some [/ italic] text in-between, maybe [/ twice] .]
+[_ This is underline text with some [* bold,] some [/ italic] and some [- strike-through] text.]
+[*/-_ Super fancy text 1 order: underline, italic, strike-through, bold]
+[*/-_ Super fancy text 2 order: bold, strike through, italic, underline]
+This is some [_ marked text] to remember!
+A block of code
+code:_
+	function myfunction (a, b) {
+	  let x = a * 1.08
+	  let y = b * 2
+	  return x * y
+	}
+
+could be as cool as a checkbox:
+	⬜ Item 1
+	⬜ Item 2
+	✅ Item 3 (selected)
+	⬜ Item 4
+
+an ordered list
+	1. France
+	2. Italy
+	3. Norway
+
+or an unordered list
+	cheese
+		1. Camembert
+		2. Gauda
+		3. Blue Cheese
+			Roquefort
+			Gorgonzola
+			Blue Stilton
+		4. Emmental
+	wine
+	barbeque
+
+Links should work as well, to [http://google.com google] for example.
+Two images, attached:
+[data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA]
+[data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAs]
+And a table
+table:_
+	whos	[/ house]	[_ runs]
+	[* house]	I	[http://test.com said]
+			
+		whos	house?
+
+Some horizontal spacer
+[/icons/hr.icon]
+
+And some more text...
+Lets align it right
+and align it center
+Indent a little
+> A little bit of this, a little bit of that, a little bit of everything lets me
+
+>> Indent a little further
+
+super script works ass well as subscript and
+how about a little font change or [** size change?] colors can be changed too
+
+#fancy #house #in #inaka

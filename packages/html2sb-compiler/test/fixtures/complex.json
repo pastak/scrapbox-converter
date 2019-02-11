@@ -1,0 +1,1075 @@
+{
+  "title": "This is a fancy titled",
+  "type": "page",
+  "children": [
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Don't you think?"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Regular Text"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Header 5"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "enlarge": 1,
+          "bold": true,
+          "text": "Header 4"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "enlarge": 2,
+          "bold": true,
+          "text": "Header 3"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "enlarge": 3,
+          "bold": true,
+          "text": "Header 2"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "enlarge": 4,
+          "bold": true,
+          "text": "Header 1"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "enlarge": 5,
+          "bold": true,
+          "text": "Header 0"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "I think this"
+        },
+        {
+          "type": "text",
+          "bold": true,
+          "text": "bold"
+        },
+        {
+          "type": "text",
+          "text": "text is better than the"
+        },
+        {
+          "type": "text",
+          "italic": true,
+          "text": "italic"
+        },
+        {
+          "type": "text",
+          "text": "one, but certainly its better than the"
+        },
+        {
+          "type": "text",
+          "underline": true,
+          "text": "underlined"
+        },
+        {
+          "type": "text",
+          "text": "or"
+        },
+        {
+          "type": "text",
+          "strike": true,
+          "text": "striked-through"
+        },
+        {
+          "type": "text",
+          "text": "one."
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "This is italic text with some"
+            },
+            {
+              "type": "text",
+              "bold": true,
+              "text": "bold"
+            },
+            {
+              "type": "text",
+              "text": "text in-between, maybe"
+            },
+            {
+              "type": "text",
+              "bold": true,
+              "text": "twice"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ],
+          "italic": true
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "This is bold text with some"
+            },
+            {
+              "type": "text",
+              "italic": true,
+              "text": "italic"
+            },
+            {
+              "type": "text",
+              "text": "text in-between, maybe"
+            },
+            {
+              "type": "text",
+              "italic": true,
+              "text": "twice"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ],
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "This is underline text with some"
+            },
+            {
+              "type": "text",
+              "bold": true,
+              "text": "bold,"
+            },
+            {
+              "type": "text",
+              "text": "some"
+            },
+            {
+              "type": "text",
+              "italic": true,
+              "text": "italic"
+            },
+            {
+              "type": "text",
+              "text": "and some"
+            },
+            {
+              "type": "text",
+              "strike": true,
+              "text": "strike-through"
+            },
+            {
+              "type": "text",
+              "text": "text."
+            }
+          ],
+          "underline": true
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "bold": true,
+          "underline": true,
+          "strike": true,
+          "italic": true,
+          "text": "Super fancy text 1 order: underline, italic, strike-through, bold"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "bold": true,
+          "underline": true,
+          "strike": true,
+          "italic": true,
+          "text": "Super fancy text 2 order: bold, strike through, italic, underline"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "This is some"
+        },
+        {
+          "type": "text",
+          "underline": true,
+          "text": "marked text"
+        },
+        {
+          "type": "text",
+          "text": "to remember!"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "A block of code"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "text": "function myfunction (a, b) {\n  let x = a * 1.08\n  let y = b * 2\n  return x * y\n}"
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "could be as cool as a checkbox:"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "variant": "ul",
+      "children": [
+        {
+          "type": "check",
+          "checked": false,
+          "children": [
+            {
+              "type": "text",
+              "text": "Item 1"
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "checked": false,
+          "children": [
+            {
+              "type": "text",
+              "text": "Item 2"
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "checked": true,
+          "children": [
+            {
+              "type": "text",
+              "text": "Item 3 (selected)"
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "checked": false,
+          "children": [
+            {
+              "type": "text",
+              "text": "Item 4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "an ordered list"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "variant": "ol",
+      "children": [
+        {
+          "type": "text",
+          "text": "France"
+        },
+        {
+          "type": "text",
+          "text": "Italy"
+        },
+        {
+          "type": "text",
+          "text": "Norway"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "or an unordered list"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "variant": "ul",
+      "children": [
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "text",
+              "text": "cheese"
+            },
+            {
+              "type": "list",
+              "variant": "ol",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Camembert"
+                },
+                {
+                  "type": "text",
+                  "text": "Gauda"
+                },
+                {
+                  "type": "text",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Blue Cheese"
+                    },
+                    {
+                      "type": "list",
+                      "variant": "ul",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "Roquefort"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Gorgonzola"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Blue Stilton"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "Emmental"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "wine"
+        },
+        {
+          "type": "text",
+          "text": "barbeque"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Links should work as well, to"
+        },
+        {
+          "type": "text",
+          "href": "http://google.com",
+          "text": "google"
+        },
+        {
+          "type": "text",
+          "text": "for example."
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Two images, attached:"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "reference",
+          "hash": "f134ab81b7ccf9f65805fc5e5401d4e2"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "reference",
+          "hash": "7340319ab17e40713c5571f4cb6a3653"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "And a table"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "children": [
+        {
+          "type": "tr",
+          "children": [
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "whos"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "text",
+                      "italic": true,
+                      "text": "house"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "text",
+                      "underline": true,
+                      "text": "runs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tr",
+          "children": [
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "text",
+                      "bold": true,
+                      "text": "house"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "text",
+                      "href": "http://test.com",
+                      "text": "said"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tr",
+          "children": [
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "br"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "br"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "br"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tr",
+          "children": [
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "br"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "div",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "whos"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "house?"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Some horizontal spacer"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "hr"
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "And some more text..."
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Lets align it right"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "and align it center"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "Indent a little"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "text",
+              "text": "A little bit of this, a little bit of that, a little bit of everything lets me"
+            }
+          ]
+        }
+      ],
+      "blockquote": 1
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "text",
+              "text": "Indent a little further"
+            }
+          ]
+        }
+      ],
+      "blockquote": 2
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "super script"
+        },
+        {
+          "type": "text",
+          "text": "works ass well as"
+        },
+        {
+          "type": "text",
+          "text": "subscript"
+        },
+        {
+          "type": "text",
+          "text": "and"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "br"
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "how about a little"
+        },
+        {
+          "type": "text",
+          "text": "font change or"
+        },
+        {
+          "type": "text",
+          "enlarge": 1,
+          "bold": true,
+          "text": "size change?"
+        },
+        {
+          "type": "text",
+          "text": "colors can"
+        },
+        {
+          "type": "text",
+          "text": "be changed too"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "fancy",
+    "house",
+    "in",
+    "inaka"
+  ],
+  "resources": {
+    "f134ab81b7ccf9f65805fc5e5401d4e2": {
+      "type": "img",
+      "mime": "image/png",
+      "data": "iVBORw0KGgoAAAANSUhEUgAA"
+    },
+    "7340319ab17e40713c5571f4cb6a3653": {
+      "type": "img",
+      "mime": "image/png",
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAs"
+    }
+  }
+}

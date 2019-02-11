@@ -1,0 +1,49 @@
+{
+  "name": "enex2sb",
+  "version": "3.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "enex2sb": "dist/command/index.js"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "babel src -d dist",
+    "watch": "npm run build -- --watch",
+    "test": "ava -v",
+    "test:watch": "yarn test -- --watch"
+  },
+  "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/enex2sb#readme",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/pastak/scrapbox-converter.git"
+  },
+  "author": "pastak <pasta0915@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "gyazo-api": "^0.3.1",
+    "gyazo-browser-upload": "^1.0.0",
+    "html2sb-compiler": "^3.0.0",
+    "into-stream": "^3.1.0"
+  },
+  "ava": {
+    "require": [
+      "@babel/register",
+      "@babel/polyfill"
+    ]
+  },
+  "devDependencies": {
+    "ava": "^1.0.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babelify": "^10.0.0",
+    "browserify": "^14.3.0",
+    "uglifyjs": "^2.4.10"
+  }
+}

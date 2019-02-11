@@ -1,0 +1,4 @@
+Untitled
+[*/ text] [*/ text] [/ [* a text] not really but [* b text]]
+[* [- Strikethrough text] and]
+[/_ Italic underline text too!] some unknown tag
