@@ -1,6 +1,6 @@
 {
   "name": "html2sb",
-  "version": "0.2.0",
+  "version": "3.0.0",
   "files": [
     "dist"
   ],
@@ -8,34 +8,35 @@
   "bin": {
     "html2sb": "dist/command/index.js"
   },
-  "repository": {
-    "url": "ssh://git@github.com/pastak/html2sb.git",
-    "type": "git"
-  },
   "scripts": {
-    "build": "./node_modules/.bin/babel src -d dist",
-    "watch": "yarn run build -- --watch",
-    "mypublish": "rm -rf dist/* && yarn run build && yarn publish",
-    "test": "./node_modules/.bin/ava -v",
-    "test:watch": "yarn test -- --watch"
+    "build": "babel src -d dist",
+    "watch": "npm run build -- --watch",
+    "prepublishOnly": "rm -rf dist/* && npm run build",
+    "test": "ava -v",
+    "test:watch": "npm test -- --watch"
+  },
+  "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb#readme",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/pastak/scrapbox-converter.git"
   },
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ava": "^0.17.0",
-    "babel-cli": "^6.18.0",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-register": "^6.18.0",
-    "commander": "^2.9.0",
-    "html2sb-compiler": "^0.2.1",
-    "htmlparser2": "^3.9.2"
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "ava": "^1.0.0",
+    "commander": "^2.11.0",
+    "enex2sb": "^3.0.0",
+    "html2sb-compiler": "^3.0.0"
   },
   "ava": {
     "require": [
-      "babel-register",
-      "babel-polyfill"
-    ],
-    "babel": "inherit"
+      "@babel/register",
+      "@babel/polyfill"
+    ]
   }
 }

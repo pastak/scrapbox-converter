@@ -1,0 +1,19 @@
+{
+  "name": "scrapbox-converter",
+  "scripts": {
+    "postinstall": "lerna bootstrap --hoist",
+    "test": "eslint \"**/*.js\" && lerna exec -- npm run test",
+    "build": "lerna exec -- npm run build"
+  },
+  "homepage": "https://github.com/pastak/scrapbox-converter#readme",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/pastak/scrapbox-converter.git"
+  },
+  "author": "pastak <pasta0915@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "lerna": "^3.11.0"
+  }
+}

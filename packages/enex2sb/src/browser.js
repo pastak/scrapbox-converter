@@ -1,6 +1,6 @@
-require('babel-register')
+require('babel-register');
 
-import main from './main'
-import uploadImage from './browser/uploadImage'
+import main from './main';
+import uploadImage from './browser/uploadImage';
 
-export default main.bind(null, uploadImage)
+export default main.bind(null, uploadImage);

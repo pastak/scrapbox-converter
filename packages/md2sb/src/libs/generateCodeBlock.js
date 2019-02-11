@@ -1,18 +1,18 @@
 export default (node) => {
-  let result = 'code:'
+  let result = 'code:';
   if (node.lang) {
-    const t = node.lang.split(':')
+    const t = node.lang.split(':');
     if (t.length === 2) {
-      result += t[1] + `(${t[0]})\n`
+      result += t[1] + `(${t[0]})\n`;
     } else if (node.lang.indexOf('.') > -1) {
       // ファイル名のみが書かれているとき
-      result += node.lang
+      result += node.lang;
     } else {
-      result += ` (${node.lang})\n`
+      result += ` (${node.lang})\n`;
     }
   } else {
-    result += '_\n'
+    result += '_\n';
   }
-  result += ' ' + node.value.split('\n').join('\n ')
-  return result
-}
+  result += ' ' + node.value.split('\n').join('\n ');
+  return result;
+};

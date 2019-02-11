@@ -1,233 +1,233 @@
-'use strict'
-var NO_LINE_BREAK = false
-var SOFT_LINE_BREAK = true
+'use strict';
+var NO_LINE_BREAK = false;
+var SOFT_LINE_BREAK = true;
 
-function toSimpleText (node, noFormatting) {
+function toSimpleText (node) {
   if (node.type === 'list') {
-    return '\n' + processList(node)
+    return '\n' + processList(node);
   }
   if (node.type === 'img') {
-    var src = ''
+    var src = '';
     if (node.src) {
-      src = node.src
+      src = node.src;
     } else {
-      src = 'data:' + node.mime + ';base64,' + node.data
+      src = 'data:' + node.mime + ';base64,' + node.data;
     }
     if (node.href) {
-      return '[' + node.href + ' ' + src + ']'
+      return '[' + node.href + ' ' + src + ']';
     }
-    return '[' + src + ']'
+    return '[' + src + ']';
   }
 
-  var before = ''
+  var before = '';
   if (node.bold) {
-    before += '*'
+    before += '*';
   }
   if (node.enlarge) {
-    before += (new Array(node.enlarge + 1)).join('*')
+    before += (new Array(node.enlarge + 1)).join('*');
   }
   if (node.italic) {
-    before += '/'
+    before += '/';
   }
   if (node.strike) {
-    before += '-'
+    before += '-';
   }
   if (node.underline) {
-    before += '_'
+    before += '_';
   }
-  var content
+  var content;
   if (node.children) {
-    content = node.children.map(toSimpleText).filter(Boolean).join(' ')
+    content = node.children.map(toSimpleText).filter(Boolean).join(' ');
   } else {
-    content = node.text || ''
+    content = node.text || '';
   }
-  var check = ''
+  var check = '';
   if (node.type === 'check') {
-    check = (node.checked ? '✅' : '⬜') + ' '
+    check = (node.checked ? '✅' : '⬜') + ' ';
   }
-  var inner
+  var inner;
   if (before !== '') {
-    inner = check + '[' + before + ' ' + content + ']'
+    inner = check + '[' + before + ' ' + content + ']';
   } else {
-    inner = check + content
+    inner = check + content;
   }
 
   if (node.href) {
-    return '[' + node.href + ' ' + inner + ']'
+    return '[' + node.href + ' ' + inner + ']';
   }
-  return inner
+  return inner;
 }
 
 function processList (node, _, __, indent) {
   if (!indent) {
-    indent = ''
+    indent = '';
   }
-  indent += '\t'
+  indent += '\t';
   var listAsText = node.children
     .map(function (listEntry, nr) {
-      var children
+      var children;
       if (listEntry.children) {
-        children = listEntry.children.concat()
+        children = listEntry.children.concat();
       } else {
-        children = [listEntry]
+        children = [listEntry];
       }
-      var lastEntry
+      var lastEntry;
       if (children[children.length - 1].type === 'list') {
-        lastEntry = children.pop()
+        lastEntry = children.pop();
       }
       var data = toSimpleText({
         type: listEntry.type,
         checked: listEntry.checked,
         children: children
-      })
+      });
       if (data !== '') {
         var lines = data.split('\n').map(function (line, index) {
           if (index === 0 && node.variant === 'ol') {
-            return indent + (nr + 1) + '. ' + line
+            return indent + (nr + 1) + '. ' + line;
           }
-          return indent + line
+          return indent + line;
         }).filter(function (line) {
-          return !/^\s*$/.test(line)
-        })
+          return !/^\s*$/.test(line);
+        });
         if (lines.length === 0) {
-          data = ''
+          data = '';
         } else {
-          data = lines.join('\n') + '\n'
+          data = lines.join('\n') + '\n';
         }
       }
       if (lastEntry) {
-        data = data + processList(lastEntry, null, null, indent) + '\n'
+        data = data + processList(lastEntry, null, null, indent) + '\n';
       }
-      return data
+      return data;
     })
-    .join('')
-  return listAsText.substr(0, listAsText.length - 1)
+    .join('');
+  return listAsText.substr(0, listAsText.length - 1);
 }
 
 var stringifier = {
   'link': function (node, line) {
-    line.push(toSimpleText(node))
-    return NO_LINE_BREAK
+    line.push(toSimpleText(node));
+    return NO_LINE_BREAK;
   },
   'list': processList,
-  'hr': function (node, line) {
-    return '[/icons/hr.icon]'
+  'hr': function () {
+    return '[/icons/hr.icon]';
   },
-  'div': function (node, line, resources) {
-    var result = []
+  'div': function (node, _, resources) {
+    var result = [];
     if (node.children) {
-      result = stringifyNodes(node, result, resources)
+      result = stringifyNodes(node, result, resources);
     }
-    return result
+    return result;
   },
-  'table': function (node, line) {
+  'table': function (node) {
     return 'table:_\n' +
       node.children.map(function (row) {
         return '\t' + row.children.map(function (td) {
-          return toSimpleText(td)
-        }).join('\t')
-      }).join('\n')
+          return toSimpleText(td);
+        }).join('\t');
+      }).join('\n');
   },
-  'code': function (node, line) {
+  'code': function (node) {
     return 'code:_' +
       node.text.split('\n').map(function (codeLine) {
-        return '\n\t' + codeLine.split(' ').join(' ')
-      }).join('')
+        return '\n\t' + codeLine.split(' ').join(' ');
+      }).join('');
   },
   'img': function (node, line) {
-    line.push(toSimpleText(node))
-    return NO_LINE_BREAK
+    line.push(toSimpleText(node));
+    return NO_LINE_BREAK;
   },
-  'br': function (node, line) {
-    return SOFT_LINE_BREAK
+  'br': function () {
+    return SOFT_LINE_BREAK;
   },
   'text': function (node, line) {
     if (node.blockquote) {
-      return new Array(node.blockquote + 1).join('>') + ' ' + toSimpleText(node)
+      return new Array(node.blockquote + 1).join('>') + ' ' + toSimpleText(node);
     }
-    line.push(toSimpleText(node))
-    return NO_LINE_BREAK
+    line.push(toSimpleText(node));
+    return NO_LINE_BREAK;
   },
   'reference': function (node, line, resources) {
     if (resources) {
-      return stringifyNode(resources[node.hash], line, resources)
+      return stringifyNode(resources[node.hash], line, resources);
     }
   }
-}
+};
 
 function stringifyNode (child, line, resources) {
-  var nodeStringifier = stringifier[child.type]
+  var nodeStringifier = stringifier[child.type];
   if (!nodeStringifier) {
-    console.warn('Unknown stringifier for node type: ' + child.type)
-    console.log(child)
-    return
+    console.warn('Unknown stringifier for node type: ' + child.type);
+    console.log(child);
+    return;
   }
-  return nodeStringifier(child, line, resources)
+  return nodeStringifier(child, line, resources);
 }
 
 function stringifyNodes (tokens, result, resources) {
-  var line = []
+  var line = [];
   tokens.children.forEach(function (child) {
-    var block = stringifyNode(child, line, resources)
+    var block = stringifyNode(child, line, resources);
     if (block === NO_LINE_BREAK) {
-      return
+      return;
     }
     if (line.length > 0) {
-      result.push(line.join(' '))
+      result.push(line.join(' '));
       if (block !== SOFT_LINE_BREAK) {
-        result.push('')
+        result.push('');
       }
-      line = []
+      line = [];
     }
     if (Array.isArray(block)) {
-      result = result.concat(block)
+      result = result.concat(block);
     } else if (block !== SOFT_LINE_BREAK) {
-      result.push(block)
-      result.push('')
+      result.push(block);
+      result.push('');
     }
-  })
+  });
   if (line.length > 0) {
-    result.push(line.join(' '))
+    result.push(line.join(' '));
   }
-  return result
+  return result;
 }
 
 function toScrapbox (tokens) {
-  var result = []
-  result = stringifyNodes(tokens, result, tokens.resources)
+  var result = [];
+  result = stringifyNodes(tokens, result, tokens.resources);
   if (tokens.tags) {
-    result.push('')
+    result.push('');
     result.push(tokens.tags.map(function (tag) {
-      return '#' + tag
-    }).join(' '))
+      return '#' + tag;
+    }).join(' '));
   }
-  var formerWasEmpty = false
+  var formerWasEmpty = false;
   result = result.filter(function removeMultipleLineBreaks (block) {
     if (block === '') {
       if (formerWasEmpty) {
-        return false
+        return false;
       }
-      formerWasEmpty = true
+      formerWasEmpty = true;
     } else {
-      formerWasEmpty = false
+      formerWasEmpty = false;
     }
-    return true
-  })
-  var last = result.length - 1
+    return true;
+  });
+  var last = result.length - 1;
   while ((result[last] === '' || result[last] === null) && last > 0) {
-    last -= 1
+    last -= 1;
   }
   return {
     title: tokens.title,
     lines: result.slice(0, last + 1).reduce(function (lines, line) {
       if (line.indexOf('\n') !== -1) {
-        return lines.concat(line.split('\n'))
+        return lines.concat(line.split('\n'));
       }
-      lines.push(line)
-      return lines
+      lines.push(line);
+      return lines;
     }, [])
-  }
+  };
 }
-toScrapbox.toSimpleText = toSimpleText
+toScrapbox.toSimpleText = toSimpleText;
 
-module.exports = toScrapbox
+module.exports = toScrapbox;

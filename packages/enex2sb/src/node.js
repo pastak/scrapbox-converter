@@ -1,4 +1,4 @@
-import main from './main'
-import uploadImage from './libs/uploadImage'
+import main from './main';
+import uploadImage from './libs/uploadImage';
 
-export default main.bind(null, uploadImage)
+export default main.bind(null, uploadImage);

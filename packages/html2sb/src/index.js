@@ -1,3 +1,3 @@
-require('babel-register')
-require('babel-polyfill')
-module.exports = require('./main')
+require('babel-register');
+require('babel-polyfill');
+module.exports = require('./main');

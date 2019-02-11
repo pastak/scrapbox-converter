@@ -1,31 +1,31 @@
-import path from 'path'
-import fs from 'fs'
-import command from 'commander'
-import html2sb from './../main'
-import settings from '../../package.json'
+import path from 'path';
+import fs from 'fs';
+import command from 'commander';
+import html2sb from './../main';
+import settings from '../../package.json';
 
-let stdin = ''
+let stdin = '';
 
 command
   .version(settings.version)
   .description(settings.description)
-  .usage('\n\html2sb [file] \n\tcat hoge.html | html2sb')
+  .usage('\nhtml2sb [file] \n\tcat hoge.html | html2sb')
   .arguments('[file]')
   .action(async (file) => {
-    const result = await html2sb(fs.readFileSync(path.resolve(file)))
-    console.log(result)
-  })
+    const result = await html2sb(fs.readFileSync(path.resolve(file)));
+    console.log(result);
+  });
 
 if(process.stdin.isTTY) {
-  command.parse(process.argv)
+  command.parse(process.argv);
 } else {
   process.stdin.on('readable', () => {
-    const chunk = process.stdin.read()
+    const chunk = process.stdin.read();
     if (chunk !== null) {
-       stdin += chunk
+      stdin += chunk;
     }
-  })
+  });
   process.stdin.on('end', async () => {
-    console.log(await html2sb(stdin))
-  })
+    console.log(await html2sb(stdin));
+  });
 }

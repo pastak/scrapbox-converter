@@ -1,14 +1,14 @@
-import command from 'commander'
-import settings from '../package.json'
-import findAndLoadFiles from './libs/findAndLoadFiles'
+import command from 'commander';
+import settings from '../package.json';
+import findAndLoadFiles from './libs/findAndLoadFiles';
 
 const finalize = (pages) => {
   const flatten = (arr) => arr.reduce((a, b) => {
-    if (Array.isArray(b)) return a.concat(flatten(b))
-    return a.concat(b)
-  }, [])
-  return flatten(pages).filter((_) => _)
-}
+    if (Array.isArray(b)) return a.concat(flatten(b));
+    return a.concat(b);
+  }, []);
+  return flatten(pages).filter((_) => _);
+};
 
 command
   .version(settings.version)
@@ -16,8 +16,8 @@ command
   .usage('scrapbox-converter <...files>')
   .arguments('<files...>')
   .action(async (files) => {
-    const pages = finalize(await findAndLoadFiles(files))
-    const json = {pages}
-    console.log(JSON.stringify(json))
+    const pages = finalize(await findAndLoadFiles(files));
+    const json = {pages};
+    console.log(JSON.stringify(json));
   })
-  .parse(process.argv)
+  .parse(process.argv);

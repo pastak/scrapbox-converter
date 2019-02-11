@@ -25,16 +25,15 @@ TBW
 
 - Require
   - NodeJS
-  - yarn
 
 1. Fork it
 2. `% git clone git@github.com:YOUR-NAME/enex2sb.git`
 3. `% cd enex2sb`
 4. `% git checkout -b YOUR_WORKING_BRANCH`
 5. Write Some Code!
-  - Build: `% yarn run build`
-    - Watch: `% yarn run watch`
-  - Test: `% yarn test`
-    - Test Watching: `% yarn test:watch`
+  - Build: `% npm run build`
+    - Watch: `% npm run watch`
+  - Test: `% npm test`
+    - Test Watching: `% npm test:watch`
 6. Commit your work
 7. Open PR to this repository 🎉

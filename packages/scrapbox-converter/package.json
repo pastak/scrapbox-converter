@@ -1,30 +1,32 @@
 {
   "name": "scrapbox-converter",
-  "version": "1.1.1",
+  "version": "3.0.0",
   "bin": {
     "scrapbox-converter": "dist/index.js"
   },
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/scrapbox-converter#readme",
   "repository": {
-    "url": "ssh://git@github.com/pastak/scrapbox-converter.git",
-    "type": "git"
-  },
-  "scripts": {
-    "build": "babel src -d dist",
-    "watch": "yarn run build -- --watch"
+    "type": "git",
+    "url": "ssh://git@github.com/pastak/scrapbox-converter.git"
   },
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "babel src -d dist",
+    "watch": "npm run build -- --watch"
+  },
   "dependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "enex2sb": "^2.0.3",
-    "html2sb-compiler": "^1.0.3",
-    "md2sb": "^1.0.1"
+    "enex2sb": "^3.0.0",
+    "html2sb-compiler": "^3.0.0",
+    "md2sb": "^3.0.0"
   }
 }
