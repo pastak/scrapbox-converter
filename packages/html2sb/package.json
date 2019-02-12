@@ -1,6 +1,6 @@
 {
   "name": "html2sb",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "files": [
     "dist"
   ],
@@ -30,7 +30,7 @@
     "@babel/register": "^7.0.0",
     "ava": "^1.0.0",
     "commander": "^2.11.0",
-    "enex2sb": "^3.0.0",
+    "enex2sb": "^3.0.1",
     "html2sb-compiler": "^3.0.0"
   },
   "ava": {

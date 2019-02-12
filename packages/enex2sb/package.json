@@ -1,6 +1,6 @@
 {
   "name": "enex2sb",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "dist/index.js",
   "files": [
     "dist"
