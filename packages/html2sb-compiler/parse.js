@@ -185,6 +185,18 @@ var tags = {
       children: childData.children
     });
   },
+  'p': function (context, node) {
+    context.children.push({
+      type: 'br'
+    });
+    var childData = parseNodes(node.children, {
+      options: context.options
+    });
+    context.children.push({
+      type: 'text',
+      children: childData.children
+    });
+  },
   'note': function (context, node) {
     if (context.options && context.options.evernote) {
       var content;
