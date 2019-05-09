@@ -9,6 +9,6 @@ paragraph 3
 paragraph 4
 
 paragraph 5
-apple
+[* apple]
 orange
-paragraph 6
+[* para]graph [* 6]
