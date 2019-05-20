@@ -1,6 +1,7 @@
 'use strict';
 var NO_LINE_BREAK = false;
-var SOFT_LINE_BREAK = true;
+var SOFT_LINE_BREAK = 2;
+var HARD_LINE_BREAK = 3;
 
 function toSimpleText (node) {
   if (node.type === 'list') {
@@ -116,7 +117,7 @@ var stringifier = {
   'div': function (node, _, resources) {
     var result = [];
     if (node.children) {
-      result = stringifyNodes(node, result, resources);
+      result = stringifyNodes(node, result, resources, true);
     }
     return result;
   },
@@ -138,8 +139,8 @@ var stringifier = {
     line.push(toSimpleText(node));
     return NO_LINE_BREAK;
   },
-  'br': function () {
-    return SOFT_LINE_BREAK;
+  'br': function (node) {
+    return node.force ? HARD_LINE_BREAK : SOFT_LINE_BREAK;
   },
   'text': function (node, line) {
     if (node.blockquote) {
@@ -165,25 +166,29 @@ function stringifyNode (child, line, resources) {
   return nodeStringifier(child, line, resources);
 }
 
-function stringifyNodes (tokens, result, resources) {
+function stringifyNodes (tokens, result, resources, nested) {
   var line = [];
   tokens.children.forEach(function (child) {
     var block = stringifyNode(child, line, resources);
+    const isLineBreak = (block === SOFT_LINE_BREAK || block === HARD_LINE_BREAK);
     if (block === NO_LINE_BREAK) {
       return;
     }
     if (line.length > 0) {
       result.push(line.join(' '));
-      if (block !== SOFT_LINE_BREAK) {
+      if (!isLineBreak) {
         result.push('');
       }
       line = [];
     }
     if (Array.isArray(block)) {
       result = result.concat(block);
-    } else if (block !== SOFT_LINE_BREAK) {
+    } else if (!isLineBreak) {
       result.push(block);
       result.push('');
+    }
+    if (child.type === 'div' && !nested) {
+      result.push('\n');
     }
   });
   if (line.length > 0) {
@@ -217,15 +222,34 @@ function toScrapbox (tokens) {
   while ((result[last] === '' || result[last] === null) && last > 0) {
     last -= 1;
   }
-  return {
-    title: tokens.title,
-    lines: result.slice(0, last + 1).reduce(function (lines, line) {
-      if (line.indexOf('\n') !== -1) {
+
+  var lines = result.slice(0, last + 1).reduce(function (lines, line) {
+    if (line.indexOf('\n') !== -1) {
+      if (line === '\n') {
+        line = '';
+      } else {
         return lines.concat(line.split('\n'));
       }
-      lines.push(line);
-      return lines;
-    }, [])
+    }
+    lines.push(line);
+    return lines;
+  }, []);
+
+  var lastLineIsBreak = false;
+  for (var i = lines.length - 1; i >= 0; i--) {
+    if (lastLineIsBreak) {
+      lines.pop();
+    }
+    if (lines[i] !== '') {
+      break;
+    } else {
+      lastLineIsBreak = true;
+    }
+  }
+
+  return {
+    title: tokens.title,
+    lines: lines
   };
 }
 toScrapbox.toSimpleText = toSimpleText;
