@@ -28,6 +28,14 @@
         { "type": "check", "checked": true, "children": [{ "type": "text", "text": "Item 3 (selected)" }] },
         { "type": "check", "checked": false, "children": [{ "type": "text", "text": "Item 4" }] }
       ]
+    },
+    {
+      "type": "list",
+      "variant": "ul",
+      "children": [
+        { "type": "img", "src": "https://test.com/image1.png" },
+        { "type": "img", "src": "https://test.com/image2.png" }
+      ]
     }
   ]
 }

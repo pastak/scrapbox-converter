@@ -77,6 +77,7 @@ function processList (node, _, __, indent) {
       }
       var data = toSimpleText({
         type: listEntry.type,
+        src: listEntry.src,
         checked: listEntry.checked,
         children: children
       });
