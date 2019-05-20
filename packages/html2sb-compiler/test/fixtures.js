@@ -58,7 +58,8 @@ test('fixtures', function (t) {
     'text-styles',
     'list-skipped-inheritance',
     'list-wrong-inheritance',
-    'simple-paragraph'
+    'simple-paragraph',
+    'complex-paragraph'
   ].forEach(testFixture);
   t.end();
 });
