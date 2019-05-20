@@ -18,6 +18,11 @@ test('fixtures', function (t) {
       var pageFile = allPages.length === 1 ? file : (file + '-' + (index + 1));
       var pageTokens = allPages[index];
       var expectedTokens;
+
+      if (process.env.TEST_ONLY_RUN) {
+        if (process.env.TEST_ONLY_RUN !== pageFile) continue;
+      }
+
       try {
         expectedTokens = JSON.parse(readFixture(pageFile + '.json'));
       } catch (e) {
@@ -26,8 +31,8 @@ test('fixtures', function (t) {
       }
       const expectedOutput = readFixture(pageFile + '.txt');
       const sb = toScrapbox(pageTokens);
-      // console.log(JSON.stringify(pageTokens, null, 2))
-      t.deepEqual(pageTokens, expectedTokens, file + '#tokens');
+      if (process.env.SHOW_TOKEN) console.log(JSON.stringify(pageTokens, null, 2));
+      if (!process.env.IGNORE_TOKEN_TEST) t.deepEqual(pageTokens, expectedTokens, file + '#tokens');
       sb.title = guessTitle(pageTokens, sb, function (pageTokens, foundTitle, template) {
         var named = 'Untitled';
         return foundTitle || template(named) || named;
