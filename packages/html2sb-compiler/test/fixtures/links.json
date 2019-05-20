@@ -23,14 +23,21 @@
         },
         {
           "type": "text",
-          "text": "and bold",
-          "bold": true
+          "bold": true,
+          "text": "and bold"
         },
         {
           "type": "text",
           "text": "as well"
         }
       ]
+    },
+    {
+      "type": "br"
+    },
+    {
+      "type": "text",
+      "text": "scroll to here"
     }
   ]
 }

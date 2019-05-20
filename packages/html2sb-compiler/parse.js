@@ -176,13 +176,15 @@ var tags = {
     });
   },
   'a': function (context, node) {
-    var childData = parseNodes(node.children, {
-      options: context.options
-    });
+    var children = node.children
+      ? parseNodes(node.children, {
+        options: context.options
+      }).children
+      : null;
     context.children.push({
       type: 'text',
       href: node.attribs.href,
-      children: childData.children
+      children: children
     });
   },
   'p': function (context, node) {
