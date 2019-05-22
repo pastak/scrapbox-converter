@@ -1,6 +1,6 @@
 {
   "name": "enex2sb",
-  "version": "4.0.1-alpha.0",
+  "version": "4.0.1-alpha.1",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -26,7 +26,7 @@
     "commander": "^2.11.0",
     "gyazo-api": "^0.3.1",
     "gyazo-browser-upload": "^1.0.0",
-    "html2sb-compiler": "^4.0.1-alpha.0",
+    "html2sb-compiler": "^4.0.1-alpha.1",
     "into-stream": "^3.1.0"
   },
   "ava": {
