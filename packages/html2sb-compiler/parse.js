@@ -188,7 +188,7 @@ var tags = {
     });
   },
   'p': function (context, node) {
-    // TODO: Triage as block element
+    // TODO: Triage as block element to divide div
     tags['div'](context, node);
   },
   'note': function (context, node) {
