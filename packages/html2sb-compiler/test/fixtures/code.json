@@ -38,6 +38,10 @@
     {
       "type": "code",
       "text": "function bar () {}"
+    },
+    {
+      "type": "code",
+      "text": "warn $user->name;"
     }
   ]
 }

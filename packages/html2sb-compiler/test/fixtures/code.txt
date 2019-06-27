@@ -22,3 +22,6 @@ code:_
 
 code:_
 	function bar () {}
+
+code:_
+	warn $user->name;
