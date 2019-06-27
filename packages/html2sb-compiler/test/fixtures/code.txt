@@ -25,3 +25,6 @@ code:_
 
 code:_
 	warn $user->name;
+
+code:_
+	user.name

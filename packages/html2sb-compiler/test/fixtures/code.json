@@ -42,6 +42,10 @@
     {
       "type": "code",
       "text": "warn $user->name;"
+    },
+    {
+      "type": "code",
+      "text": "user.name"
     }
   ]
 }
