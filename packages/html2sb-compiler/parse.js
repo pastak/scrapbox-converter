@@ -69,14 +69,14 @@ function parseHeader (enlarge, context, node) {
   simpleNode.enlarge = enlarge;
 }
 
-function traditionalCodeBlock(context, node) {
+function traditionalCodeBlock (context, node) {
   context.children.push({
     type: 'code',
     text: collectConcatContents(node)
   });
 }
 
-function collectConcatContents(node) {
+function collectConcatContents (node) {
   var contents = [];
   if (node.content) {
     contents.push(node.content);
