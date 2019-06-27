@@ -72,8 +72,21 @@ function parseHeader (enlarge, context, node) {
 function traditionalCodeBlock (context, node) {
   context.children.push({
     type: 'code',
-    text: trim(firstChildContent(node))
+    text: collectConcatContents(node)
   });
+}
+
+function collectConcatContents (node) {
+  var contents = [];
+  if (node.content) {
+    contents.push(node.content);
+  }
+  if (node.children) {
+    node.children.forEach(function (child) {
+      contents.push(collectConcatContents(child));
+    });
+  }
+  return trim(contents.join(''));
 }
 
 function list (variant, context, node) {
