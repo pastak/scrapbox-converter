@@ -1,6 +1,6 @@
 {
   "name": "scrapbox-converter",
-  "version": "4.0.1-alpha.2",
+  "version": "4.0.1-alpha.3",
   "bin": {
     "scrapbox-converter": "dist/index.js"
   },
@@ -25,8 +25,8 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "enex2sb": "^4.0.1-alpha.2",
-    "html2sb-compiler": "^4.0.1-alpha.2",
-    "md2sb": "^4.0.1-alpha.2"
+    "enex2sb": "^4.0.1-alpha.3",
+    "html2sb-compiler": "^4.0.1-alpha.3",
+    "md2sb": "^4.0.1-alpha.3"
   }
 }

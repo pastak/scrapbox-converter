@@ -1,6 +1,6 @@
 {
   "name": "md2sb",
-  "version": "4.0.1-alpha.2",
+  "version": "4.0.1-alpha.3",
   "description": "Encode Markdown to Scrapbox.io style text",
   "main": "dist/index.js",
   "bin": {
@@ -32,7 +32,7 @@
     "ava": "^1.0.0",
     "commander": "^2.11.0",
     "deepcopy": "^0.6.3",
-    "enex2sb": "^4.0.1-alpha.2",
+    "enex2sb": "^4.0.1-alpha.3",
     "remark": "^6.2.0"
   },
   "ava": {

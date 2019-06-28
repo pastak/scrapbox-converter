@@ -1,6 +1,6 @@
 {
   "name": "html2sb",
-  "version": "4.0.1-alpha.2",
+  "version": "4.0.1-alpha.3",
   "files": [
     "dist"
   ],
@@ -30,8 +30,8 @@
     "@babel/register": "^7.0.0",
     "ava": "^1.0.0",
     "commander": "^2.11.0",
-    "enex2sb": "^4.0.1-alpha.2",
-    "html2sb-compiler": "^4.0.1-alpha.2"
+    "enex2sb": "^4.0.1-alpha.3",
+    "html2sb-compiler": "^4.0.1-alpha.3"
   },
   "ava": {
     "require": [
