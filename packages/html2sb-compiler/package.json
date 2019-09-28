@@ -5,6 +5,7 @@
   "scripts": {
     "build": "exit 0",
     "test": "npm run test:unit",
+    "test:update-token": "UPDATE_TOKEN=1 npm run test",
     "test:unit": "tape test/*.js | tap-difflet",
     "test:watch": "tape-watch test/*.js | tap-difflet"
   },

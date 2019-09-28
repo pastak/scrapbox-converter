@@ -14,7 +14,8 @@
               "text": "France"
             },
             {
-              "type": "br"
+              "type": "br",
+              "force": true
             },
             {
               "type": "list",
