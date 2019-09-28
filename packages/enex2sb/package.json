@@ -1,6 +1,6 @@
 {
   "name": "enex2sb",
-  "version": "4.0.1-alpha.3",
+  "version": "3.3.0",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -23,10 +23,15 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "commander": "^2.11.0",
     "gyazo-api": "^0.3.1",
     "gyazo-browser-upload": "^1.0.0",
-    "html2sb-compiler": "^4.0.1-alpha.3",
+    "html2sb-compiler": "^3.3.0",
     "into-stream": "^3.1.0"
   },
   "ava": {
@@ -36,14 +41,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "ava": "^1.0.0",
-    "babelify": "^10.0.0",
-    "browserify": "^14.3.0",
-    "uglifyjs": "^2.4.10"
+    "ava": "^1.0.0"
   }
 }
