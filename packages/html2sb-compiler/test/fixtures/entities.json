@@ -2,11 +2,13 @@
   "title": null,
   "children": [
     {
-      "type": "br"
-    },
-    {
-      "type": "text",
-      "text": "寿司"
+      "type": "div",
+      "children": [
+        {
+          "type": "text",
+          "text": "寿司"
+        }
+      ]
     }
   ]
 }
