@@ -1,12 +1,30 @@
 This is text.
+
+
 [* bold]
+
+
 [/ Italic]
+
+
 [_ Underline]
+
+
 red
 
+
+
 [_ hightlighted]
+
+
 [***** font size large]
+
+
 [http://example.com link]
+
+
+
+
 	list item
 	level1
 		level2
@@ -17,14 +35,20 @@ red
 		1. level2
 		non ordered
 
+
 	⬜ todo
 	✅ done
 
+
 [https://gyazo.com/abcdef0123456789abcdef0123456789]
+
+
 [/icons/hr.icon]
 
 table:_
 	1x1	1x2
 	2x1	2x2
+
+
 
 #tag1 #tag2

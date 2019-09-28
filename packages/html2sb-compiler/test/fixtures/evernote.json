@@ -1,6 +1,4 @@
 {
-  "title": "This is a fancy titled",
-  "tags": ["fancy", "house", "in", "inaka"],
   "type": "page",
   "children": [
     {
@@ -8,5 +6,12 @@
       "bold": true,
       "text": "Some text"
     }
+  ],
+  "title": "This is a fancy titled",
+  "tags": [
+    "fancy",
+    "house",
+    "in",
+    "inaka"
   ]
 }

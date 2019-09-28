@@ -176,9 +176,9 @@ function firstChildContent (node) {
 }
 
 function singleNode (type, context) {
-  context.children.push({
-    type: type
-  });
+  let obj = {type: type};
+  if (type === 'br') obj.force = true;
+  context.children.push(obj);
 }
 
 var tags = {
@@ -201,18 +201,8 @@ var tags = {
     });
   },
   'p': function (context, node) {
-    context.children.push({
-      type: 'br'
-    });
-    if (node.children) {
-      var childData = parseNodes(node.children, {
-        options: context.options
-      });
-      context.children.push({
-        type: 'text',
-        children: childData.children
-      });
-    }
+    // TODO: Triage as block element to divide div
+    tags['div'](context, node);
   },
   'note': function (context, node) {
     if (context.options && context.options.evernote) {

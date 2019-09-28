@@ -1,5 +1,5 @@
 {
-  "name": "scrapbox-converter",
+  "name": "scrapbox-converter-monorepo",
   "scripts": {
     "postinstall": "lerna bootstrap --hoist",
     "test": "eslint \"**/*.js\" && lerna exec -- npm run test",

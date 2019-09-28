@@ -7,7 +7,8 @@
       "src": "http://example.com/example.png"
     },
     {
-      "type": "br"
+      "type": "br",
+      "force": true
     },
     {
       "type": "img",
@@ -33,7 +34,8 @@
       ]
     },
     {
-      "type": "br"
+      "type": "br",
+      "force": true
     },
     {
       "type": "text",

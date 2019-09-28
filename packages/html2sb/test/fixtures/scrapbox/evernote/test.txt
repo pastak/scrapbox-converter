@@ -1,15 +1,31 @@
 test
 
 This is text.
+
+
 [* bold]
+
+
 [/ Italic]
+
 [_ Underline]
+
 
 red
 
+
+
 hightlighted
+
+
 [***** font size large]
+
+
 [http://example.com link]
+
+
+
+
 	list item
 	level1
 		level2
@@ -20,9 +36,15 @@ hightlighted
 		1. level2
 		non ordered
 
+
 todo
+
 done
+
+
 [test.resources/47C4AAC0-EFA4-4E4F-98F5-0ACD38B650F8.png]
+
+
 [/icons/hr.icon]
 
 table:_
