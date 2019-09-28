@@ -6,16 +6,7 @@
     },
     {
       "type": "text",
-      "children": [
-        {
-          "type": "text",
-          "text": "寿"
-        },
-        {
-          "type": "text",
-          "text": "司"
-        }
-      ]
+      "text": "寿司"
     }
   ]
 }

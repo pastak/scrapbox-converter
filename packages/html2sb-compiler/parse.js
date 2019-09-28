@@ -595,10 +595,14 @@ function parseHTML (input) {
       if (!current.children) {
         current.children = [];
       }
-      current.children.push({
-        type: 'Text',
-        content: text
-      });
+      if (current.children.length > 0 && current.children[current.children.length - 1].type === 'Text') {
+        current.children[current.children.length - 1].content += text;
+      } else {
+        current.children.push({
+          type: 'Text',
+          content: text
+        });
+      }
     },
     onclosetag: function (tagName) {
       if (current.tagName === tagName) {
