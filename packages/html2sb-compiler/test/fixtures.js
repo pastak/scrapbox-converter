@@ -21,10 +21,6 @@ test('fixtures', function (t) {
       var pageTokens = allPages[index];
       var expectedTokens;
 
-      if (process.env.TEST_ONLY_RUN) {
-        if (process.env.TEST_ONLY_RUN !== pageFile) continue;
-      }
-
       try {
         expectedTokens = JSON.parse(readFixture(pageFile + '.json'));
       } catch (e) {
@@ -62,7 +58,15 @@ test('fixtures', function (t) {
     'list-skipped-inheritance',
     'list-wrong-inheritance',
     'simple-paragraph',
+    'entities',
     'complex-paragraph'
-  ].forEach(testFixture);
+  ]
+    .filter((pageFile) => {
+      if (process.env.TEST_ONLY_RUN) {
+        return process.env.TEST_ONLY_RUN === pageFile;
+      }
+      return true;
+    })
+    .forEach(testFixture);
   t.end();
 });

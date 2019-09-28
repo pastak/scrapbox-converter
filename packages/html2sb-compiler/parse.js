@@ -1,5 +1,5 @@
 'use strict';
-var HTMLParser = require('htmlparser2/lib/Parser');
+var HTMLParser = require('htmlparser2');
 var styleParser = require('style-parser');
 var trim = require('lodash.trim');
 var md5;
@@ -566,7 +566,7 @@ function parseHTML (input) {
   var current = {};
   var stack = [];
   var root = current;
-  var parser = new HTMLParser({
+  var parser = new HTMLParser.Parser({
     onopentag: function (name, attribs) {
       stack.push(current);
       var next = {
@@ -585,10 +585,14 @@ function parseHTML (input) {
       if (!current.children) {
         current.children = [];
       }
-      current.children.push({
-        type: 'Text',
-        content: text
-      });
+      if (current.children.length > 0 && current.children[current.children.length - 1].type === 'Text') {
+        current.children[current.children.length - 1].content += text;
+      } else {
+        current.children.push({
+          type: 'Text',
+          content: text
+        });
+      }
     },
     onclosetag: function (tagName) {
       if (current.tagName === tagName) {
