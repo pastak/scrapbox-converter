@@ -5,6 +5,8 @@ const parse = require('../parse');
 const toScrapbox = require('../toScrapbox');
 const guessTitle = require('../guessTitle');
 
+const updateToken = !!process.env.UPDATE_TOKEN;
+
 function readFixture (file) {
   return fs.readFileSync(path.join(__dirname, 'fixtures', file), 'utf8');
 }
@@ -27,8 +29,9 @@ test('fixtures', function (t) {
       }
       const expectedOutput = readFixture(pageFile + '.txt');
       const sb = toScrapbox(pageTokens);
+      if (updateToken) fs.writeFileSync(path.join(__dirname, 'fixtures', pageFile + '.json'), JSON.stringify(pageTokens, null, 2));
       if (process.env.SHOW_TOKEN) console.log(JSON.stringify(pageTokens, null, 2));
-      if (!process.env.IGNORE_TOKEN_TEST) t.deepEqual(pageTokens, expectedTokens, file + '#tokens');
+      if (!process.env.IGNORE_TOKEN_TEST && !updateToken) t.deepEqual(pageTokens, expectedTokens, file + '#tokens');
       sb.title = guessTitle(pageTokens, sb, function (pageTokens, foundTitle, template) {
         var named = 'Untitled';
         return foundTitle || template(named) || named;
@@ -55,7 +58,8 @@ test('fixtures', function (t) {
     'list-skipped-inheritance',
     'list-wrong-inheritance',
     'simple-paragraph',
-    'entities'
+    'entities',
+    'complex-paragraph'
   ]
     .filter((pageFile) => {
       if (process.env.TEST_ONLY_RUN) {

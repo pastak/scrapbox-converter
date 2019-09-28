@@ -218,7 +218,8 @@
               "type": "div",
               "children": [
                 {
-                  "type": "br"
+                  "type": "br",
+                  "force": true
                 }
               ]
             }

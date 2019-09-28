@@ -23,6 +23,28 @@
           ]
         }
       ]
+    },
+    {
+      "type": "div",
+      "children": [
+        {
+          "type": "div",
+          "children": [
+            {
+              "type": "text",
+              "text": "paragraph 1"
+            },
+            {
+              "type": "br",
+              "force": true
+            },
+            {
+              "type": "text",
+              "text": "writing"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -34,7 +34,8 @@
       "italic": true
     },
     {
-      "type": "br"
+      "type": "br",
+      "force": true
     },
     {
       "type": "text",
@@ -52,7 +53,8 @@
       "bold": true
     },
     {
-      "type": "br"
+      "type": "br",
+      "force": true
     },
     {
       "type": "text",
