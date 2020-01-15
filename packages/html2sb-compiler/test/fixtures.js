@@ -48,6 +48,7 @@ test('fixtures', function (t) {
     'code',
     'list',
     'list-in-list',
+    'list-of-links',
     'header',
     'hr',
     'table',
