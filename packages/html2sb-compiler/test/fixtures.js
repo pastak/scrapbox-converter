@@ -54,6 +54,7 @@ test('fixtures', function (t) {
     'table-in-div',
     'complex',
     'links',
+    'links-empty',
     'text-styles',
     'list-skipped-inheritance',
     'list-wrong-inheritance',
