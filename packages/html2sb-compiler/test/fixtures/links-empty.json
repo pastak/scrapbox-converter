@@ -3,11 +3,35 @@
   "children": [
     {
       "type": "text",
+      "href": "___SELF_WIKI_LINK___",
       "text": "Example"
     },
     {
+      "type": "br",
+      "force": true
+    },
+    {
       "type": "text",
+      "href": "___SELF_WIKI_LINK___",
       "text": "Example 2"
+    },
+    {
+      "type": "br",
+      "force": true
+    },
+    {
+      "type": "text",
+      "href": "___SELF_WIKI_LINK___",
+      "text": "Example 3"
+    },
+    {
+      "type": "br",
+      "force": true
+    },
+    {
+      "type": "text",
+      "href": "___SELF_WIKI_LINK___",
+      "text": "Example 4"
     }
   ]
 }

@@ -194,9 +194,13 @@ var tags = {
         options: context.options
       }).children
       : null;
+    var href = node.attribs ? node.attribs.href : '___SELF_WIKI_LINK___';
+    if (href !== '___SELF_WIKI_LINK___' && /^((?!https?:))/.test(href)) {
+      href = '___SELF_WIKI_LINK___';
+    }
     context.children.push({
       type: 'text',
-      href: node.attribs.href,
+      href,
       children: children
     });
   },
