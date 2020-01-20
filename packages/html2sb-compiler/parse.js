@@ -86,7 +86,10 @@ function collectConcatContents (node) {
       contents.push(collectConcatContents(child));
     });
   }
-  return trim(contents.join(''));
+  return trim(contents.filter(t => {
+    if (t === '') return false;
+    return !(/^\n\s+$/.test(t));
+  }).join(''));
 }
 
 function list (variant, context, node) {
@@ -355,6 +358,9 @@ var tags = {
           child.children[0].type === 'Text'
         ) {
           data.push(firstChildContent(child));
+        } else {
+          const content = collectConcatContents(child);
+          if (content !== '') data.push(content);
         }
       });
       context.children.push({
