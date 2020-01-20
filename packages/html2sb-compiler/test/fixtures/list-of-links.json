@@ -5,8 +5,15 @@
       "type": "list",
       "variant": "ul",
       "children": [
-        { "type": "text", "href": "http://example.com", "text": "Example" },
-        { "type": "img", "src": "http://example.com/example2.png" }
+        {
+          "type": "text",
+          "href": "http://example.com",
+          "text": "Example"
+        },
+        {
+          "type": "img",
+          "src": "http://example.com/example2.png"
+        }
       ]
     }
   ]
