@@ -61,7 +61,8 @@ test('fixtures', function (t) {
     'list-wrong-inheritance',
     'simple-paragraph',
     'entities',
-    'complex-paragraph'
+    'complex-paragraph',
+    'styled-code'
   ]
     .filter((pageFile) => {
       if (process.env.TEST_ONLY_RUN) {
