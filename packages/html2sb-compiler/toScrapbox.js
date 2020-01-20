@@ -54,6 +54,13 @@ function toSimpleText (node) {
   }
 
   if (node.href) {
+    if (node.href === '___SELF_WIKI_LINK___') {
+      inner = inner
+        .replace(/^\s+/, '')
+        .replace(/\s+$/, '')
+        .replace(/\s/g, '_');
+      return '[' + inner + ']';
+    }
     return '[' + node.href + ' ' + inner + ']';
   }
   return inner;
