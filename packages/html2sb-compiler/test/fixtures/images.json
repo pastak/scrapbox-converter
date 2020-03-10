@@ -1,0 +1,16 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "img",
+      "src": "http://example.com/example.png"
+    },
+    {
+      "type": "br"
+    },
+    {
+      "type": "img",
+      "src": "http://example.com/printImage.cgi?name=bird"
+    }
+  ]
+}

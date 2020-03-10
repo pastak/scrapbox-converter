@@ -11,6 +11,9 @@ function toSimpleText (node) {
     var src = '';
     if (node.src) {
       src = node.src;
+      if (!/\.(png|jpe?g|gif|svg)$/.test(src)){
+        src = src + '#.png'
+      }
     } else {
       src = 'data:' + node.mime + ';base64,' + node.data;
     }

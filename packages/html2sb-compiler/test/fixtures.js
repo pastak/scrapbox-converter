@@ -51,6 +51,7 @@ test('fixtures', function (t) {
     'list-of-links',
     'header',
     'hr',
+    'images',
     'table',
     'table-in-div',
     'complex',
