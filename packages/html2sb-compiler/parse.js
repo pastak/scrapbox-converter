@@ -459,6 +459,7 @@ function parseNode (context, node) {
     console.info('Node error is happend on');
     console.info(JSON.stringify(node, null, 4));
     console.error(e);
+    throw new Error('ParseNodeError');
   }
 }
 
