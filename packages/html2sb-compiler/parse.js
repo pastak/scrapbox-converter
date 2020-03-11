@@ -164,7 +164,11 @@ function style (node, prop) {
     if (!node.attribs || !node.attribs.style) {
       return '';
     }
-    node.style = styleParser(node.attribs.style);
+    try {
+      node.style = styleParser(node.attribs.style);
+    } catch (e) {
+      return '';
+    }
   }
   return node.style[prop] || '';
 }
