@@ -11,6 +11,9 @@ function toSimpleText (node) {
     var src = '';
     if (node.src) {
       src = node.src;
+      if (!/^https?:\/\/gyazo.com\//.test(src) && !/\.(png|jpe?g|gif|svg|webp)$/.test(src)) {
+        src = src + '#.png';
+      }
     } else {
       src = 'data:' + node.mime + ';base64,' + node.data;
     }
