@@ -99,6 +99,7 @@ function list (variant, context, node) {
     children: [],
     options: context.options
   };
+  if (!node.children) return;
   node.children.forEach(function (child) {
     parseSimple(null, result, child);
   });
