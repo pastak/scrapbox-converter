@@ -434,21 +434,27 @@ function parseNodes (nodes, context) {
 }
 
 function parseNode (context, node) {
-  if (!node.tagName) {
-    if (node.type === 'Text') {
-      context.children.push({
-        type: 'text',
-        text: node.content
-      });
+  try {
+    if (!node.tagName) {
+      if (node.type === 'Text') {
+        context.children.push({
+          type: 'text',
+          text: node.content
+        });
+      }
     }
-  }
-  var parser = tags[node.tagName];
-  if (parser) {
-    parser(context, node);
-  } else if (node.type === 'Text') {
-    parseSimple(null, context, node);
-  } else {
-    ignore(context, node);
+    var parser = tags[node.tagName];
+    if (parser) {
+      parser(context, node);
+    } else if (node.type === 'Text') {
+      parseSimple(null, context, node);
+    } else {
+      ignore(context, node);
+    }
+  } catch (e) {
+    console.info('Node error is happend on');
+    console.info(JSON.stringify(node, null, 4));
+    console.error(e);
   }
 }
 
