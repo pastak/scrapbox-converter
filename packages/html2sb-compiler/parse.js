@@ -164,7 +164,11 @@ function style (node, prop) {
     if (!node.attribs || !node.attribs.style) {
       return '';
     }
-    node.style = styleParser(node.attribs.style);
+    try {
+      node.style = styleParser(node.attribs.style);
+    } catch (e) {
+      return '';
+    }
   }
   return node.style[prop] || '';
 }
@@ -455,6 +459,7 @@ function parseNode (context, node) {
     console.info('Node error is happend on');
     console.info(JSON.stringify(node, null, 4));
     console.error(e);
+    throw new Error('ParseNodeError');
   }
 }
 
