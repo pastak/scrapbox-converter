@@ -23,11 +23,6 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/register": "^7.0.0",
     "ava": "^1.0.0",
     "commander": "^2.11.0",
     "enex2sb": "^4.0.5",
