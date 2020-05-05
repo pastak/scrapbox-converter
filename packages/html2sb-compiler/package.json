@@ -1,7 +1,7 @@
 {
   "name": "html2sb-compiler",
   "version": "4.0.5",
-  "main": "./index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc --outDir dist --project .",
     "test": "npm run test:unit",
