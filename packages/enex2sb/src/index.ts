@@ -1,1 +1,2 @@
-module.exports = require('./node');
+import main from './node';
+export default main;
