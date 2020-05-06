@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import {program} from 'commander';
 import enex2sb from './../node';
-const settings = require('../../package.json');
+const settings = require('../../package.json'); // eslint-disable-line @typescript-eslint/no-var-requires
 
 let stdin = '';
 

@@ -76,11 +76,13 @@ class Compiler {
       result += `\`${node.value}\``;
       break;
     case 'blockquote':
+    {
       const depth = context.parents.filter((p) => p === 'blockquote').length;
       const quoteMark = '> '.repeat(Math.max(depth - 1, 1));
       result += (depth === 1 ? '' : '\n')
           + quoteMark
           + this.compile(node.children, context).split(/\n/).join('\n' + quoteMark);
+    }
       break;
     case 'code':
       result += generateCodeBlock(node);
@@ -97,10 +99,12 @@ class Compiler {
         .join('\n ');
       break;
     case 'list':
-      const tagName = node.ordered ? 'ol' : 'ul';
-      context.listItemCount = 0;
-      context.parents[context.parents.length -1] = tagName;
-      result += this.compile(tagName === 'ol' ? addListItemCount(node.children) : node.children, context);
+      {
+        const tagName = node.ordered ? 'ol' : 'ul';
+        context.listItemCount = 0;
+        context.parents[context.parents.length -1] = tagName;
+        result += this.compile(tagName === 'ol' ? addListItemCount(node.children) : node.children, context);
+      }
       break;
     case 'listItem':
       result += ' '.repeat(context.parents.filter((i) => i === 'ol' || i === 'ul').length)
@@ -112,10 +116,12 @@ class Compiler {
       result += this.compile(node.children, context);
       break;
     case 'text':
-      let textValue = node.value;
-      if (context.parents.includes('tableCell')) textValue = node.value.replace(/(\s|\t)+$/, '');
-      if (context.parents.includes('listItem')) textValue = node.value;
-      result += textValue;
+      {
+        let textValue = node.value;
+        if (context.parents.includes('tableCell')) textValue = node.value.replace(/(\s|\t)+$/, '');
+        if (context.parents.includes('listItem')) textValue = node.value;
+        result += textValue;
+      }
       break;
     }
     if (this.isDecorateElement(node) && !context.parents.slice(0, -1).filter((_) => this.isDecorateElement(_)).length) {

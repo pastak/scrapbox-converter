@@ -3,6 +3,7 @@ import path from 'path';
 import test from 'ava';
 import enex2sb from '../src/main';
 const uploadImage = () => new Promise((ok) => {
+  // eslint-disable-next-line @typescript-eslint/camelcase
   ok({data: {permalink_url: 'https://gyazo.com/abcdef0123456789abcdef0123456789'}});
 });
 

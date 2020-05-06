@@ -1,33 +1,100 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 'use strict';
-var NO_LINE_BREAK = false;
-var SOFT_LINE_BREAK = 2;
-var HARD_LINE_BREAK = 3;
+const NO_LINE_BREAK = false;
+const SOFT_LINE_BREAK = 2;
+const HARD_LINE_BREAK = 3;
+
+function toSimpleText (node) {
+  if (node.type === 'list') {
+    return '\n' + processList(node);
+  }
+  if (node.type === 'img') {
+    let src = '';
+    if (node.src) {
+      src = node.src;
+      if (!/^https?:\/\/gyazo.com\//.test(src) && !/\.(png|jpe?g|gif|svg|webp)$/.test(src)) {
+        src = src + '#.png';
+      }
+    } else {
+      src = 'data:' + node.mime + ';base64,' + node.data;
+    }
+    if (node.href) {
+      return '[' + node.href + ' ' + src + ']';
+    }
+    return '[' + src + ']';
+  }
+
+  let before = '';
+  if (node.bold) {
+    before += '*';
+  }
+  if (node.enlarge) {
+    before += (new Array(node.enlarge + 1)).join('*');
+  }
+  if (node.italic) {
+    before += '/';
+  }
+  if (node.strike) {
+    before += '-';
+  }
+  if (node.underline) {
+    before += '_';
+  }
+  let content;
+  if (node.children) {
+    content = node.children.map(toSimpleText).filter(Boolean).join(' ');
+  } else {
+    content = node.text || '';
+  }
+  let check = '';
+  if (node.type === 'check') {
+    check = (node.checked ? '✅' : '⬜') + ' ';
+  }
+  let inner;
+  if (before !== '') {
+    inner = check + '[' + before + ' ' + content + ']';
+  } else {
+    inner = check + content;
+  }
+
+  if (node.href) {
+    if (node.href === '___SELF_WIKI_LINK___') {
+      inner = inner
+        .replace(/^\s+/, '')
+        .replace(/\s+$/, '')
+        .replace(/\s/g, '_');
+      return '[' + inner + ']';
+    }
+    return '[' + node.href + ' ' + inner + ']';
+  }
+  return inner;
+}
 
 function processList (node, _?: null, __?: null, indent?: string) {
   if (!indent) {
     indent = '';
   }
   indent += '\t';
-  var listAsText = node.children
+  const listAsText = node.children
     .map(function (listEntry, nr) {
-      var children;
+      let children;
       if (listEntry.children) {
         children = listEntry.children.concat();
       } else {
         children = [listEntry];
       }
-      var lastEntry;
+      let lastEntry;
       if (children[children.length - 1].type === 'list') {
         lastEntry = children.pop();
       }
-      var data = toSimpleText({
+      let data = toSimpleText({
         type: listEntry.type,
         src: listEntry.src,
         checked: listEntry.checked,
         children: children
       });
       if (data !== '') {
-        var lines = data.split('\n').map(function (line, index) {
+        const lines = data.split('\n').map(function (line, index) {
           if (index === 0 && node.variant === 'ol') {
             return indent + (nr + 1) + '. ' + line;
           }
@@ -50,73 +117,7 @@ function processList (node, _?: null, __?: null, indent?: string) {
   return listAsText.substr(0, listAsText.length - 1);
 }
 
-function toSimpleText (node) {
-  if (node.type === 'list') {
-    return '\n' + processList(node);
-  }
-  if (node.type === 'img') {
-    var src = '';
-    if (node.src) {
-      src = node.src;
-      if (!/^https?:\/\/gyazo.com\//.test(src) && !/\.(png|jpe?g|gif|svg|webp)$/.test(src)) {
-        src = src + '#.png';
-      }
-    } else {
-      src = 'data:' + node.mime + ';base64,' + node.data;
-    }
-    if (node.href) {
-      return '[' + node.href + ' ' + src + ']';
-    }
-    return '[' + src + ']';
-  }
-
-  var before = '';
-  if (node.bold) {
-    before += '*';
-  }
-  if (node.enlarge) {
-    before += (new Array(node.enlarge + 1)).join('*');
-  }
-  if (node.italic) {
-    before += '/';
-  }
-  if (node.strike) {
-    before += '-';
-  }
-  if (node.underline) {
-    before += '_';
-  }
-  var content;
-  if (node.children) {
-    content = node.children.map(toSimpleText).filter(Boolean).join(' ');
-  } else {
-    content = node.text || '';
-  }
-  var check = '';
-  if (node.type === 'check') {
-    check = (node.checked ? '✅' : '⬜') + ' ';
-  }
-  var inner;
-  if (before !== '') {
-    inner = check + '[' + before + ' ' + content + ']';
-  } else {
-    inner = check + content;
-  }
-
-  if (node.href) {
-    if (node.href === '___SELF_WIKI_LINK___') {
-      inner = inner
-        .replace(/^\s+/, '')
-        .replace(/\s+$/, '')
-        .replace(/\s/g, '_');
-      return '[' + inner + ']';
-    }
-    return '[' + node.href + ' ' + inner + ']';
-  }
-  return inner;
-}
-
-var stringifier = {
+const stringifier = {
   'link': function (node, line) {
     line.push(toSimpleText(node));
     return NO_LINE_BREAK;
@@ -126,7 +127,7 @@ var stringifier = {
     return '[/icons/hr.icon]';
   },
   'div': function (node, _, resources) {
-    var result = [];
+    let result = [];
     if (node.children) {
       result = stringifyNodes(node, result, resources, true);
     }
@@ -168,7 +169,7 @@ var stringifier = {
 };
 
 function stringifyNode (child, line, resources) {
-  var nodeStringifier = stringifier[child.type];
+  const nodeStringifier = stringifier[child.type];
   if (!nodeStringifier) {
     console.warn('Unknown stringifier for node type: ' + child.type);
     console.log(child);
@@ -178,9 +179,9 @@ function stringifyNode (child, line, resources) {
 }
 
 function stringifyNodes (tokens, result, resources, nested = false) {
-  var line = [];
+  let line = [];
   tokens.children.forEach(function (child) {
-    var block = stringifyNode(child, line, resources);
+    const block = stringifyNode(child, line, resources);
     const isLineBreak = (block === SOFT_LINE_BREAK || block === HARD_LINE_BREAK);
     if (block === NO_LINE_BREAK) {
       return;
@@ -209,7 +210,7 @@ function stringifyNodes (tokens, result, resources, nested = false) {
 }
 
 function toScrapbox (tokens) {
-  var result = [];
+  let result = [];
   result = stringifyNodes(tokens, result, tokens.resources);
   if (tokens.tags) {
     result.push('');
@@ -217,7 +218,7 @@ function toScrapbox (tokens) {
       return '#' + tag;
     }).join(' '));
   }
-  var formerWasEmpty = false;
+  let formerWasEmpty = false;
   result = result.filter(function removeMultipleLineBreaks (block) {
     if (block === '') {
       if (formerWasEmpty) {
@@ -229,12 +230,12 @@ function toScrapbox (tokens) {
     }
     return true;
   });
-  var last = result.length - 1;
+  let last = result.length - 1;
   while ((result[last] === '' || result[last] === null) && last > 0) {
     last -= 1;
   }
 
-  var lines = result.slice(0, last + 1).reduce(function (lines, line) {
+  const lines = result.slice(0, last + 1).reduce(function (lines, line) {
     if (line.indexOf('\n') !== -1) {
       if (line === '\n') {
         line = '';
@@ -246,8 +247,8 @@ function toScrapbox (tokens) {
     return lines;
   }, []);
 
-  var lastLineIsBreak = false;
-  for (var i = lines.length - 1; i >= 0; i--) {
+  let lastLineIsBreak = false;
+  for (let i = lines.length - 1; i >= 0; i--) {
     if (lastLineIsBreak) {
       lines.pop();
     }

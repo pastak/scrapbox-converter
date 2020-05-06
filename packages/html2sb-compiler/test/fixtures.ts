@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
 const path = require('path');
 const test = require('tape').test;
@@ -16,10 +17,10 @@ test('fixtures', function (t) {
     const allPages = parse(readFixture(file + '.html'), {
       evernote: true
     });
-    for (var index = 0; index < allPages.length; index++) {
-      var pageFile = allPages.length === 1 ? file : (file + '-' + (index + 1));
-      var pageTokens = allPages[index];
-      var expectedTokens;
+    for (let index = 0; index < allPages.length; index++) {
+      const pageFile = allPages.length === 1 ? file : (file + '-' + (index + 1));
+      const pageTokens = allPages[index];
+      let expectedTokens;
 
       try {
         expectedTokens = JSON.parse(readFixture(pageFile + '.json'));
@@ -33,7 +34,7 @@ test('fixtures', function (t) {
       if (process.env.SHOW_TOKEN) console.log(JSON.stringify(pageTokens, null, 2));
       if (!process.env.IGNORE_TOKEN_TEST && !updateToken) t.deepEqual(pageTokens, expectedTokens, file + '#tokens');
       sb.title = guessTitle(pageTokens, sb, function (pageTokens, foundTitle, template) {
-        var named = 'Untitled';
+        const named = 'Untitled';
         return foundTitle || template(named) || named;
       });
       t.equal((sb.title ? sb.title + '\n' : '') + sb.lines.join('\n') + '\n', expectedOutput, file + '#output');

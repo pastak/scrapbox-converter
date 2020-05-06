@@ -1,52 +1,361 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import {Parser} from 'htmlparser2';
-var styleParser = require('style-parser');
-var trim = require('lodash.trim');
-var md5: any;
+const styleParser = require('style-parser'); // eslint-disable-line @typescript-eslint/no-var-requires
+import trim from 'lodash.trim';
+let md5: any;
 
 interface SimpleTag {
-  bold?: boolean
-  underline?: boolean
-  italic?: boolean
-  strike?: boolean
-  blockquote?: number
+  bold?: boolean;
+  underline?: boolean;
+  italic?: boolean;
+  strike?: boolean;
+  blockquote?: number;
 }
 
 interface Tag extends SimpleTag {
-  tagName?: string
-  attribs?: { [key: string]: string }
-  children?: Tag[]
-  type?:  string
-  content?:  string
-  enlarge?: number
+  tagName?: string;
+  attribs?: { [key: string]: string };
+  children?: Tag[];
+  type?:  string;
+  content?:  string;
+  enlarge?: number;
 }
 
 
 interface Resource {
-  encoded?: string
-  mime?: string
+  encoded?: string;
+  mime?: string;
 }
 
 interface PageContext {
-  type: string
-  options: any
-  children: Tag[]
-  title?: string
-  tags?: Tag[]
+  type: string;
+  options: any;
+  children: Tag[];
+  title?: string;
+  tags?: Tag[];
   resources?: {[key: string]: {
-    data: string
-    type: 'img'
-    mime: string
-  }}
+    data: string;
+    type: 'img';
+    mime: string;
+  };};
+}
+
+const tags = {
+  'img': function (context, node) {
+    context.children.push({
+      type: 'img',
+      src: node.attribs.src
+    });
+  },
+  'a': function (context, node) {
+    const children = node.children
+      ? parseNodes(node.children, {
+        options: context.options
+      }).children
+      : null;
+    let href = node.attribs ? node.attribs.href : '___SELF_WIKI_LINK___';
+    if (href !== '___SELF_WIKI_LINK___' && /^((?!https?:))/.test(href)) {
+      href = '___SELF_WIKI_LINK___';
+    }
+    context.children.push({
+      type: 'text',
+      href,
+      children: children
+    });
+  },
+  'p': function (context, node) {
+    // TODO: Triage as block element to divide div
+    tags['div'](context, node);
+  },
+  'note': function (context, node) {
+    if (context.options && context.options.evernote) {
+      let content;
+
+      const pageContext: PageContext = {
+        type: 'page',
+        options: context.options,
+        children: []
+      };
+      node.children.forEach(function (child) {
+        if (child.tagName === 'title') {
+          pageContext.title = firstChildContent(child);
+        } else if (child.tagName === 'tag') {
+          if (!pageContext.tags) {
+            pageContext.tags = [];
+          }
+          pageContext.tags.push(firstChildContent(child));
+        } else if (child.tagName === 'content') {
+          content = firstChildContent(child);
+        } else if (child.tagName === 'resource') {
+          if (!md5) {
+            // Lazy-load md5 because it is not necessarily required
+            md5 = require('nano-md5');
+          }
+          const resource: Resource = {};
+          child.children.forEach(function (resourceChild) {
+            if (resourceChild.tagName === 'data') {
+              resource.encoded = firstChildContent(resourceChild);
+            } else if (resourceChild.tagName === 'mime') {
+              resource.mime = firstChildContent(resourceChild);
+            }
+          });
+          if (/^image\/(png|jpeg|gif)$/.test(resource.mime)) {
+            const raw = Buffer.from(resource.encoded, 'base64');
+            const hash = md5.fromBytes(raw.toString('latin1')).toHex();
+            if (!pageContext.resources) {
+              pageContext.resources = {};
+            }
+            pageContext.resources[hash] = {
+              type: 'img',
+              mime: resource.mime,
+              data: resource.encoded
+            };
+          }
+        }
+      });
+      if (content) {
+        const contentNodes = parseHTML(content);
+        if (pageContext.tags) {
+          pageContext.tags = pageContext.tags.sort();
+        }
+        parseNode(pageContext, {
+          children: contentNodes
+        });
+        delete pageContext.options;
+        context.children.push(pageContext);
+      }
+    }
+  },
+  'en-media': function (context, node) {
+    if (node.attribs && context.options.evernote) {
+      context.children.push({
+        type: 'reference',
+        hash: node.attribs.hash
+      });
+    }
+  },
+  'br': singleNode.bind(null, 'br'),
+  'td': function (context, node) {
+    const simple = parseSimple(null, context, node);
+    simple.type = 'td';
+  },
+  'tbody': ignore,
+  'tr': function (context, node) {
+    const result = {
+      type: 'tr',
+      children: [],
+      options: context.options
+    };
+    if (node.children) {
+      parseNodes(node.children.filter(function (node) {
+        return node.tagName === 'td';
+      }), result);
+    }
+    delete result.options;
+    context.children.push(result);
+  },
+  'table': function (context, node) {
+    const result = {
+      type: 'table',
+      children: [],
+      options: context.options
+    };
+    if (node.children) {
+      parseNodes(node.children, result);
+    }
+    delete result.options;
+    context.children.push(result);
+  },
+  'span': parseStyle,
+  'font': parseStyle,
+  'code': traditionalCodeBlock,
+  'pre': traditionalCodeBlock,
+  'h1': parseHeader.bind(null, 5),
+  'h2': parseHeader.bind(null, 4),
+  'h3': parseHeader.bind(null, 3),
+  'h4': parseHeader.bind(null, 2),
+  'h5': parseHeader.bind(null, 1),
+  'ol': list.bind(null, 'ol'),
+  'ul': list.bind(null, 'ul'),
+  'div': function (context, node) {
+    // <en-todo> are inline tags which are super weird.
+    // This way .checkNode will be filled somehow.
+    if (
+      context.options.evernote &&
+      node.children &&
+      node.children.length >= 1 &&
+      node.children[0].tagName === 'en-todo'
+    ) {
+      // Remove the check node
+      const checkNode = node.children.shift();
+      const result = {
+        type: 'check',
+        checked: checkNode.attribs && /^true$/i.test(checkNode.attribs.checked),
+        children: [],
+        options: context.options
+      };
+      parseSimple(null, result, checkNode);
+      delete result.options;
+      context.checkNode = result;
+      return;
+    }
+
+    // The fontfamily, namely the Monaco or Consolas font indicates
+    // that we are in a code block
+    if (
+      context.options.evernote &&
+      node.children &&
+      style(node, '-en-codeblock') === 'true'
+    ) {
+      const data = [];
+      node.children.forEach(function (child) {
+        if (
+          child.tagName === 'div' &&
+          child.children.length === 1 &&
+          child.children[0].type === 'Text'
+        ) {
+          data.push(firstChildContent(child));
+        } else {
+          const content = collectConcatContents(child);
+          if (content !== '') data.push(content);
+        }
+      });
+      context.children.push({
+        type: 'code',
+        text: data.join('\n')
+      });
+      return;
+    }
+
+    if (node.children) {
+      const newNode = parseNodes(node.children, {
+        options: context.options
+      });
+      if (newNode.children && newNode.children.length > 0) {
+        context.children.push({
+          type: 'div',
+          children: newNode.children
+        });
+      }
+    }
+  },
+  'hr': singleNode.bind(null, 'hr'),
+  'blockquote': parseSimple.bind(null, 'blockquote'),
+  'b': parseSimple.bind(null, 'bold'),
+  'strong': parseSimple.bind(null, 'bold'),
+  'i': parseSimple.bind(null, 'italic'),
+  'em': parseSimple.bind(null, 'italic'),
+  'u': parseSimple.bind(null, 'underline'),
+  's': parseSimple.bind(null, 'strike')
+} as const;
+
+function parseNode (context, node) {
+  try {
+    if (!node.tagName) {
+      if (node.type === 'Text') {
+        context.children.push({
+          type: 'text',
+          text: node.content
+        });
+      }
+    }
+    const parser = tags[node.tagName];
+    if (parser) {
+      parser(context, node);
+    } else if (node.type === 'Text') {
+      parseSimple(null, context, node);
+    } else {
+      ignore(context, node);
+    }
+  } catch (e) {
+    console.info('Node error is happend on');
+    console.info(JSON.stringify(node, null, 4));
+    console.error(e);
+    throw new Error('ParseNodeError');
+  }
+}
+
+function parseNodes (nodes, context) {
+  if (!context.children) {
+    context.children = [];
+  }
+  let checklist = null;
+  const applyChecklist = function () {
+    if (checklist) {
+      context.children.splice(checklist.index, 0, {
+        type: 'list',
+        variant: 'ul',
+        children: checklist.entries
+      });
+      checklist = null;
+    }
+  };
+  nodes.forEach(function (node) {
+    if (node.type === 'Text' && node.content === '\n') {
+      return;
+    }
+    if (node.tagName === 'title') {
+      // context.title = node.children[0].content
+    }
+    parseNode(context, node);
+    if (context.checkNode) {
+      if (!checklist) {
+        checklist = {
+          index: context.children.length,
+          entries: []
+        };
+      }
+      checklist.entries.push(context.checkNode);
+      delete context.checkNode;
+    } else if (node.tagName === 'br' || node.tagName === 'div') {
+      applyChecklist();
+    }
+  });
+  applyChecklist();
+  return context;
+}
+
+function reduceSameProperties (parent) {
+  if (parent.children.length === 0) {
+    return parent;
+  }
+  let groupParent;
+  ['bold', 'underline', 'strike', 'italic', 'href'].forEach(function (prop) {
+    const value = parent.children[0][prop];
+    for (let i = 1; i < parent.children.length; i++) {
+      if (parent.children[i][prop] !== value) {
+        return;
+      }
+    }
+    parent.children.forEach(function (token) {
+      delete token[prop];
+    });
+    if (value !== undefined) {
+      if (!groupParent) {
+        if (parent.type !== 'text') {
+          groupParent = {
+            type: 'text',
+            children: parent.children
+          };
+          parent.children = [groupParent];
+        } else {
+          groupParent = parent;
+        }
+      }
+      groupParent[prop] = value;
+    }
+  });
+  return parent;
 }
 
 function parseSimple (variant: keyof SimpleTag, context: PageContext, node) {
-  var children;
+  let children;
   if (node.children) {
     children = parseNodes(node.children, {
       options: context.options
     }).children;
   }
-  var result: Tag = {
+  const result: Tag = {
     type: 'text',
     children: children
   };
@@ -63,8 +372,8 @@ function parseSimple (variant: keyof SimpleTag, context: PageContext, node) {
   // should be treated differently: the ul should become a child of the former
   // list entry.
   if (context.type === 'list' && (node.tagName === 'ol' || node.tagName === 'ul')) {
-    var pos = context.children.length - 1;
-    var formerLi;
+    let pos = context.children.length - 1;
+    let formerLi;
     // There can - and likely will - be spaces, and line breaks between the list
     // nodes so we need to search backwards for the best match
     do {
@@ -99,7 +408,7 @@ function parseHeader (enlarge, context, node) {
   context.children.push({
     type: 'br'
   });
-  var simpleNode = parseSimple(null, context, node);
+  const simpleNode = parseSimple(null, context, node);
   simpleNode.bold = true;
   simpleNode.enlarge = enlarge;
 }
@@ -112,7 +421,7 @@ function traditionalCodeBlock (context, node) {
 }
 
 function collectConcatContents (node) {
-  var contents = [];
+  const contents = [];
   if (node.content) {
     contents.push(node.content);
   }
@@ -128,7 +437,7 @@ function collectConcatContents (node) {
 }
 
 function list (variant, context, node) {
-  var result = {
+  const result = {
     type: 'list',
     variant: variant,
     children: [],
@@ -149,11 +458,11 @@ function ignore (context, node) {
 }
 
 function parseStyle (context, node) {
-  var fontSize = style(node, 'font-size');
-  var parsed;
-  var enlarge = 0;
+  const fontSize = style(node, 'font-size');
+  let parsed;
+  let enlarge = 0;
   if (fontSize && (parsed = /^([0-9]+)\s*px\s*$/i.exec(fontSize))) {
-    var num = parseInt(parsed[1], 10);
+    const num = parseInt(parsed[1], 10);
     if (num > 68) {
       enlarge += 1;
     }
@@ -170,12 +479,12 @@ function parseStyle (context, node) {
       enlarge += 1;
     }
   }
-  var bold = style(node, 'font-weight') === 'bold';
-  var italic = /(^|\s)italic(\s|$)/i.test(style(node, 'font-style'));
-  var underline = /(^|\s)underline(\s|$)/i.test(style(node, 'text-decoration')) ||
+  const bold = style(node, 'font-weight') === 'bold';
+  const italic = /(^|\s)italic(\s|$)/i.test(style(node, 'font-style'));
+  const underline = /(^|\s)underline(\s|$)/i.test(style(node, 'text-decoration')) ||
     (context.options.evernote && style(node, '-evernote-highlight') === 'true');
-  var strikeThrough = /(^|\s)line-through(\s|$)/i.test(style(node, 'text-decoration'));
-  var addedNode = parseSimple(null, context, node);
+  const strikeThrough = /(^|\s)line-through(\s|$)/i.test(style(node, 'text-decoration'));
+  const addedNode = parseSimple(null, context, node);
   if (enlarge !== 0) {
     addedNode.enlarge = enlarge;
     addedNode.bold = true;
@@ -219,317 +528,9 @@ function firstChildContent (node) {
 }
 
 function singleNode (type, context) {
-  let obj = {type: type, force: false};
+  const obj = {type: type, force: false};
   if (type === 'br') obj.force = true;
   context.children.push(obj);
-}
-
-var tags = {
-  'img': function (context, node) {
-    context.children.push({
-      type: 'img',
-      src: node.attribs.src
-    });
-  },
-  'a': function (context, node) {
-    var children = node.children
-      ? parseNodes(node.children, {
-        options: context.options
-      }).children
-      : null;
-    var href = node.attribs ? node.attribs.href : '___SELF_WIKI_LINK___';
-    if (href !== '___SELF_WIKI_LINK___' && /^((?!https?:))/.test(href)) {
-      href = '___SELF_WIKI_LINK___';
-    }
-    context.children.push({
-      type: 'text',
-      href,
-      children: children
-    });
-  },
-  'p': function (context, node) {
-    // TODO: Triage as block element to divide div
-    tags['div'](context, node);
-  },
-  'note': function (context, node) {
-    if (context.options && context.options.evernote) {
-      var content;
-
-      var pageContext: PageContext = {
-        type: 'page',
-        options: context.options,
-        children: []
-      };
-      node.children.forEach(function (child) {
-        if (child.tagName === 'title') {
-          pageContext.title = firstChildContent(child);
-        } else if (child.tagName === 'tag') {
-          if (!pageContext.tags) {
-            pageContext.tags = [];
-          }
-          pageContext.tags.push(firstChildContent(child));
-        } else if (child.tagName === 'content') {
-          content = firstChildContent(child);
-        } else if (child.tagName === 'resource') {
-          if (!md5) {
-            // Lazy-load md5 because it is not necessarily required
-            md5 = require('nano-md5');
-          }
-          var resource: Resource = {};
-          child.children.forEach(function (resourceChild) {
-            if (resourceChild.tagName === 'data') {
-              resource.encoded = firstChildContent(resourceChild);
-            } else if (resourceChild.tagName === 'mime') {
-              resource.mime = firstChildContent(resourceChild);
-            }
-          });
-          if (/^image\/(png|jpeg|gif)$/.test(resource.mime)) {
-            var raw = Buffer.from(resource.encoded, 'base64');
-            var hash = md5.fromBytes(raw.toString('latin1')).toHex();
-            if (!pageContext.resources) {
-              pageContext.resources = {};
-            }
-            pageContext.resources[hash] = {
-              type: 'img',
-              mime: resource.mime,
-              data: resource.encoded
-            };
-          }
-        }
-      });
-      if (content) {
-        var contentNodes = parseHTML(content);
-        if (pageContext.tags) {
-          pageContext.tags = pageContext.tags.sort();
-        }
-        parseNode(pageContext, {
-          children: contentNodes
-        });
-        delete pageContext.options;
-        context.children.push(pageContext);
-      }
-    }
-  },
-  'en-media': function (context, node) {
-    if (node.attribs && context.options.evernote) {
-      context.children.push({
-        type: 'reference',
-        hash: node.attribs.hash
-      });
-    }
-  },
-  'br': singleNode.bind(null, 'br'),
-  'td': function (context, node) {
-    var simple = parseSimple(null, context, node);
-    simple.type = 'td';
-  },
-  'tbody': ignore,
-  'tr': function (context, node) {
-    var result = {
-      type: 'tr',
-      children: [],
-      options: context.options
-    };
-    if (node.children) {
-      parseNodes(node.children.filter(function (node) {
-        return node.tagName === 'td';
-      }), result);
-    }
-    delete result.options;
-    context.children.push(result);
-  },
-  'table': function (context, node) {
-    var result = {
-      type: 'table',
-      children: [],
-      options: context.options
-    };
-    if (node.children) {
-      parseNodes(node.children, result);
-    }
-    delete result.options;
-    context.children.push(result);
-  },
-  'span': parseStyle,
-  'font': parseStyle,
-  'code': traditionalCodeBlock,
-  'pre': traditionalCodeBlock,
-  'h1': parseHeader.bind(null, 5),
-  'h2': parseHeader.bind(null, 4),
-  'h3': parseHeader.bind(null, 3),
-  'h4': parseHeader.bind(null, 2),
-  'h5': parseHeader.bind(null, 1),
-  'ol': list.bind(null, 'ol'),
-  'ul': list.bind(null, 'ul'),
-  'div': function (context, node) {
-    // <en-todo> are inline tags which are super weird.
-    // This way .checkNode will be filled somehow.
-    if (
-      context.options.evernote &&
-      node.children &&
-      node.children.length >= 1 &&
-      node.children[0].tagName === 'en-todo'
-    ) {
-      // Remove the check node
-      var checkNode = node.children.shift();
-      var result = {
-        type: 'check',
-        checked: checkNode.attribs && /^true$/i.test(checkNode.attribs.checked),
-        children: [],
-        options: context.options
-      };
-      parseSimple(null, result, checkNode);
-      delete result.options;
-      context.checkNode = result;
-      return;
-    }
-
-    // The fontfamily, namely the Monaco or Consolas font indicates
-    // that we are in a code block
-    if (
-      context.options.evernote &&
-      node.children &&
-      style(node, '-en-codeblock') === 'true'
-    ) {
-      var data = [];
-      node.children.forEach(function (child) {
-        if (
-          child.tagName === 'div' &&
-          child.children.length === 1 &&
-          child.children[0].type === 'Text'
-        ) {
-          data.push(firstChildContent(child));
-        } else {
-          const content = collectConcatContents(child);
-          if (content !== '') data.push(content);
-        }
-      });
-      context.children.push({
-        type: 'code',
-        text: data.join('\n')
-      });
-      return;
-    }
-
-    if (node.children) {
-      var newNode = parseNodes(node.children, {
-        options: context.options
-      });
-      if (newNode.children && newNode.children.length > 0) {
-        context.children.push({
-          type: 'div',
-          children: newNode.children
-        });
-      }
-    }
-  },
-  'hr': singleNode.bind(null, 'hr'),
-  'blockquote': parseSimple.bind(null, 'blockquote'),
-  'b': parseSimple.bind(null, 'bold'),
-  'strong': parseSimple.bind(null, 'bold'),
-  'i': parseSimple.bind(null, 'italic'),
-  'em': parseSimple.bind(null, 'italic'),
-  'u': parseSimple.bind(null, 'underline'),
-  's': parseSimple.bind(null, 'strike')
-};
-
-function parseNodes (nodes, context) {
-  if (!context.children) {
-    context.children = [];
-  }
-  var checklist = null;
-  var applyChecklist = function () {
-    if (checklist) {
-      context.children.splice(checklist.index, 0, {
-        type: 'list',
-        variant: 'ul',
-        children: checklist.entries
-      });
-      checklist = null;
-    }
-  };
-  nodes.forEach(function (node) {
-    if (node.type === 'Text' && node.content === '\n') {
-      return;
-    }
-    if (node.tagName === 'title') {
-      // context.title = node.children[0].content
-    }
-    parseNode(context, node);
-    if (context.checkNode) {
-      if (!checklist) {
-        checklist = {
-          index: context.children.length,
-          entries: []
-        };
-      }
-      checklist.entries.push(context.checkNode);
-      delete context.checkNode;
-    } else if (node.tagName === 'br' || node.tagName === 'div') {
-      applyChecklist();
-    }
-  });
-  applyChecklist();
-  return context;
-}
-
-function parseNode (context, node) {
-  try {
-    if (!node.tagName) {
-      if (node.type === 'Text') {
-        context.children.push({
-          type: 'text',
-          text: node.content
-        });
-      }
-    }
-    var parser = tags[node.tagName];
-    if (parser) {
-      parser(context, node);
-    } else if (node.type === 'Text') {
-      parseSimple(null, context, node);
-    } else {
-      ignore(context, node);
-    }
-  } catch (e) {
-    console.info('Node error is happend on');
-    console.info(JSON.stringify(node, null, 4));
-    console.error(e);
-    throw new Error('ParseNodeError');
-  }
-}
-
-function reduceSameProperties (parent) {
-  if (parent.children.length === 0) {
-    return parent;
-  }
-  var groupParent;
-  ['bold', 'underline', 'strike', 'italic', 'href'].forEach(function (prop) {
-    var value = parent.children[0][prop];
-    for (var i = 1; i < parent.children.length; i++) {
-      if (parent.children[i][prop] !== value) {
-        return;
-      }
-    }
-    parent.children.forEach(function (token) {
-      delete token[prop];
-    });
-    if (value !== undefined) {
-      if (!groupParent) {
-        if (parent.type !== 'text') {
-          groupParent = {
-            type: 'text',
-            children: parent.children
-          };
-          parent.children = [groupParent];
-        } else {
-          groupParent = parent;
-        }
-      }
-      groupParent[prop] = value;
-    }
-  });
-  return parent;
 }
 
 function reduceSimpleNodes (parent) {
@@ -549,7 +550,7 @@ function reduceSimpleNodes (parent) {
     token.text = trim(token.text);
     return true;
   });
-  var allText = true;
+  let allText = true;
   parent.children.forEach(function (token) {
     if (token.children) {
       token = reduceSimpleNodes(token);
@@ -566,7 +567,7 @@ function reduceSimpleNodes (parent) {
         token.children[0].type === 'img'
       )
     ) {
-      var targetToken = token.children[0];
+      const targetToken = token.children[0];
       if (token.href && targetToken.href) {
         return;
       }
@@ -612,7 +613,7 @@ function reduceSimpleNodes (parent) {
     parent = reduceSameProperties(parent);
   }
   parent.children = parent.children.filter(function (token) {
-    if (!token.children && token.hasOwnProperty('children')) {
+    if (!token.children && Object.prototype.hasOwnProperty.call(token, 'children')) {
       delete token.children;
     }
     return !token.children || token.children.length !== 0 || parent.type === 'tr';
@@ -621,13 +622,13 @@ function reduceSimpleNodes (parent) {
 }
 
 function parseHTML (input) {
-  var current: Tag = {};
-  var stack = [];
-  var root = current;
-  var parser = new Parser({
+  let current: Tag = {};
+  const stack = [];
+  const root = current;
+  const parser = new Parser({
     onopentag: function (name, attribs) {
       stack.push(current);
-      var next: Tag = {
+      const next: Tag = {
         tagName: name
       };
       if (Object.keys(attribs).length > 0) {
@@ -657,7 +658,7 @@ function parseHTML (input) {
         current = stack.pop();
         return;
       }
-      for (var i = stack.length - 1; i >= 0; i--) {
+      for (let i = stack.length - 1; i >= 0; i--) {
         if (stack[i].tagName === tagName) {
           while (stack.length > i) {
             current = stack.pop();
@@ -677,8 +678,8 @@ function parseHTML (input) {
 }
 
 export const parse = function (input, options = {}) {
-  var htmlNodes = parseHTML(input);
-  var parseResult = parseNodes(htmlNodes, {
+  const htmlNodes = parseHTML(input);
+  let parseResult = parseNodes(htmlNodes, {
     title: null,
     options: options,
     children: []
@@ -688,11 +689,11 @@ export const parse = function (input, options = {}) {
   if (parseResult.children.length === 0) {
     return [];
   }
-  var allPages = true;
+  let allPages = true;
   if (parseResult.type === 'page') {
     allPages = false;
   } else {
-    for (var i = 0; i < parseResult.children.length; i++) {
+    for (let i = 0; i < parseResult.children.length; i++) {
       if (parseResult.children[i].type !== 'page') {
         allPages = false;
         break;

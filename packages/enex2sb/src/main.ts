@@ -29,7 +29,7 @@ export default async (uploadImage, input, options) => {
     }
     const sb = toScrapbox(noteTokens);
     sb.title = guessTitle(noteTokens, sb, function (_pageTokens, foundTitle, template) {
-      var named = 'Untitled';
+      const named = 'Untitled';
       return foundTitle || template(named) || named;
     });
     return sb;

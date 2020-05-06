@@ -1,6 +1,5 @@
 import {program} from 'commander';
-// @ts-ignore
-const settings = require('../package.json');
+const settings = require('../package.json'); // eslint-disable-line @typescript-eslint/no-var-requires
 import findAndLoadFiles from './libs/findAndLoadFiles';
 
 const finalize = (pages) => {

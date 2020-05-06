@@ -4,6 +4,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "tsc --outDir dist --project .",
+    "eslint": "eslint \"**/*.ts\"",
     "test": "npm run test:unit",
     "test:update-token": "UPDATE_TOKEN=1 npm run test",
     "test:unit": "tape test/*.js | tap-difflet",
@@ -25,6 +26,9 @@
   },
   "devDependencies": {
     "@types/lodash.trim": "^4.5.6",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^6.8.0",
     "tap-diff": "^0.1.1",
     "tap-difflet": "^0.7.0",
     "tape": "^4.6.3",

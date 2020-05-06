@@ -17,7 +17,7 @@ const findAndLoadFiles = async (files, basePath = './') => await Promise.all(
         const ext = path.extname(fullPath);
         if ((/\.(?:markdown|md)/.test(ext))) {
           title = path.basename(fullPath, ext);
-          let scrapboxStyleText = await loadMdFile(fullPath);
+          const scrapboxStyleText = await loadMdFile(fullPath);
           lines = scrapboxStyleText.split('\n');
           lines.unshift(title);
         } else if ((/\.(?:html|htm)/.test(ext))) {

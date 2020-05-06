@@ -21,6 +21,7 @@
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
     "test": "ava -v",
+    "eslint": "eslint \"**/*.ts\"",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {
@@ -32,6 +33,9 @@
     "remark": "^12.0.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^6.8.0",
     "typescript": "^3.8.3"
   }
 }

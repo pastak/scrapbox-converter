@@ -1,6 +1,6 @@
 import {toSimpleText} from './toScrapbox';
-var CONTINUE = false;
-var ABORT = true;
+const CONTINUE = false;
+const ABORT = true;
 
 
 function iterateTokenRaw (iterator, level, token) {
@@ -16,13 +16,13 @@ function iterateTokenRaw (iterator, level, token) {
 }
 
 function iterateToken (iterator, token) {
-  var nextTasks = iterateTokenRaw(iterator, 0, token);
+  let nextTasks = iterateTokenRaw(iterator, 0, token);
   if (nextTasks === ABORT) {
     return;
   }
   while (nextTasks && nextTasks.length > 0) {
-    var taskToExecute = nextTasks.shift();
-    var moreTasks = taskToExecute();
+    const taskToExecute = nextTasks.shift();
+    const moreTasks = taskToExecute();
     if (moreTasks === ABORT) {
       return;
     }
@@ -37,10 +37,10 @@ function defaultTemplate (userTitle) {
 }
 
 function getTemplate (parent) {
-  var bestEnlarged;
-  var firstEntry;
-  var onlyEntry = true;
-  var base;
+  let bestEnlarged;
+  let firstEntry;
+  let onlyEntry = true;
+  let base;
   while ((parent.type === 'div' || parent.type === undefined) && parent.children && parent.children.length === 1) {
     parent = parent.children[0];
   }
@@ -69,8 +69,8 @@ function getTemplate (parent) {
       return function listTitle (userTitle) {
         if (base.children.length > 0 && base.children[0].children) {
           userTitle = base.children.map(function (token) {
-            var max = 15;
-            var text = toSimpleText(token).replace(/[\t\n]/ig, '');
+            const max = 15;
+            let text = toSimpleText(token).replace(/[\t\n]/ig, '');
             if (text.length > max) {
               text = text.substr(0, max - 3) + '...';
             }
@@ -92,7 +92,7 @@ function getTemplate (parent) {
 export const guessTitle = function (parsed, sb, evaluateTitle) {
   if (typeof evaluateTitle === 'function') {
     return evaluateTitle(parsed, sb.title, function (userTitle) {
-      var template = getTemplate(parsed);
+      const template = getTemplate(parsed);
       return template(userTitle);
     });
   }

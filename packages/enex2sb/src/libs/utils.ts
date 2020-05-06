@@ -17,7 +17,7 @@ const find = (name, node) => {
 };
 
 const findAll = (name, node) => {
-  let result = [];
+  const result = [];
   let target = node && node.children;
   if (!target) {
     if (Array.isArray(node)) {
