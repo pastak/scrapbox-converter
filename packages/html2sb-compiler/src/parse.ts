@@ -676,11 +676,11 @@ function parseHTML (input) {
   return root.children || [];
 }
 
-export const parse = function (input, options) {
+export const parse = function (input, options = {}) {
   var htmlNodes = parseHTML(input);
   var parseResult = parseNodes(htmlNodes, {
     title: null,
-    options: options || {},
+    options: options,
     children: []
   });
   delete parseResult.options;

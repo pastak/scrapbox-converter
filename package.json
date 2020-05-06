@@ -4,7 +4,7 @@
     "postinstall": "lerna bootstrap --hoist",
     "test": "eslint \"**/*.js\" && lerna run test --parallel",
     "clean": "rm -rf packages/*/dist",
-    "build": "lerna run build --parallel",
+    "build": "lerna run build",
     "bump": "lerna version --conventional-commits --create-release github"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter#readme",
