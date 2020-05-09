@@ -545,7 +545,7 @@ function firstChildContent (node) {
 }
 
 function singleNode (type, context) {
-  const obj = {type: type, force: false};
+  const obj: {type: string, force?: true} = {type: type};
   if (type === 'br') obj.force = true;
   context.children.push(obj);
 }
