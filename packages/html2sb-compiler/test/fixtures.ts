@@ -1,10 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require('fs');
-const path = require('path');
-const test = require('tape').test;
-const parse = require('../parse');
-const toScrapbox = require('../toScrapbox');
-const guessTitle = require('../guessTitle');
+import test from 'ava';
+import fs from 'fs';
+import path from 'path';
+import {parse, toScrapbox, guessTitle} from '../src';
 
 const updateToken = !!process.env.UPDATE_TOKEN;
 
@@ -33,11 +30,11 @@ test('fixtures', function (t) {
       if (updateToken) fs.writeFileSync(path.join(__dirname, 'fixtures', pageFile + '.json'), JSON.stringify(pageTokens, null, 2));
       if (process.env.SHOW_TOKEN) console.log(JSON.stringify(pageTokens, null, 2));
       if (!process.env.IGNORE_TOKEN_TEST && !updateToken) t.deepEqual(pageTokens, expectedTokens, file + '#tokens');
-      sb.title = guessTitle(pageTokens, sb, function (pageTokens, foundTitle, template) {
+      sb.title = guessTitle(pageTokens, sb, function (_pageTokens, foundTitle, template) {
         const named = 'Untitled';
         return foundTitle || template(named) || named;
       });
-      t.equal((sb.title ? sb.title + '\n' : '') + sb.lines.join('\n') + '\n', expectedOutput, file + '#output');
+      t.is((sb.title ? sb.title + '\n' : '') + sb.lines.join('\n') + '\n', expectedOutput, file + '#output');
     }
   }
 
@@ -73,5 +70,4 @@ test('fixtures', function (t) {
       return true;
     })
     .forEach(testFixture);
-  t.end();
 });
