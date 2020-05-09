@@ -1,4 +1,3 @@
-import deepcopy from 'deepcopy';
 import generateCodeBlock from './generateCodeBlock';
 import addListItemCount from './addListItemCount';
 
@@ -11,16 +10,19 @@ class Compiler {
     this.decorate = [];
   }
 
-  isDecorateElement (node) {
+  isDecorateElement (node): boolean {
     return ['emphasis', 'delete', 'strong', 'heading'].includes(
       typeof node === 'string' ? node : node.type
     );
   }
 
-  compile (ast, _context = {parents: undefined}) {
+  compile (ast, _context = {parents: undefined}): string {
     let result =  [...(ast.children || ast)].map((node) => this.node2SbText(
       node,
-      deepcopy(Object.assign(_context, {parents: (_context.parents ?? []).slice(0)}))
+      {
+        ..._context,
+        parents: (_context.parents ?? []).slice(0)
+      }
     )).join('');
     if (ast.type && ast.type === 'root' && result.charAt(result.length - 1) !== '\n') {
       result += '\n';
@@ -28,7 +30,7 @@ class Compiler {
     return result;
   }
 
-  node2SbText (node, context) {
+  node2SbText (node, context): string {
     let result = '';
     if (context.parents.length === 0 && node.type !== 'heading') {
       result += '\n'.repeat(node.position.start.line - this.lastElmEndLine);
@@ -136,9 +138,7 @@ class Compiler {
   }
 }
 
-export const compiler = () => {
-  const compiler = new Compiler();
-  return (tree) => {
-    compiler.compile(tree);
-  }
+export function compiler (): void {
+  const compile = (new Compiler)
+  this.Compiler = compile.compile.bind(compile)
 }

@@ -1,7 +1,7 @@
 import remark from 'remark';
 import {compiler} from './libs/compiler';
 
-export default (input: string | Buffer) => {
+export default (input: string | Buffer): Promise<string> => {
   let mdText = input;
   if (typeof input === 'object') {
     if (input instanceof Buffer) {
@@ -11,6 +11,7 @@ export default (input: string | Buffer) => {
     }
   }
   return new Promise<string>((resolve, ng) => {
+    // @ts-nocheck
     remark().use(compiler).process(mdText, (err, file) => {
       if (err) return ng(err);
       const result = (file + '') as string;
