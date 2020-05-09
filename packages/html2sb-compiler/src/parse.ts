@@ -20,7 +20,8 @@ interface Node extends SimpleTag {
   content?:  string;
   enlarge?: number;
   href?: string
-  variant?: 'ul'
+  variant?: 'ul',
+  resources?: Resource[]
 }
 
 interface ImageNode extends Node {
