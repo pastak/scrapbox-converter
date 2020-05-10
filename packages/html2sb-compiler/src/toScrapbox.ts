@@ -210,8 +210,8 @@ function stringifyNodes (tokens, result, resources, nested = false) {
 }
 
 function toScrapbox (tokens): {
-  title: string,
-  lines: string[]
+  title: string;
+  lines: string[];
 } {
   let result: string[] = [];
   result = stringifyNodes(tokens, result, tokens.resources);

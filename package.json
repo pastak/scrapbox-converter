@@ -4,7 +4,7 @@
     "postinstall": "lerna bootstrap --hoist",
     "test": "lerna run test --parallel",
     "eslint": "lerna run eslint --parallel",
-    "eslint:fix": "lerna run eslint --parallel -- --fix --quiet",
+    "eslint:fix": "lerna run eslint --parallel -- --fix",
     "clean": "rm -rf packages/*/dist",
     "build": "lerna run build",
     "bump": "lerna version --conventional-commits --create-release github"

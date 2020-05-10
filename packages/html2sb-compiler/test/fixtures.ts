@@ -35,7 +35,7 @@ function testFixture (t, file) {
     });
     t.is((sb.title ? sb.title + '\n' : '') + sb.lines.join('\n') + '\n', expectedOutput, file + '#output');
   }
-};
+}
 
 [
   'formatting',

@@ -19,24 +19,24 @@ interface Node extends SimpleTag {
   type?:  string;
   content?:  string;
   enlarge?: number;
-  href?: string
-  variant?: 'ul',
-  resources?: Resource[]
+  href?: string;
+  variant?: 'ul';
+  resources?: Resource[];
 }
 
 interface ImageNode extends Node {
-  tagName: 'img'
-  src: string
+  tagName: 'img';
+  src: string;
 }
 
 interface ReferenceNode extends Node {
-  tagName: 'reference',
-  hash: string
+  tagName: 'reference';
+  hash: string;
 }
 
 interface CodeNode extends Node {
-  tagName: 'code',
-  text: string
+  tagName: 'code';
+  text: string;
 }
 
 interface Resource {
@@ -546,7 +546,7 @@ function firstChildContent (node) {
 }
 
 function singleNode (type, context) {
-  const obj: {type: string, force?: true} = {type: type};
+  const obj: {type: string; force?: true} = {type: type};
   if (type === 'br') obj.force = true;
   context.children.push(obj);
 }

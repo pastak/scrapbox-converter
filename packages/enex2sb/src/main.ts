@@ -1,8 +1,8 @@
 import {parse, toScrapbox, guessTitle} from 'html2sb-compiler';
 
 export default async (uploadImage, input, options?: any): Promise<{
-    title:  string,
-    lines: string[]
+    title:  string;
+    lines: string[];
   }[]> => {
   let xmlString = input;
   if (typeof input === 'object') {
@@ -31,8 +31,8 @@ export default async (uploadImage, input, options?: any): Promise<{
       }).filter(Boolean));
     }
     const sb: {
-      title: string,
-      lines: string[]
+      title: string;
+      lines: string[];
     } = toScrapbox(noteTokens);
     sb.title = guessTitle(noteTokens, sb, function (_pageTokens, foundTitle, template) {
       const named = 'Untitled';
