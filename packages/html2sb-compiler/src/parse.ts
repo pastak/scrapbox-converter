@@ -48,7 +48,7 @@ interface PageContext {
   checkNode?: PageContext;
   type?: string;
   options?: any;
-  children?: Node[];
+  children?: Array<Node|PageContext>;
   title?: string;
   tags?: Node[];
   resources?: {[key: string]: {
@@ -719,7 +719,7 @@ export const parse = function (input: string, options = {}) {
     }
   }
   if (!allPages) {
-    return [parseResult] as Node[];
+    return [parseResult] as unknown as Node[];
   }
   return parseResult.children;
 };
