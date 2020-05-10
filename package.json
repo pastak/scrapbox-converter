@@ -2,7 +2,7 @@
   "name": "scrapbox-converter-monorepo",
   "scripts": {
     "postinstall": "lerna bootstrap --hoist",
-    "test": "lerna run test --parallel",
+    "test": "lerna run test",
     "eslint": "lerna run eslint --parallel",
     "eslint:fix": "lerna run eslint --parallel -- --fix",
     "clean": "rm -rf packages/*/dist",
