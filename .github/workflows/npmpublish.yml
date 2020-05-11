@@ -13,9 +13,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+      - run: |
+        npm ci
+        npm run build
+        npm run eslint
+        npm test
 
   publish-npm:
     needs: build
@@ -26,8 +28,9 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npx lerna publish from-package --yes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: |
+        npm ci
+        npx lerna publish from-package --yes
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
