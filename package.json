@@ -7,6 +7,7 @@
     "eslint:fix": "lerna run eslint --parallel -- --fix",
     "clean": "rm -rf packages/*/dist",
     "build": "lerna run build",
+    "prepublishOnly": "npm run build",
     "bump": "lerna version --conventional-commits --create-release github"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter#readme",
