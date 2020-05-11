@@ -2,7 +2,7 @@ import deepcopy from 'deepcopy';
 import generateCodeBlock from './generateCodeBlock';
 import addListItemCount from './addListItemCount';
 
-export default class {
+class Compiler {
   lastElmEndLine: number
   decorate: string[]
 
@@ -127,5 +127,12 @@ export default class {
       this.decorate = [];
     }
     return result;
+  }
+}
+
+export const compiler = () => {
+  const compiler = new Compiler();
+  return (tree) => {
+    compiler.compile(tree);
   }
 }

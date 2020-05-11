@@ -1,7 +1,7 @@
 import remark from 'remark';
-import Compiler from './libs/compiler';
+import {compiler} from './libs/compiler';
 
-export default async (input) => {
+export default (input: string | Buffer) => {
   let mdText = input;
   if (typeof input === 'object') {
     if (input instanceof Buffer) {
@@ -10,12 +10,11 @@ export default async (input) => {
       throw new Error('It allows string or buffer');
     }
   }
-  return await new Promise((ok, ng) => {
-    remark().use((processor) => {
-      processor.Compiler = Compiler;
-    }).process(mdText, (err, file) => {
+  return new Promise<string>((resolve, ng) => {
+    remark().use(compiler).process(mdText, (err, file) => {
       if (err) return ng(err);
-      return ok(String(file));
+      const result = (file + '') as string;
+      return resolve(result);
     });
   });
 };
