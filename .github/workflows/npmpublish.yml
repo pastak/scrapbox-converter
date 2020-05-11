@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: |
+      run: |
         npm ci
         npm run build
         npm run eslint
@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: |
+      run: |
         npm ci
         npx lerna publish from-package --yes
       env:
