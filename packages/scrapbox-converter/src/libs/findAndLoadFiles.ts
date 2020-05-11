@@ -1,5 +1,5 @@
-import path from 'path';
-import fs from 'fs';
+import * as path from 'path';
+import * as fs from 'fs';
 import loadMdFile from './loader/md';
 import loadHtmlFile from './loader/html';
 import loadEnexFile from './loader/enex';

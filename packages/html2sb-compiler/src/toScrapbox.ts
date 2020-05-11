@@ -209,8 +209,11 @@ function stringifyNodes (tokens, result, resources, nested = false) {
   return result;
 }
 
-function toScrapbox (tokens) {
-  let result = [];
+function toScrapbox (tokens): {
+  title: string,
+  lines: string[]
+} {
+  let result: string[] = [];
   result = stringifyNodes(tokens, result, tokens.resources);
   if (tokens.tags) {
     result.push('');
@@ -245,7 +248,7 @@ function toScrapbox (tokens) {
     }
     lines.push(line);
     return lines;
-  }, []);
+  }, [] as string[]);
 
   let lastLineIsBreak = false;
   for (let i = lines.length - 1; i >= 0; i--) {

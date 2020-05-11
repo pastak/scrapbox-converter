@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 import test from 'ava';
 import enex2sb from '../src/main';
 const uploadImage = () => new Promise((ok) => {

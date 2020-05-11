@@ -24,24 +24,30 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^13.13.4",
     "commander": "^5.1.0",
     "gyazo-api": "^0.3.1",
     "gyazo-browser-upload": "^1.0.0",
     "html2sb-compiler": "^4.0.5",
-    "into-stream": "^3.1.0"
-  },
-  "ava": {
-    "require": [
-      "@babel/register",
-      "@babel/polyfill"
-    ]
+    "into-stream": "^3.1.0",
+    "ts-node": "^8.10.1"
   },
   "devDependencies": {
+    "@ava/typescript": "^1.1.1",
+    "@types/node": "^13.13.5",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
-    "ava": "^1.0.0",
+    "ava": "^3.8.1",
     "eslint": "^6.8.0",
     "typescript": "^3.8.3"
+  },
+  "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "src/": "dist/"
+      }
+    },
+    "require": [
+      "ts-node/register"
+    ]
   }
 }

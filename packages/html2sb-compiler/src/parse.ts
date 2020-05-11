@@ -12,15 +12,31 @@ interface SimpleTag {
   blockquote?: number;
 }
 
-interface Tag extends SimpleTag {
+interface Node extends SimpleTag {
   tagName?: string;
   attribs?: { [key: string]: string };
-  children?: Tag[];
+  children?: Node[];
   type?:  string;
   content?:  string;
   enlarge?: number;
+  href?: string
+  variant?: 'ul'
 }
 
+interface ImageNode extends Node {
+  tagName: 'img'
+  src: string
+}
+
+interface ReferenceNode extends Node {
+  tagName: 'reference',
+  hash: string
+}
+
+interface CodeNode extends Node {
+  tagName: 'code',
+  text: string
+}
 
 interface Resource {
   encoded?: string;
@@ -28,11 +44,12 @@ interface Resource {
 }
 
 interface PageContext {
-  type: string;
-  options: any;
-  children: Tag[];
+  checkNode?: PageContext;
+  type?: string;
+  options?: any;
+  children?: Node[];
   title?: string;
-  tags?: Tag[];
+  tags?: Node[];
   resources?: {[key: string]: {
     data: string;
     type: 'img';
@@ -41,13 +58,13 @@ interface PageContext {
 }
 
 const tags = {
-  'img': function (context, node) {
+  'img': function (context: PageContext, node: Node): void {
     context.children.push({
       type: 'img',
       src: node.attribs.src
-    });
+    } as ImageNode);
   },
-  'a': function (context, node) {
+  'a': function (context: PageContext, node: Node): void {
     const children = node.children
       ? parseNodes(node.children, {
         options: context.options
@@ -63,11 +80,11 @@ const tags = {
       children: children
     });
   },
-  'p': function (context, node) {
+  'p': function (context: PageContext, node: Node): void {
     // TODO: Triage as block element to divide div
     tags['div'](context, node);
   },
-  'note': function (context, node) {
+  'note': function (context: PageContext, node: Node): void {
     if (context.options && context.options.evernote) {
       let content;
 
@@ -126,21 +143,21 @@ const tags = {
       }
     }
   },
-  'en-media': function (context, node) {
+  'en-media': function (context: PageContext, node: Node): void {
     if (node.attribs && context.options.evernote) {
       context.children.push({
         type: 'reference',
         hash: node.attribs.hash
-      });
+      } as ReferenceNode);
     }
   },
   'br': singleNode.bind(null, 'br'),
-  'td': function (context, node) {
+  'td': function (context: PageContext, node: Node): void {
     const simple = parseSimple(null, context, node);
     simple.type = 'td';
   },
   'tbody': ignore,
-  'tr': function (context, node) {
+  'tr': function (context: PageContext, node: Node): void {
     const result = {
       type: 'tr',
       children: [],
@@ -154,7 +171,7 @@ const tags = {
     delete result.options;
     context.children.push(result);
   },
-  'table': function (context, node) {
+  'table': function (context: PageContext, node: Node): void {
     const result = {
       type: 'table',
       children: [],
@@ -177,7 +194,7 @@ const tags = {
   'h5': parseHeader.bind(null, 1),
   'ol': list.bind(null, 'ol'),
   'ul': list.bind(null, 'ul'),
-  'div': function (context, node) {
+  'div': function (context: PageContext, node: Node): void {
     // <en-todo> are inline tags which are super weird.
     // This way .checkNode will be filled somehow.
     if (
@@ -223,7 +240,7 @@ const tags = {
       context.children.push({
         type: 'code',
         text: data.join('\n')
-      });
+      } as CodeNode);
       return;
     }
 
@@ -275,7 +292,7 @@ function parseNode (context, node) {
   }
 }
 
-function parseNodes (nodes, context) {
+function parseNodes (nodes: Node[], context: PageContext): PageContext {
   if (!context.children) {
     context.children = [];
   }
@@ -355,7 +372,7 @@ function parseSimple (variant: keyof SimpleTag, context: PageContext, node) {
       options: context.options
     }).children;
   }
-  const result: Tag = {
+  const result: Node = {
     type: 'text',
     children: children
   };
@@ -621,14 +638,14 @@ function reduceSimpleNodes (parent) {
   return parent;
 }
 
-function parseHTML (input) {
-  let current: Tag = {};
+function parseHTML (input: string) {
+  let current: Node = {};
   const stack = [];
   const root = current;
   const parser = new Parser({
     onopentag: function (name, attribs) {
       stack.push(current);
-      const next: Tag = {
+      const next: Node = {
         tagName: name
       };
       if (Object.keys(attribs).length > 0) {
@@ -674,10 +691,10 @@ function parseHTML (input) {
   });
   parser.write(String(input));
   parser.end();
-  return root.children || [];
+  return root.children || [] as Node[];
 }
 
-export const parse = function (input, options = {}) {
+export const parse = function (input: string, options = {}) {
   const htmlNodes = parseHTML(input);
   let parseResult = parseNodes(htmlNodes, {
     title: null,
@@ -701,7 +718,7 @@ export const parse = function (input, options = {}) {
     }
   }
   if (!allPages) {
-    return [parseResult];
+    return [parseResult] as Node[];
   }
   return parseResult.children;
 };
