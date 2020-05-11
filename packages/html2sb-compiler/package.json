@@ -1,6 +1,6 @@
 {
   "name": "html2sb-compiler",
-  "version": "4.0.5",
+  "version": "5.0.0",
   "main": "./dist/index.js",
   "files": [
     "dist"
