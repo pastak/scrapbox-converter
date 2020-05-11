@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "babel src -d dist",
+    "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
     "test": "ava -v",
     "test:watch": "yarn test -- --watch"
@@ -23,7 +23,8 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.11.0",
+    "@types/node": "^13.13.4",
+    "commander": "^5.1.0",
     "gyazo-api": "^0.3.1",
     "gyazo-browser-upload": "^1.0.0",
     "html2sb-compiler": "^4.0.5",
@@ -36,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "ava": "^1.0.0"
+    "ava": "^1.0.0",
+    "typescript": "^3.8.3"
   }
 }

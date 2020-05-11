@@ -3,7 +3,7 @@
   "version": "4.0.5",
   "main": "./index.js",
   "scripts": {
-    "build": "exit 0",
+    "build": "tsc --outDir dist --project .",
     "test": "npm run test:unit",
     "test:update-token": "UPDATE_TOKEN=1 npm run test",
     "test:unit": "tape test/*.js | tap-difflet",
@@ -17,15 +17,18 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^13.13.4",
     "htmlparser2": "^4.0.0",
     "lodash.trim": "^4.5.1",
     "nano-md5": "^1.0.3",
     "style-parser": "^1.1.1"
   },
   "devDependencies": {
+    "@types/lodash.trim": "^4.5.6",
     "tap-diff": "^0.1.1",
     "tap-difflet": "^0.7.0",
     "tape": "^4.6.3",
-    "tape-watch": "^2.3.0"
+    "tape-watch": "^2.3.0",
+    "typescript": "^3.8.3"
   }
 }

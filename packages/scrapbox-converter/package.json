@@ -16,12 +16,17 @@
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "babel src -d dist",
+    "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
+    "@types/node": "^13.13.4",
+    "commander": "^5.1.0",
     "enex2sb": "^4.0.5",
     "html2sb-compiler": "^4.0.5",
     "md2sb": "^4.0.5"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
   }
 }

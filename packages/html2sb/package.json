@@ -9,7 +9,7 @@
     "html2sb": "dist/command/index.js"
   },
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
     "prepublishOnly": "rm -rf dist/* && npm run build",
     "test": "ava -v",
@@ -23,15 +23,13 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^13.13.4",
     "ava": "^1.0.0",
-    "commander": "^2.11.0",
+    "commander": "^5.1.0",
     "enex2sb": "^4.0.5",
     "html2sb-compiler": "^4.0.5"
   },
-  "ava": {
-    "require": [
-      "@babel/register",
-      "@babel/polyfill"
-    ]
+  "devDependencies": {
+    "typescript": "^3.8.3"
   }
 }

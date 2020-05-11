@@ -12,11 +12,6 @@ You should set `GYAZO_ACCESS_TOKEN` to OAuth access token get from https://gyazo
   - You can pass filename as option
 - `% cat hoge.enex | enex2sb > hoge.json`
 
-### Compatibility
-
-`enex2sb` requires `babel-polyfill` but since `babel-polyfill` can only be used
-once (singleton) this means that you need to add it to your end product.
-
 ### API
 
 TBW
