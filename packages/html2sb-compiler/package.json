@@ -1,13 +1,15 @@
 {
   "name": "html2sb-compiler",
   "version": "4.0.5",
-  "main": "./index.js",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "exit 0",
-    "test": "npm run test:unit",
-    "test:update-token": "UPDATE_TOKEN=1 npm run test",
-    "test:unit": "tape test/*.js | tap-difflet",
-    "test:watch": "tape-watch test/*.js | tap-difflet"
+    "build": "tsc --outDir dist --project .",
+    "eslint": "eslint \"**/*.ts\"",
+    "test": "ava -v",
+    "test:update-token": "UPDATE_TOKEN=1 npm run test"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb-compiler#readme",
   "repository": {
@@ -23,9 +25,24 @@
     "style-parser": "^1.1.1"
   },
   "devDependencies": {
-    "tap-diff": "^0.1.1",
-    "tap-difflet": "^0.7.0",
-    "tape": "^4.6.3",
-    "tape-watch": "^2.3.0"
+    "@ava/typescript": "^1.1.1",
+    "@types/lodash.trim": "^4.5.6",
+    "@types/node": "^13.13.5",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "ava": "^3.8.2",
+    "eslint": "^6.8.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  },
+  "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "src/": "dist/"
+      }
+    },
+    "require": [
+      "ts-node/register"
+    ]
   }
 }

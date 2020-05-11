@@ -2,8 +2,11 @@
   "name": "scrapbox-converter-monorepo",
   "scripts": {
     "postinstall": "lerna bootstrap --hoist",
-    "test": "eslint \"**/*.js\" && lerna exec -- npm run test",
-    "build": "lerna exec -- npm run build",
+    "test": "lerna run test",
+    "eslint": "lerna run eslint --parallel",
+    "eslint:fix": "lerna run eslint --parallel -- --fix",
+    "clean": "rm -rf packages/*/dist",
+    "build": "lerna run build",
     "bump": "lerna version --conventional-commits --create-release github"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter#readme",
@@ -14,7 +17,6 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^5.13.0",
-    "lerna": "^3.13.4"
+    "lerna": "^3.20.2"
   }
 }

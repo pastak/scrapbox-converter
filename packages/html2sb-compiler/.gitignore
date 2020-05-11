@@ -1,1 +1,3 @@
 yarn.lock
+dist/
+tsconfig.tsbuildinfo

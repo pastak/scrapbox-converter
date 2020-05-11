@@ -4,28 +4,18 @@ module.exports = {
         "node": true
     },
     "extends": "eslint:recommended",
+    parser: '@typescript-eslint/parser',
+    plugins: [
+        '@typescript-eslint',
+      ],
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-console": 0,
-        "no-case-declarations": 0
-    }
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended'
+    ],
+    ignorePatterns: ['*.d.ts']
 };

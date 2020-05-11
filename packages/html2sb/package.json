@@ -9,10 +9,11 @@
     "html2sb": "dist/command/index.js"
   },
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
     "prepublishOnly": "rm -rf dist/* && npm run build",
     "test": "ava -v",
+    "eslint": "eslint \"**/*.ts\"",
     "test:watch": "npm test -- --watch"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb#readme",
@@ -23,20 +24,28 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "ava": "^1.0.0",
-    "commander": "^2.11.0",
+    "@types/node": "^13.13.4",
+    "commander": "^5.1.0",
     "enex2sb": "^4.0.5",
     "html2sb-compiler": "^4.0.5"
   },
+  "devDependencies": {
+    "@ava/typescript": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "ava": "^3.8.1",
+    "eslint": "^6.8.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  },
   "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "src/": "dist/"
+      }
+    },
     "require": [
-      "@babel/register",
-      "@babel/polyfill"
+      "ts-node/register"
     ]
   }
 }

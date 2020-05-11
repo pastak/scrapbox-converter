@@ -16,17 +16,21 @@
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "babel src -d dist",
+    "build": "tsc --outDir dist --project .",
+    "eslint": "eslint \"**/*.ts\"",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/register": "^7.0.0",
+    "@types/node": "^13.13.4",
+    "commander": "^5.1.0",
     "enex2sb": "^4.0.5",
     "html2sb-compiler": "^4.0.5",
     "md2sb": "^4.0.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^6.8.0",
+    "typescript": "^3.8.3"
   }
 }
