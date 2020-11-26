@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/pastak/scrapbox-converter/compare/v5.1.0...v5.1.1) (2020-11-26)
+
+**Note:** Version bump only for package md2sb
+
+
+
+
+
 # [5.1.0](https://github.com/pastak/scrapbox-converter/compare/v5.0.0...v5.1.0) (2020-11-26)
 
 
