@@ -1,6 +1,6 @@
 {
   "name": "md2sb",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Encode Markdown to Scrapbox.io style text",
   "main": "dist/index.js",
   "bin": {
@@ -27,8 +27,9 @@
   "dependencies": {
     "@types/node": "^13.13.4",
     "commander": "^5.1.0",
-    "enex2sb": "^5.0.0",
-    "remark": "^12.0.0"
+    "enex2sb": "^5.1.0",
+    "remark": "^13.0.0",
+    "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",

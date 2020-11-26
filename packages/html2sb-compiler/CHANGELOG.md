@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pastak/scrapbox-converter/compare/v5.0.0...v5.1.0) (2020-11-26)
+
+**Note:** Version bump only for package html2sb-compiler
+
+
+
+
+
 # [5.0.0](https://github.com/pastak/scrapbox-converter/compare/v4.0.5...v5.0.0) (2020-05-11)
 
 

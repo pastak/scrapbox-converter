@@ -1,5 +1,12 @@
 import generateCodeBlock from './generateCodeBlock';
 import addListItemCount from './addListItemCount';
+import {Node} from 'unist';
+
+type Context = {
+  parents: string[];
+  listItemCount?: number;
+  listDepth?: number;
+}
 
 class Compiler {
   lastElmEndLine: number
@@ -16,7 +23,7 @@ class Compiler {
     );
   }
 
-  compile (ast, _context = {parents: undefined}): string {
+  compile (ast, _context: Omit<Context, 'parents'> & {parents: string[] | undefined} = {parents: undefined}): string {
     let result =  [...(ast.children || ast)].map((node) => this.node2SbText(
       node,
       {
@@ -30,7 +37,7 @@ class Compiler {
     return result;
   }
 
-  node2SbText (node, context): string {
+  node2SbText (node: Node, context: Context): string {
     let result = '';
     if (context.parents.length === 0 && node.type !== 'heading') {
       result += '\n'.repeat(node.position.start.line - this.lastElmEndLine);
@@ -58,12 +65,12 @@ class Compiler {
       result += this.compile(node.children, context);
       break;
     case 'heading':
-      this.decorate.push('*'.repeat(Math.max(1, 5 - node.depth)));
+      this.decorate.push('*'.repeat(Math.max(1, 5 - (node.depth as number))));
       result += this.compile(node.children, context);
       break;
     case 'link':
-      if (node.children.filter((_) => _.type === 'image').length) {
-        result += node.children.map((n) => {
+      if ((node.children as Node[]).filter((_) => _.type === 'image').length) {
+        result += (node.children as Node[]).map((n) => {
           if (n.type === 'image') return `[${n.url} ${node.url}]`;
           return `[${this.compile(n, context)} ${node.url}]`;
         }).join('');
@@ -91,7 +98,7 @@ class Compiler {
       break;
     case 'table':
       result += 'table:table\n';
-      result += ' ' + node.children.map((tableRow) => tableRow.children.map(
+      result += ' ' + (node.children as Node[]).map((tableRow) => (tableRow.children as Node[]).map(
         (tableCell) => {
           context.parents.push('tableCell');
           return this.compile(tableCell.children, context);
@@ -108,19 +115,27 @@ class Compiler {
         result += this.compile(tagName === 'ol' ? addListItemCount(node.children) : node.children, context);
       }
       break;
-    case 'listItem':
-      result += ' '.repeat(context.parents.filter((i) => i === 'ol' || i === 'ul').length)
+    case 'listItem': {
+      const depth = context.parents.filter((i) => i === 'ol' || i === 'ul').length;
+      const isChangedDepth = 2 <= depth && (context.listDepth ?? 0) < depth;
+      const inner = this.compile(node.children, {
+        ...context,
+        listDepth: depth
+      });
+      result += (isChangedDepth ? '\n' : '')
+          + ' '.repeat(depth)
           + (node.listItemCount ? node.listItemCount + '. ' : '')
-          + this.compile(node.children, context)
-          + '\n';
+          + inner
+          + (isChangedDepth ? '' : '\n');
       break;
+    }
     case 'paragraph':
       result += this.compile(node.children, context);
       break;
     case 'text':
       {
         let textValue = node.value;
-        if (context.parents.includes('tableCell')) textValue = node.value.replace(/(\s|\t)+$/, '');
+        if (context.parents.includes('tableCell')) textValue = (node.value as string).replace(/(\s|\t)+$/, '');
         if (context.parents.includes('listItem')) textValue = node.value;
         result += textValue;
       }
