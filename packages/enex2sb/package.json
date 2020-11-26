@@ -1,6 +1,6 @@
 {
   "name": "enex2sb",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -27,7 +27,7 @@
     "commander": "^5.1.0",
     "gyazo-api": "^0.3.1",
     "gyazo-browser-upload": "^1.0.0",
-    "html2sb-compiler": "^5.0.0",
+    "html2sb-compiler": "^5.1.0",
     "into-stream": "^3.1.0",
     "ts-node": "^8.10.1"
   },

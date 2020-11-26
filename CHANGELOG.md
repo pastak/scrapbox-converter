@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pastak/scrapbox-converter/compare/v5.0.0...v5.1.0) (2020-11-26)
+
+
+### Features
+
+* bump remark v13 and install remark-gfm ([66dd5cd](https://github.com/pastak/scrapbox-converter/commit/66dd5cdd4b743dcdc733b047ed9caf9d43f1904d))
+* nested list ([53245db](https://github.com/pastak/scrapbox-converter/commit/53245db08792871444ababab290d533eff91a611))
+
+
+
+
+
 # [5.0.0](https://github.com/pastak/scrapbox-converter/compare/v4.0.5...v5.0.0) (2020-05-11)
 
 
