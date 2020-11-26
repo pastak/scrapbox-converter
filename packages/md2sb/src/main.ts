@@ -1,4 +1,5 @@
 import remark from 'remark';
+import gfm from 'remark-gfm';
 import {compiler} from './libs/compiler';
 
 export default (input: string | Buffer): Promise<string> => {
@@ -12,7 +13,7 @@ export default (input: string | Buffer): Promise<string> => {
   }
   return new Promise<string>((resolve, ng) => {
     // @ts-nocheck
-    remark().use(compiler).process(mdText, (err, file) => {
+    remark().use(gfm).use(compiler).process(mdText, (err, file) => {
       if (err) return ng(err);
       const result = (file + '') as string;
       return resolve(result);
