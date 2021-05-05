@@ -1,0 +1,495 @@
+{
+  "program": {
+    "fileInfos": {
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "b3584bc5798ed422ce2516df360ffa9cf2d80b5eae852867db9ba3743145f895",
+        "signature": "b3584bc5798ed422ce2516df360ffa9cf2d80b5eae852867db9ba3743145f895",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "dc47c4fa66b9b9890cf076304de2a9c5201e94b740cffdf09f87296d877d71f6",
+        "signature": "dc47c4fa66b9b9890cf076304de2a9c5201e94b740cffdf09f87296d877d71f6",
+        "affectsGlobalScope": false
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2016.d.ts": {
+        "version": "7a387c58583dfca701b6c85e0adaf43fb17d590fb16d5b2dc0a2fbd89f35c467",
+        "signature": "7a387c58583dfca701b6c85e0adaf43fb17d590fb16d5b2dc0a2fbd89f35c467",
+        "affectsGlobalScope": false
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.d.ts": {
+        "version": "8a12173c586e95f4433e0c6dc446bc88346be73ffe9ca6eec7aa63c8f3dca7f9",
+        "signature": "8a12173c586e95f4433e0c6dc446bc88346be73ffe9ca6eec7aa63c8f3dca7f9",
+        "affectsGlobalScope": false
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.d.ts": {
+        "version": "5f4e733ced4e129482ae2186aae29fde948ab7182844c3a5a51dd346182c7b06",
+        "signature": "5f4e733ced4e129482ae2186aae29fde948ab7182844c3a5a51dd346182c7b06",
+        "affectsGlobalScope": false
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.d.ts": {
+        "version": "e6b724280c694a9f588847f754198fb96c43d805f065c3a5b28bbc9594541c84",
+        "signature": "e6b724280c694a9f588847f754198fb96c43d805f065c3a5b28bbc9594541c84",
+        "affectsGlobalScope": false
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "feeeb1dd8a80fb76be42b0426e8f3ffa9bdef3c2f3c12c147e7660b1c5ba8b3b",
+        "signature": "feeeb1dd8a80fb76be42b0426e8f3ffa9bdef3c2f3c12c147e7660b1c5ba8b3b",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.dom.iterable.d.ts": {
+        "version": "d42f4141bd9ce82b4e2902f26acb00c183e321be19a38bbc0e76a922c1724c94",
+        "signature": "d42f4141bd9ce82b4e2902f26acb00c183e321be19a38bbc0e76a922c1724c94",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
+        "version": "7fac8cb5fc820bc2a59ae11ef1c5b38d3832c6d0dfaec5acdb5569137d09a481",
+        "signature": "7fac8cb5fc820bc2a59ae11ef1c5b38d3832c6d0dfaec5acdb5569137d09a481",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.scripthost.d.ts": {
+        "version": "097a57355ded99c68e6df1b738990448e0bf170e606707df5a7c0481ff2427cd",
+        "signature": "097a57355ded99c68e6df1b738990448e0bf170e606707df5a7c0481ff2427cd",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "46ee15e9fefa913333b61eaf6b18885900b139867d89832a515059b62cf16a17",
+        "signature": "46ee15e9fefa913333b61eaf6b18885900b139867d89832a515059b62cf16a17",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "43fb1d932e4966a39a41b464a12a81899d9ae5f2c829063f5571b6b87e6d2f9c",
+        "signature": "43fb1d932e4966a39a41b464a12a81899d9ae5f2c829063f5571b6b87e6d2f9c",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "cdccba9a388c2ee3fd6ad4018c640a471a6c060e96f1232062223063b0a5ac6a",
+        "signature": "cdccba9a388c2ee3fd6ad4018c640a471a6c060e96f1232062223063b0a5ac6a",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "8b2a5df1ce95f78f6b74f1a555ccdb6baab0486b42d8345e0871dd82811f9b9a",
+        "signature": "8b2a5df1ce95f78f6b74f1a555ccdb6baab0486b42d8345e0871dd82811f9b9a",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "2bb4b3927299434052b37851a47bf5c39764f2ba88a888a107b32262e9292b7c",
+        "signature": "2bb4b3927299434052b37851a47bf5c39764f2ba88a888a107b32262e9292b7c",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "810627a82ac06fb5166da5ada4159c4ec11978dfbb0805fe804c86406dab8357",
+        "signature": "810627a82ac06fb5166da5ada4159c4ec11978dfbb0805fe804c86406dab8357",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "62d80405c46c3f4c527ee657ae9d43fda65a0bf582292429aea1e69144a522a6",
+        "signature": "62d80405c46c3f4c527ee657ae9d43fda65a0bf582292429aea1e69144a522a6",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "3013574108c36fd3aaca79764002b3717da09725a36a6fc02eac386593110f93",
+        "signature": "3013574108c36fd3aaca79764002b3717da09725a36a6fc02eac386593110f93",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "9d122b7e8c1a5c72506eea50c0973cba55b92b5532d5cafa8a6ce2c547d57551",
+        "signature": "9d122b7e8c1a5c72506eea50c0973cba55b92b5532d5cafa8a6ce2c547d57551",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2016.array.include.d.ts": {
+        "version": "3be5a1453daa63e031d266bf342f3943603873d890ab8b9ada95e22389389006",
+        "signature": "3be5a1453daa63e031d266bf342f3943603873d890ab8b9ada95e22389389006",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.object.d.ts": {
+        "version": "17bb1fc99591b00515502d264fa55dc8370c45c5298f4a5c2083557dccba5a2a",
+        "signature": "17bb1fc99591b00515502d264fa55dc8370c45c5298f4a5c2083557dccba5a2a",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": {
+        "version": "7ce9f0bde3307ca1f944119f6365f2d776d281a393b576a18a2f2893a2d75c98",
+        "signature": "7ce9f0bde3307ca1f944119f6365f2d776d281a393b576a18a2f2893a2d75c98",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.string.d.ts": {
+        "version": "6a6b173e739a6a99629a8594bfb294cc7329bfb7b227f12e1f7c11bc163b8577",
+        "signature": "6a6b173e739a6a99629a8594bfb294cc7329bfb7b227f12e1f7c11bc163b8577",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.intl.d.ts": {
+        "version": "12a310447c5d23c7d0d5ca2af606e3bd08afda69100166730ab92c62999ebb9d",
+        "signature": "12a310447c5d23c7d0d5ca2af606e3bd08afda69100166730ab92c62999ebb9d",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": {
+        "version": "b0124885ef82641903d232172577f2ceb5d3e60aed4da1153bab4221e1f6dd4e",
+        "signature": "b0124885ef82641903d232172577f2ceb5d3e60aed4da1153bab4221e1f6dd4e",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts": {
+        "version": "0eb85d6c590b0d577919a79e0084fa1744c1beba6fd0d4e951432fa1ede5510a",
+        "signature": "0eb85d6c590b0d577919a79e0084fa1744c1beba6fd0d4e951432fa1ede5510a",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": {
+        "version": "a40c4d82bf13fcded295ac29f354eb7d40249613c15e07b53f2fc75e45e16359",
+        "signature": "a40c4d82bf13fcded295ac29f354eb7d40249613c15e07b53f2fc75e45e16359",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.intl.d.ts": {
+        "version": "df9c8a72ca8b0ed62f5470b41208a0587f0f73f0a7db28e5a1272cf92537518e",
+        "signature": "df9c8a72ca8b0ed62f5470b41208a0587f0f73f0a7db28e5a1272cf92537518e",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.promise.d.ts": {
+        "version": "bb2d3fb05a1d2ffbca947cc7cbc95d23e1d053d6595391bd325deb265a18d36c",
+        "signature": "bb2d3fb05a1d2ffbca947cc7cbc95d23e1d053d6595391bd325deb265a18d36c",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.regexp.d.ts": {
+        "version": "c80df75850fea5caa2afe43b9949338ce4e2de086f91713e9af1a06f973872b8",
+        "signature": "c80df75850fea5caa2afe43b9949338ce4e2de086f91713e9af1a06f973872b8",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.array.d.ts": {
+        "version": "9d57b2b5d15838ed094aa9ff1299eecef40b190722eb619bac4616657a05f951",
+        "signature": "9d57b2b5d15838ed094aa9ff1299eecef40b190722eb619bac4616657a05f951",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.object.d.ts": {
+        "version": "6c51b5dd26a2c31dbf37f00cfc32b2aa6a92e19c995aefb5b97a3a64f1ac99de",
+        "signature": "6c51b5dd26a2c31dbf37f00cfc32b2aa6a92e19c995aefb5b97a3a64f1ac99de",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.string.d.ts": {
+        "version": "93544ca2f26a48716c1b6c5091842cad63129daac422dfa4bc52460465f22bb1",
+        "signature": "93544ca2f26a48716c1b6c5091842cad63129daac422dfa4bc52460465f22bb1",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.symbol.d.ts": {
+        "version": "2ad234885a4240522efccd77de6c7d99eecf9b4de0914adb9a35c0c22433f993",
+        "signature": "2ad234885a4240522efccd77de6c7d99eecf9b4de0914adb9a35c0c22433f993",
+        "affectsGlobalScope": true
+      },
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.full.d.ts": {
+        "version": "1f03b495671c3a1bd24510f38b8947f0991dfd6bf0278c68eca14af15b306e1f",
+        "signature": "1f03b495671c3a1bd24510f38b8947f0991dfd6bf0278c68eca14af15b306e1f",
+        "affectsGlobalScope": false
+      },
+      "./src/libs/generatecodeblock.ts": {
+        "version": "ef85dc20a230656651fff605f5ed04bddc00eb80edd9a4d1ec40c4903e7c9816",
+        "signature": "729953e9f3b563f95798b3a0d167a63e9217ff56fbb0c48151c3e7fb5a948c40",
+        "affectsGlobalScope": false
+      },
+      "./src/libs/addlistitemcount.ts": {
+        "version": "229519bd6946df64d992c933b920580443e2a090b60faefeb220a34cac9f5268",
+        "signature": "27f4cd98a1ed348900b8711ee5b4665792d581ca5861c913cda10089052b8b4d",
+        "affectsGlobalScope": false
+      },
+      "./src/libs/compiler.ts": {
+        "version": "896c037b70548bc444ef4f6bd3517e015cfc22af5fe6ecc2cd103d898eee4386",
+        "signature": "76cb2bf83ca33d396dc2b9a96af7e6d3fa5f3608da16eafc44f642a6f59180d9",
+        "affectsGlobalScope": false
+      },
+      "./src/main.ts": {
+        "version": "1173aea027767815ac067f3397bedd2175e9e8bd082e33811becbd23f40a8523",
+        "signature": "53204c845201c1e9207cbfe96163dd55a3ad6df3e4699a2b754e589026b49276",
+        "affectsGlobalScope": false
+      },
+      "./src/index.ts": {
+        "version": "b5f108a1f948f33b32bb6e9c38ba1cc9a4cf9b7eabaab3de3e174bf5bed6edc9",
+        "signature": "b5f108a1f948f33b32bb6e9c38ba1cc9a4cf9b7eabaab3de3e174bf5bed6edc9",
+        "affectsGlobalScope": false
+      },
+      "./src/command/command.ts": {
+        "version": "7707f0fa26562501326a0a4c552fa3844e87b348640171c2d2959938870720b5",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
+      "./src/command/index.ts": {
+        "version": "9df1a7e80cfe0fc167054f4e1a656937723aa3af6e29663ecf69d2e908eafe5c",
+        "signature": "a59c47872b71f12589942892464e764c0db350c20b72228645615cc36e0a0725",
+        "affectsGlobalScope": true
+      }
+    },
+    "options": {
+      "target": 6,
+      "module": 1,
+      "moduleResolution": 2,
+      "strict": false,
+      "noImplicitAny": false,
+      "removeComments": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "sourceMap": true,
+      "declaration": true,
+      "composite": true,
+      "configFilePath": "./tsconfig.json"
+    },
+    "referencedMap": {
+      "./src/command/command.ts": [
+        "./src/main.ts"
+      ],
+      "./src/index.ts": [
+        "./src/main.ts"
+      ],
+      "./src/libs/compiler.ts": [
+        "./src/libs/addlistitemcount.ts",
+        "./src/libs/generatecodeblock.ts"
+      ],
+      "./src/main.ts": [
+        "./src/libs/compiler.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "./src/index.ts": [
+        "./src/main.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.dom.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2016.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.object.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.string.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.array.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.full.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.object.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.string.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es5.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.scripthost.d.ts",
+      "../../../../nota/gyazorails/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      [
+        "./src/command/command.ts",
+        [
+          {
+            "file": "./src/command/command.ts",
+            "start": 22,
+            "length": 6,
+            "messageText": "Cannot find module 'path' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 50,
+            "length": 4,
+            "messageText": "Cannot find module 'fs' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 78,
+            "length": 11,
+            "messageText": "Cannot find module 'commander' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 139,
+            "length": 7,
+            "messageText": "Cannot find name 'require'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 537,
+            "length": 7,
+            "messageText": "Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 576,
+            "length": 7,
+            "messageText": "Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 602,
+            "length": 7,
+            "messageText": "Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 657,
+            "length": 7,
+            "messageText": "Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          },
+          {
+            "file": "./src/command/command.ts",
+            "start": 741,
+            "length": 7,
+            "messageText": "Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          }
+        ]
+      ],
+      [
+        "./src/command/index.ts",
+        [
+          {
+            "file": "./src/command/index.ts",
+            "start": 20,
+            "length": 6,
+            "messageText": "Cannot find name 'module'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          },
+          {
+            "file": "./src/command/index.ts",
+            "start": 37,
+            "length": 7,
+            "messageText": "Cannot find name 'require'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          }
+        ]
+      ],
+      "./src/index.ts",
+      "./src/libs/addlistitemcount.ts",
+      [
+        "./src/libs/compiler.ts",
+        [
+          {
+            "file": "./src/libs/compiler.ts",
+            "start": 123,
+            "length": 7,
+            "messageText": "Cannot find module 'unist' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ],
+      "./src/libs/generatecodeblock.ts",
+      [
+        "./src/main.ts",
+        [
+          {
+            "file": "./src/main.ts",
+            "start": 19,
+            "length": 8,
+            "messageText": "Cannot find module 'remark' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          },
+          {
+            "file": "./src/main.ts",
+            "start": 45,
+            "length": 12,
+            "messageText": "Cannot find module 'remark-gfm' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          },
+          {
+            "file": "./src/main.ts",
+            "start": 134,
+            "length": 6,
+            "messageText": "Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          },
+          {
+            "file": "./src/main.ts",
+            "start": 246,
+            "length": 6,
+            "messageText": "Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.",
+            "category": 1,
+            "code": 2580
+          }
+        ]
+      ]
+    ],
+    "affectedFilesPendingEmit": [
+      [
+        "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2015.d.ts",
+        1
+      ],
+      [
+        "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2016.d.ts",
+        1
+      ],
+      [
+        "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2017.d.ts",
+        1
+      ],
+      [
+        "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2018.d.ts",
+        1
+      ],
+      [
+        "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.d.ts",
+        1
+      ],
+      [
+        "../../../../nota/gyazorails/node_modules/typescript/lib/lib.es2019.full.d.ts",
+        1
+      ],
+      [
+        "./src/command/command.ts",
+        1
+      ],
+      [
+        "./src/command/index.ts",
+        1
+      ],
+      [
+        "./src/index.ts",
+        1
+      ],
+      [
+        "./src/libs/addlistitemcount.ts",
+        1
+      ],
+      [
+        "./src/libs/compiler.ts",
+        1
+      ],
+      [
+        "./src/libs/generatecodeblock.ts",
+        1
+      ],
+      [
+        "./src/main.ts",
+        1
+      ]
+    ]
+  },
+  "version": "4.2.4"
+}
