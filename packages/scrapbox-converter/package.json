@@ -18,6 +18,7 @@
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
     "eslint": "eslint \"**/*.ts\"",
+    "test": "exit 0",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {

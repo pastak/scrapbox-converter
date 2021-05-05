@@ -24,8 +24,8 @@ jobs:
     - name: npm ci, build, and test
       run: |
         npm ci
-        npm run build
-        npm run eslint
-        npm test
+        npm run build --workspaces
+        npm run eslint --workspaces
+        npm test --workspaces
       env:
         CI: true
