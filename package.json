@@ -2,7 +2,7 @@
   "name": "scrapbox-converter-monorepo",
   "scripts": {
     "clean": "rm -rf packages/*/dist",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build --workspaces",
     "bump": "lerna version --conventional-commits --create-release github"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter#readme",
