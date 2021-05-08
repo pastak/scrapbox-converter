@@ -25,7 +25,7 @@
     "commander": "^5.1.0",
     "enex2sb": "^5.1.1",
     "html2sb-compiler": "^5.1.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "md2sb": "^5.1.1"
   },
   "devDependencies": {
