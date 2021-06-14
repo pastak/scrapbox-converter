@@ -1,4 +1,4 @@
-import * as Gyazo from 'gyazo-api';
+import Gyazo from 'gyazo-api';
 import intoStream from 'into-stream';
 
 const client = new Gyazo(process.env.GYAZO_ACCESS_TOKEN);

@@ -12,7 +12,6 @@ const finalize = (pages) => {
 
 program
   .version(settings.version)
-  .description((settings as any).description)
   .usage('scrapbox-converter <...files>')
   .arguments('<files...>')
   .action(async (files) => {
