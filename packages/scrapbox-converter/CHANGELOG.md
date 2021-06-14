@@ -5,7 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [5.1.2](https://github.com/pastak/scrapbox-converter/compare/v5.1.1...v5.1.2) (2021-06-14)
 
-**Note:** Version bump only for package scrapbox-converter
+### Bug Fix
+
+* Fix Error: could not execute `scrapbox-converter` because of TypeError
 
 
 
