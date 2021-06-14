@@ -18,6 +18,6 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^4.0.0"
   }
 }
