@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/enex2sb" },
+    { "path": "packages/html2sb" },
+    { "path": "packages/html2sb-compiler" },
+    { "path": "packages/md2sb" },
+    { "path": "packages/scrapbox-converter" }
+  ]
+}

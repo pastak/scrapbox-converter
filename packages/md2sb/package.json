@@ -4,7 +4,7 @@
   "description": "Encode Markdown to Scrapbox.io style text",
   "main": "dist/index.js",
   "bin": {
-    "md2sb": "dist/command/index.js"
+    "md2sb": "bin/index.js"
   },
   "files": [
     "dist"
