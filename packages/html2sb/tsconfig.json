@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "src/**/*.ts"
-  ],
-  "references": [{
-    "path": "../html2sb-compiler/tsconfig.build.json"
-  }]
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../html2sb-compiler"
+    }
+  ]
 }
