@@ -1,7 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "src/*.ts",
-    "src/*/**.ts"
-  ]
+  "include": ["src/*.ts", "src/**/*.ts"],
+  "references": [{ "path": "../enex2sb" }, { "path": "../md2sb" }]
 }
