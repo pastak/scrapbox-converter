@@ -4,11 +4,10 @@ on:
   pull_request:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,18 +15,19 @@ jobs:
         node-version: [12.x, 14.x, 16.x]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: install npm@latest
-      run: npm install -g npm@latest
-    - name: npm ci, build, and test
-      run: |
-        npm ci
-        npm run build --workspaces
-        npm run eslint --workspaces
-        npm test --workspaces
-      env:
-        CI: true
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install npm@latest
+        run: npm install -g npm@latest
+      - name: npm ci, build, and test
+        run: |
+          npm ci
+          npm exec tsc --build tsconfig.build.json
+          npm run build --workspaces
+          npm run eslint --workspaces
+          npm test --workspaces
+        env:
+          CI: true
