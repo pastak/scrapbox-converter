@@ -25,7 +25,7 @@ jobs:
       - name: npm ci, build, and test
         run: |
           npm ci
-          npm exec tsc --build tsconfig.build.json
+          npm exec tsc -- --build tsconfig.build.json
           npm run build --workspaces
           npm run eslint --workspaces
           npm test --workspaces
