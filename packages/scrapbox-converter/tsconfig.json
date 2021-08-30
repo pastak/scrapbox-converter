@@ -1,5 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["src/*.ts", "src/**/*.ts"],
-  "references": [{ "path": "../enex2sb" }, { "path": "../md2sb" }]
+  "references": [
+    { "path": "../enex2sb" },
+    { "path": "../md2sb" },
+    { "path": "../html2sb-compiler" }
+  ]
 }
