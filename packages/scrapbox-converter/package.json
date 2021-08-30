@@ -2,7 +2,7 @@
   "name": "scrapbox-converter",
   "version": "5.1.2",
   "bin": {
-    "scrapbox-converter": "dist/index.js"
+    "scrapbox-converter": "bin/index.js"
   },
   "files": [
     "dist"

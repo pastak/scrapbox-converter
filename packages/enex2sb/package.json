@@ -6,7 +6,7 @@
     "dist"
   ],
   "bin": {
-    "enex2sb": "dist/command/index.js"
+    "enex2sb": "bin/index.js"
   },
   "scripts": {
     "prepublishOnly": "npm run build",
