@@ -75,7 +75,8 @@ function processList (node, _?: null, __?: null, indent?: string) {
     indent = '';
   }
   indent += '\t';
-  const listAsText = node.children
+  const children = node.children ?? [];
+  const listAsText = children
     .map(function (listEntry, nr) {
       let children;
       if (listEntry.children) {
@@ -136,7 +137,8 @@ const stringifier = {
   'table': function (node) {
     return 'table:_\n' +
       node.children.map(function (row) {
-        return '\t' + row.children.map(function (td) {
+        const children = row.children ?? [];
+        return '\t' + children.map(function (td) {
           return toSimpleText(td);
         }).join('\t');
       }).join('\n');
