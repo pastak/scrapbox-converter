@@ -137,8 +137,7 @@ class Compiler {
         break;
       case "list":
         {
-          if (!("ordered" in node)) break;
-          const tagName = node.ordered ? "ol" : "ul";
+          const tagName = "ordered" in node && node.ordered ? "ol" : "ul";
           context.listItemCount = 0;
           context.parents[context.parents.length - 1] = tagName;
           result += this.compile(
@@ -148,7 +147,6 @@ class Compiler {
         }
         break;
       case "listItem": {
-        if (!("listItemCount" in node)) break;
         const depth = context.parents.filter(
           (i) => i === "ol" || i === "ul",
         ).length;
@@ -160,7 +158,7 @@ class Compiler {
         result +=
           (isChangedDepth ? "\n" : "") +
           " ".repeat(depth) +
-          (node.listItemCount ? node.listItemCount + ". " : "") +
+          ("listItemCount" in node && node.listItemCount ? node.listItemCount + ". " : "") +
           inner +
           (isChangedDepth ? "" : "\n");
         break;
