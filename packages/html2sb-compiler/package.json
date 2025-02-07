@@ -7,8 +7,9 @@
   ],
   "scripts": {
     "build": "tsc --outDir dist --project .",
-    "eslint": "eslint \"**/*.ts\"",
-    "test": "ava -v",
+    "lint": "biome check ./src ./test",
+    "lint:fix": "biome check --write ./src ./test",
+    "test": "vitest run",
     "test:update-token": "UPDATE_TOKEN=1 npm run test"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb-compiler#readme",
@@ -26,14 +27,13 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
-    "@types/lodash.trim": "^4.5.6",
-    "@types/node": "^13.13.5",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@biomejs/biome": "^1.9.4",
+    "@types/lodash.trim": "4.5.6",
+    "@types/node": "20.14.8",
     "ava": "^3.8.2",
-    "eslint": "^6.8.0",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "5.7.3",
+    "vitest": "^3.0.5"
   },
   "ava": {
     "typescript": {
