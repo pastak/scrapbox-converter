@@ -24,7 +24,7 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^13.13.4",
+    "@types/node": "20.14.8",
     "commander": "^5.1.0",
     "enex2sb": "^5.1.2",
     "html2sb-compiler": "^5.1.2"
@@ -34,7 +34,7 @@
     "@biomejs/biome": "^1.9.4",
     "ava": "^3.8.1",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "5.7.3"
   },
   "ava": {
     "typescript": {

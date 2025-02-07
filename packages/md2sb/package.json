@@ -25,7 +25,7 @@
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {
-    "@types/node": "^13.13.4",
+    "@types/node": "20.14.8",
     "commander": "^5.1.0",
     "enex2sb": "^5.1.2",
     "remark": "^13.0.0",
@@ -36,7 +36,7 @@
     "@biomejs/biome": "^1.9.4",
     "ava": "^3.8.1",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "5.7.3"
   },
   "ava": {
     "typescript": {

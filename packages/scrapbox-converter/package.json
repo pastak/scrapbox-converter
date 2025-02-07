@@ -21,7 +21,7 @@
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
-    "@types/node": "^13.13.4",
+    "@types/node": "20.14.8",
     "commander": "^5.1.0",
     "enex2sb": "^5.1.2",
     "html2sb-compiler": "^5.1.2",
@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "typescript": "^3.8.3"
+    "typescript": "5.7.3"
   }
 }
