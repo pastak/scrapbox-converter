@@ -1,6 +1,7 @@
 {
   "name": "scrapbox-converter-monorepo",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "clean": "rm -rf packages/*/dist",
     "lint": "pnpm run -r lint",
     "prepublishOnly": "pnpm run -r build",
