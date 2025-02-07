@@ -20,7 +20,7 @@
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
-    "test": "ava -v",
+    "test": "vitest run",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
     "test:watch": "npm test -- --watch"
@@ -38,7 +38,8 @@
     "@types/unist": "^2.0.11",
     "ava": "^3.8.1",
     "ts-node": "^8.10.1",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "vitest": "^3.0.5"
   },
   "ava": {
     "typescript": {

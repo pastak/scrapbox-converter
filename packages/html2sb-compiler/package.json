@@ -2,12 +2,14 @@
   "name": "html2sb-compiler",
   "version": "5.1.2",
   "main": "./dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc --outDir dist --project .",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
-    "test": "ava -v",
+    "test": "vitest run",
     "test:update-token": "UPDATE_TOKEN=1 npm run test"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb-compiler#readme",
@@ -30,7 +32,8 @@
     "@types/node": "20.14.8",
     "ava": "^3.8.2",
     "ts-node": "^8.10.1",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "vitest": "^3.0.5"
   },
   "ava": {
     "typescript": {
@@ -38,6 +41,8 @@
         "src/": "dist/"
       }
     },
-    "require": ["ts-node/register"]
+    "require": [
+      "ts-node/register"
+    ]
   }
 }

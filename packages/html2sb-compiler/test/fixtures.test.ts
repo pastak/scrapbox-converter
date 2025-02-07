@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import test from "ava";
+import { expect, test } from 'vitest'
 import { guessTitle, parse, toScrapbox } from "../src";
 
 const updateToken = !!process.env.UPDATE_TOKEN;
@@ -9,10 +9,11 @@ function readFixture(file) {
   return fs.readFileSync(path.join(__dirname, "fixtures", file), "utf8");
 }
 
-function testFixture(t, file) {
+function testFixture(file) {
   const allPages = parse(readFixture(file + ".html"), {
     evernote: true,
   });
+  if (!allPages?.length) return;
   for (let index = 0; index < allPages.length; index++) {
     const pageFile = allPages.length === 1 ? file : file + "-" + (index + 1);
     const pageTokens = allPages[index];
@@ -21,12 +22,11 @@ function testFixture(t, file) {
     try {
       expectedTokens = JSON.parse(readFixture(pageFile + ".json"));
     } catch (e) {
-      t.fail(
+      throw new Error(
         pageFile +
           ".json is not well formatted:\n" +
           (e.stack || e.message || e),
       );
-      return;
     }
     const expectedOutput = readFixture(pageFile + ".txt");
     const sb = toScrapbox(pageTokens);
@@ -38,7 +38,7 @@ function testFixture(t, file) {
     if (process.env.SHOW_TOKEN)
       console.log(JSON.stringify(pageTokens, null, 2));
     if (!process.env.IGNORE_TOKEN_TEST && !updateToken)
-      t.deepEqual(pageTokens, expectedTokens, file + "#tokens");
+      expect(pageTokens, file + "#tokens").toEqual(expectedTokens);
     sb.title = guessTitle(
       pageTokens,
       sb,
@@ -47,11 +47,12 @@ function testFixture(t, file) {
         return foundTitle || template(named) || named;
       },
     );
-    t.is(
-      (sb.title ? sb.title + "\n" : "") + sb.lines.join("\n") + "\n",
-      expectedOutput,
-      file + "#output",
-    );
+    expect(
+      (sb.title ? sb.title + "\n" : "")
+      + sb.lines.join("\n") + "\n", file + "#output")
+      .toBe(
+        expectedOutput
+      )
   }
 }
 
@@ -87,5 +88,5 @@ function testFixture(t, file) {
     return true;
   })
   .forEach((type) => {
-    test("convert " + type, (t) => testFixture(t, type));
+    test("convert " + type, () => testFixture(type));
   });

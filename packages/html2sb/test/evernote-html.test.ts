@@ -1,6 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import test from "ava";
+import { expect, test } from 'vitest';
 import html2sb from "../src/main";
 
 test("convert html exported by evernote", async (t) => {
@@ -10,5 +10,5 @@ test("convert html exported by evernote", async (t) => {
   const input = await html2sb(
     fs.readFileSync(path.resolve("test/fixtures/html/evernote/test.html")),
   );
-  t.is(expected, input);
+  expect(input).toEqual(expected);
 });

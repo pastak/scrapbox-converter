@@ -14,7 +14,7 @@
     "watch": "npm run build -- --watch",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
-    "test": "ava -v",
+    "test": "vitest run",
     "test:watch": "yarn test -- --watch"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/enex2sb#readme",
@@ -37,7 +37,8 @@
     "@biomejs/biome": "^1.9.4",
     "@types/node": "20.14.8",
     "ava": "^3.8.1",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "vitest": "^3.0.5"
   },
   "ava": {
     "typescript": {

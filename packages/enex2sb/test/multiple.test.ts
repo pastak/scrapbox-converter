@@ -1,6 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import test from "ava";
+import { expect, test } from 'vitest'
 import enex2sb from "../src/main";
 const uploadImage = () =>
   new Promise((ok) => {
@@ -12,15 +12,13 @@ const uploadImage = () =>
     });
   });
 
-test("convert example xml", async (t) => {
-  const expected = fs
-    .readFileSync(path.resolve("test/fixtures/example.sb.txt"))
-    .toString();
+test("convet multiple note in one enex", async (t) => {
   const input = await enex2sb(
     uploadImage,
-    fs.readFileSync(path.resolve("test/fixtures/example.enex")),
+    fs.readFileSync(path.resolve("test/fixtures/multiple.enex")),
   );
-  t.truthy(Array.isArray(input));
-  t.deepEqual(expected.split("\n"), input[0].lines.concat(""));
-  t.is("test", input[0].title);
+  expect(input.length).toBe(3);
+  input.forEach((note, index) => {
+    expect(note.title).toBe("ノート" + (index + 1));
+  });
 });
