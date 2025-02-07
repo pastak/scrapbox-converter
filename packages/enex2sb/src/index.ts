@@ -1,2 +1,2 @@
-import main from './node';
+import main from "./node";
 export default main;

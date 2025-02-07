@@ -12,8 +12,9 @@
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
-    "eslint": "eslint \"**/*.ts\"",
-    "test": "ava -v",
+    "lint": "biome check ./src ./test",
+    "lint:fix": "biome check --write ./src ./test",
+    "test": "vitest run",
     "test:watch": "yarn test -- --watch"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/enex2sb#readme",
@@ -33,12 +34,11 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
-    "@types/node": "^13.13.5",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "20.14.8",
     "ava": "^3.8.1",
-    "eslint": "^6.8.0",
-    "typescript": "^3.8.3"
+    "typescript": "5.7.3",
+    "vitest": "^3.0.5"
   },
   "ava": {
     "typescript": {

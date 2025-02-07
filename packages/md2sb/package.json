@@ -20,12 +20,13 @@
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
-    "test": "ava -v",
-    "eslint": "eslint \"**/*.ts\"",
+    "test": "vitest run",
+    "lint": "biome check ./src ./test",
+    "lint:fix": "biome check --write ./src ./test",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {
-    "@types/node": "^13.13.4",
+    "@types/node": "20.14.8",
     "commander": "^5.1.0",
     "enex2sb": "^5.1.2",
     "remark": "^13.0.0",
@@ -33,12 +34,12 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@biomejs/biome": "^1.9.4",
+    "@types/unist": "^2.0.11",
     "ava": "^3.8.1",
-    "eslint": "^6.8.0",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "5.7.3",
+    "vitest": "^3.0.5"
   },
   "ava": {
     "typescript": {
