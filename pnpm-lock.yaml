@@ -145,8 +145,8 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       '@types/unist':
-        specifier: ^3.0.3
-        version: 3.0.3
+        specifier: ^2.0.11
+        version: 2.0.11
       ava:
         specifier: ^3.8.1
         version: 3.15.0
@@ -632,9 +632,6 @@ packages:
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
-
-  '@types/unist@3.0.3':
-    resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
   '@yarnpkg/lockfile@1.1.0':
     resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
@@ -4135,8 +4132,6 @@ snapshots:
       '@types/node': 20.14.8
 
   '@types/unist@2.0.11': {}
-
-  '@types/unist@3.0.3': {}
 
   '@yarnpkg/lockfile@1.1.0': {}
 

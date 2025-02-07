@@ -1,4 +1,4 @@
-import type { Node } from "unist";
+import type { Node, Parent } from "unist";
 import addListItemCount from "./addListItemCount";
 import generateCodeBlock from "./generateCodeBlock";
 
@@ -47,7 +47,7 @@ class Compiler {
     return result;
   }
 
-  node2SbText(node: Node, context: Context): string {
+  node2SbText(node: Parent, context: Context): string {
     let result = "";
     if (context.parents.length === 0 && node.type !== "heading") {
       result += "\n".repeat(node.position.start.line - this.lastElmEndLine);
@@ -78,16 +78,18 @@ class Compiler {
         result += this.compile(node.children, context);
         break;
       case "heading":
+        if (!("depth" in node)) break;
         this.decorate.push("*".repeat(Math.max(1, 5 - (node.depth as number))));
         result += this.compile(node.children, context);
         break;
       case "link":
+        if (!("url" in node)) break;
         if (
           (node.children as Node[]).filter((_) => _.type === "image").length
         ) {
           result += (node.children as Node[])
             .map((n) => {
-              if (n.type === "image") return `[${n.url} ${node.url}]`;
+              if (n.type === "image" && "url" in n) return `[${n.url} ${node.url}]`;
               return `[${this.compile(n, context)} ${node.url}]`;
             })
             .join("");
@@ -96,10 +98,10 @@ class Compiler {
         }
         break;
       case "image":
-        result += `[${node.url}]`;
+        if ("url" in node) result += `[${node.url}]`;
         break;
       case "inlineCode":
-        result += `\`${node.value}\``;
+        if ("value" in node) result += `\`${node.value}\``;
         break;
       case "blockquote":
         {
@@ -123,9 +125,9 @@ class Compiler {
         result +=
           " " +
           (node.children as Node[])
-            .map((tableRow) =>
+            .map((tableRow: Parent) =>
               (tableRow.children as Node[])
-                .map((tableCell) => {
+                .map((tableCell: Parent) => {
                   context.parents.push("tableCell");
                   return this.compile(tableCell.children, context);
                 })
@@ -135,6 +137,7 @@ class Compiler {
         break;
       case "list":
         {
+          if (!("ordered" in node)) break;
           const tagName = node.ordered ? "ol" : "ul";
           context.listItemCount = 0;
           context.parents[context.parents.length - 1] = tagName;
@@ -145,6 +148,7 @@ class Compiler {
         }
         break;
       case "listItem": {
+        if (!("listItemCount" in node)) break;
         const depth = context.parents.filter(
           (i) => i === "ol" || i === "ul",
         ).length;
@@ -166,6 +170,7 @@ class Compiler {
         break;
       case "text":
         {
+          if (!("value" in node)) break;
           let textValue = node.value;
           if (context.parents.includes("tableCell"))
             textValue = (node.value as string).replace(/(\s|\t)+$/, "");
