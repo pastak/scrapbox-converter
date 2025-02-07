@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import * as fs from "node:fs";
 import { guessTitle, parse, toScrapbox } from "html2sb-compiler";
 
 export default async (path) => {
