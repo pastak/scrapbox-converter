@@ -21,7 +21,7 @@
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
     "test": "ava -v",
-    "eslint": "eslint \"**/*.ts\"",
+    "lint": "biome check --write ./src ./test",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {
@@ -33,10 +33,8 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@biomejs/biome": "^1.9.4",
     "ava": "^3.8.1",
-    "eslint": "^6.8.0",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   },

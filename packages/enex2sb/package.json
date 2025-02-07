@@ -12,7 +12,7 @@
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
-    "eslint": "eslint \"**/*.ts\"",
+    "lint": "biome check --write ./src ./test",
     "test": "ava -v",
     "test:watch": "yarn test -- --watch"
   },
@@ -33,11 +33,9 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
+    "@biomejs/biome": "^1.9.4",
     "@types/node": "^13.13.5",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
     "ava": "^3.8.1",
-    "eslint": "^6.8.0",
     "typescript": "^3.8.3"
   },
   "ava": {

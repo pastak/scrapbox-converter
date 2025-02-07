@@ -1087,12 +1087,7 @@
     }
   ],
   "title": "This is a fancy titled",
-  "tags": [
-    "fancy",
-    "house",
-    "in",
-    "inaka"
-  ],
+  "tags": ["fancy", "house", "in", "inaka"],
   "resources": {
     "f134ab81b7ccf9f65805fc5e5401d4e2": {
       "type": "img",

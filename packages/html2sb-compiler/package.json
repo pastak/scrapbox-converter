@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "tsc --outDir dist --project .",
-    "eslint": "eslint \"**/*.ts\"",
+    "lint": "biome check --write ./src ./test",
     "test": "ava -v",
     "test:update-token": "UPDATE_TOKEN=1 npm run test"
   },
@@ -26,12 +26,10 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
-    "@types/lodash.trim": "^4.5.6",
+    "@biomejs/biome": "^1.9.4",
+    "@types/lodash.trim": "4.5.6",
     "@types/node": "^13.13.5",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
     "ava": "^3.8.2",
-    "eslint": "^6.8.0",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   },

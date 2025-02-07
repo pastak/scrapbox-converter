@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import {parse, toScrapbox, guessTitle} from 'html2sb-compiler';
+import * as fs from "fs";
+import { guessTitle, parse, toScrapbox } from "html2sb-compiler";
 
 export default async (path) => {
   const htmlString = fs.readFileSync(path).toString();

@@ -17,7 +17,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
-    "eslint": "eslint \"**/*.ts\"",
+    "lint": "biome check --write ./src ./test",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
@@ -29,9 +29,7 @@
     "md2sb": "^5.1.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
-    "eslint": "^6.8.0",
+    "@biomejs/biome": "^1.9.4",
     "typescript": "^3.8.3"
   }
 }
