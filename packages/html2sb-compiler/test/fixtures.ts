@@ -60,7 +60,9 @@ function testFixture (t, file) {
   'simple-paragraph',
   'entities',
   'complex-paragraph',
-  'styled-code'
+  'styled-code',
+  'invalid-list-in-list',
+  'invalid-text-in-table'
 ]
   .filter((pageFile) => {
     if (process.env.TEST_ONLY_RUN) {
