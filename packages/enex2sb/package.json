@@ -12,7 +12,8 @@
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
-    "lint": "biome check --write ./src ./test",
+    "lint": "biome check ./src ./test",
+    "lint:fix": "biome check --write ./src ./test",
     "test": "ava -v",
     "test:watch": "yarn test -- --watch"
   },

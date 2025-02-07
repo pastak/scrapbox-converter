@@ -13,7 +13,8 @@
     "watch": "npm run build -- --watch",
     "prepublishOnly": "rm -rf dist/* && npm run build",
     "test": "ava -v",
-    "lint": "biome check --write ./src ./test",
+    "lint": "biome check ./src ./test",
+    "lint:fix": "biome check --write ./src ./test",
     "test:watch": "npm test -- --watch"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb#readme",

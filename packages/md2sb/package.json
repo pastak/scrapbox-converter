@@ -21,7 +21,8 @@
     "build": "tsc --outDir dist --project .",
     "watch": "npm run build -- --watch",
     "test": "ava -v",
-    "lint": "biome check --write ./src ./test",
+    "lint": "biome check ./src ./test",
+    "lint:fix": "biome check --write ./src ./test",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {

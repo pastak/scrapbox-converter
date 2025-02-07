@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "build": "tsc --outDir dist --project .",
-    "lint": "biome check --write ./src ./test",
+    "lint": "biome check ./src ./test",
+    "lint:fix": "biome check --write ./src ./test",
     "test": "ava -v",
     "test:update-token": "UPDATE_TOKEN=1 npm run test"
   },
