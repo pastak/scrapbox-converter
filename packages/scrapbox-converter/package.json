@@ -17,8 +17,8 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "tsc --outDir dist --project .",
-    "lint": "biome check ./src ./test",
-    "lint:fix": "biome check --write ./src ./test",
+    "lint": "biome check ./src",
+    "lint:fix": "biome check --write ./src",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {

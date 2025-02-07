@@ -85,10 +85,10 @@ const tags = {
   },
   p: (context: PageContext, node: Node): void => {
     // TODO: Triage as block element to divide div
-    tags["div"](context, node);
+    tags.div(context, node);
   },
   note: (context: PageContext, node: Node): void => {
-    if (context.options && context.options.evernote) {
+    if (context.options?.evernote) {
       let content;
 
       const pageContext: PageContext = {
@@ -141,7 +141,7 @@ const tags = {
         parseNode(pageContext, {
           children: contentNodes,
         });
-        delete pageContext.options;
+        pageContext.options = undefined;
         context.children.push(pageContext);
       }
     }
@@ -172,7 +172,7 @@ const tags = {
         result,
       );
     }
-    delete result.options;
+    result.options = undefined;
     context.children.push(result);
   },
   table: (context: PageContext, node: Node): void => {
@@ -184,7 +184,7 @@ const tags = {
     if (node.children) {
       parseNodes(node.children, result);
     }
-    delete result.options;
+    result.options = undefined;
     context.children.push(result);
   },
   span: parseStyle,
@@ -216,7 +216,7 @@ const tags = {
         options: context.options,
       };
       parseSimple(null, result, checkNode);
-      delete result.options;
+      result.options = undefined;
       context.checkNode = result;
       return;
     }
@@ -327,7 +327,7 @@ function parseNodes(nodes: Node[], context: PageContext): PageContext {
         };
       }
       checklist.entries.push(context.checkNode);
-      delete context.checkNode;
+      context.checkNode = undefined;
     } else if (node.tagName === "br" || node.tagName === "div") {
       applyChecklist();
     }
@@ -475,7 +475,7 @@ function list(variant, context, node) {
   node.children.forEach((child) => {
     parseSimple(null, result, child);
   });
-  delete result.options;
+  result.options = undefined;
   context.children.push(result);
 }
 
@@ -628,12 +628,12 @@ function reduceSimpleNodes(parent) {
       if (targetToken.children) {
         token.children = targetToken.children;
       } else {
-        delete token.children;
+        token.children = undefined;
       }
       if (targetToken.text) {
         token.text = targetToken.text;
       } else {
-        delete token.text;
+        token.text = undefined;
       }
     }
   });
@@ -645,7 +645,7 @@ function reduceSimpleNodes(parent) {
       !token.children &&
       Object.prototype.hasOwnProperty.call(token, "children")
     ) {
-      delete token.children;
+      token.children = undefined;
     }
     return (
       !token.children || token.children.length !== 0 || parent.type === "tr"
@@ -723,7 +723,7 @@ export const parse = (input: string, options = {}) => {
     options: options,
     children: [],
   });
-  delete parseResult.options;
+  parseResult.options = undefined;
   parseResult = reduceSimpleNodes(parseResult);
   if (parseResult.children.length === 0) {
     return [];

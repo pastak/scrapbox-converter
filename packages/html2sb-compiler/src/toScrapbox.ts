@@ -251,9 +251,8 @@ function toScrapbox(tokens): {
     }
     if (lines[i] !== "") {
       break;
-    } else {
-      lastLineIsBreak = true;
     }
+    lastLineIsBreak = true;
   }
 
   return {

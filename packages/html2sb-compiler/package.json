@@ -2,9 +2,7 @@
   "name": "html2sb-compiler",
   "version": "5.1.2",
   "main": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsc --outDir dist --project .",
     "lint": "biome check ./src ./test",
@@ -40,8 +38,6 @@
         "src/": "dist/"
       }
     },
-    "require": [
-      "ts-node/register"
-    ]
+    "require": ["ts-node/register"]
   }
 }

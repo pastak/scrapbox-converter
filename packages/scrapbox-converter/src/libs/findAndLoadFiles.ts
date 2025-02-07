@@ -41,6 +41,7 @@ const findAndLoadFiles = async (files, basePath = "./") =>
           return;
         }
         return { title, lines };
+        // biome-ignore lint/style/noUselessElse: todo
       } else if (isDir) {
         return findAndLoadFiles(fs.readdirSync(fullPath), fullPath);
       }

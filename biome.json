@@ -7,7 +7,9 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "ignore": [
+      "dist/*"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -21,13 +23,17 @@
     "rules": {
       "recommended": true,
       "complexity": {
-        "noUselessStringConcat": "off"
+        "noUselessStringConcat": "off",
+        "noForEach": "off"
       },
       "style": {
-        "useTemplate": "off"
+        "useTemplate": "off",
+        "noParameterAssign": "off"
       },
       "suspicious": {
-        "noExplicitAny": "off"
+        "noExplicitAny": "off",
+        "noImplicitAnyLet": "off",
+        "noAssignInExpressions": "off"
       }
     }
   },

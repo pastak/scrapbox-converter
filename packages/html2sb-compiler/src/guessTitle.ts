@@ -68,7 +68,8 @@ function getTemplate(parent) {
       return function tableTitle(userTitle) {
         return "Table (" + userTitle + ")";
       };
-    } else if (base.type === "list") {
+    }
+    if (base.type === "list") {
       return function listTitle(userTitle) {
         if (base.children.length > 0 && base.children[0].children) {
           userTitle =
