@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { expect, test } from 'vitest'
+import { expect, test } from "vitest";
 import { guessTitle, parse, toScrapbox } from "../src";
 
 const updateToken = !!process.env.UPDATE_TOKEN;
@@ -48,11 +48,9 @@ function testFixture(file) {
       },
     );
     expect(
-      (sb.title ? sb.title + "\n" : "")
-      + sb.lines.join("\n") + "\n", file + "#output")
-      .toBe(
-        expectedOutput
-      )
+      (sb.title ? sb.title + "\n" : "") + sb.lines.join("\n") + "\n",
+      file + "#output",
+    ).toBe(expectedOutput);
   }
 }
 
@@ -80,6 +78,9 @@ function testFixture(file) {
   "entities",
   "complex-paragraph",
   "styled-code",
+  "styled-code",
+  "invalid-list-in-list",
+  "invalid-text-in-table",
 ]
   .filter((pageFile) => {
     if (process.env.TEST_ONLY_RUN) {

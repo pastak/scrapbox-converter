@@ -1,0 +1,23 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "list",
+      "variant": "ul",
+      "children": [
+        {
+          "type": "text",
+          "children": [
+            {
+              "type": "br"
+            },
+            {
+              "type": "list",
+              "variant": "ul"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

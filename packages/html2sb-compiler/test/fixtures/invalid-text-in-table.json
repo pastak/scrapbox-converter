@@ -1,0 +1,28 @@
+{
+  "title": null,
+  "children": [
+    {
+      "type": "table",
+      "children": [
+        {
+          "type": "text",
+          "text": "invalid"
+        },
+        {
+          "type": "tr",
+          "children": [
+            {
+              "type": "td",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "cell"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
