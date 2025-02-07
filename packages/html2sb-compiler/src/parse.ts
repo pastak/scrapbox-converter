@@ -141,7 +141,7 @@ const tags = {
         parseNode(pageContext, {
           children: contentNodes,
         });
-        pageContext.options = undefined;
+        delete pageContext.options;
         context.children.push(pageContext);
       }
     }
@@ -172,7 +172,7 @@ const tags = {
         result,
       );
     }
-    result.options = undefined;
+    delete result.options;
     context.children.push(result);
   },
   table: (context: PageContext, node: Node): void => {
@@ -184,7 +184,7 @@ const tags = {
     if (node.children) {
       parseNodes(node.children, result);
     }
-    result.options = undefined;
+    delete result.options;
     context.children.push(result);
   },
   span: parseStyle,
@@ -216,7 +216,7 @@ const tags = {
         options: context.options,
       };
       parseSimple(null, result, checkNode);
-      result.options = undefined;
+      delete result.options;
       context.checkNode = result;
       return;
     }
@@ -327,7 +327,7 @@ function parseNodes(nodes: Node[], context: PageContext): PageContext {
         };
       }
       checklist.entries.push(context.checkNode);
-      context.checkNode = undefined;
+      delete context.checkNode;
     } else if (node.tagName === "br" || node.tagName === "div") {
       applyChecklist();
     }
@@ -475,7 +475,7 @@ function list(variant, context, node) {
   node.children.forEach((child) => {
     parseSimple(null, result, child);
   });
-  result.options = undefined;
+  delete result.options;
   context.children.push(result);
 }
 
@@ -628,12 +628,12 @@ function reduceSimpleNodes(parent) {
       if (targetToken.children) {
         token.children = targetToken.children;
       } else {
-        token.children = undefined;
+        delete token.children;
       }
       if (targetToken.text) {
         token.text = targetToken.text;
       } else {
-        token.text = undefined;
+        delete token.text;
       }
     }
   });
@@ -645,7 +645,7 @@ function reduceSimpleNodes(parent) {
       !token.children &&
       Object.prototype.hasOwnProperty.call(token, "children")
     ) {
-      token.children = undefined;
+      delete token.children;
     }
     return (
       !token.children || token.children.length !== 0 || parent.type === "tr"
@@ -723,7 +723,7 @@ export const parse = (input: string, options = {}) => {
     options: options,
     children: [],
   });
-  parseResult.options = undefined;
+  delete parseResult.options;
   parseResult = reduceSimpleNodes(parseResult);
   if (parseResult.children.length === 0) {
     return [];
