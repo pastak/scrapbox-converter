@@ -31,9 +31,9 @@ TBW
 3. `cd md2sb`
 4. `git checkout -b YOUR_WORKING_BRANCH`
 5. Write Some Code!
-  - Build: `% npm run build`
-    - Watch: `% npm run watch`
-  - Test: `% npm test`
-    - Test Watching: `% npm test:watch`
+  - Build: `% pnpm run build`
+    - Watch: `% pnpm run watch`
+  - Test: `% pnpm test`
+    - Test Watching: `% pnpm test:watch`
 6. Commit your work
 7. Open PR to this repository 🎉

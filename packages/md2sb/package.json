@@ -17,13 +17,13 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "build": "tsc --outDir dist --project .",
-    "watch": "npm run build -- --watch",
+    "watch": "pnpm run build -- --watch",
     "test": "vitest run",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "pnpm test -- --watch"
   },
   "dependencies": {
     "@types/node": "20.14.8",

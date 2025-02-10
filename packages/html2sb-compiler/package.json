@@ -10,7 +10,7 @@
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
     "test": "vitest run",
-    "test:update-token": "UPDATE_TOKEN=1 npm run test"
+    "test:update-token": "UPDATE_TOKEN=1 pnpm run test"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb-compiler#readme",
   "repository": {
