@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.0.1
+
+### Patch Changes
+
+- 7ca3583: Organize `package.json`s
+- Updated dependencies [7ca3583]
+  - html2sb-compiler@6.0.1
+  - enex2sb@6.0.1
+  - md2sb@6.0.1
+
 ## 6.0.0
 
 ### Major Changes
