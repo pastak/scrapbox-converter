@@ -10,12 +10,12 @@
   },
   "scripts": {
     "build": "tsc --outDir dist --project .",
-    "watch": "npm run build -- --watch",
-    "prepublishOnly": "rm -rf dist/* && npm run build",
+    "watch": "pnpm run build -- --watch",
+    "prepublishOnly": "rm -rf dist/* && pnpm run build",
     "test": "vitest run",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "pnpm test -- --watch"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter/tree/master/packages/html2sb#readme",
   "repository": {

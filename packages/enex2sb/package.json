@@ -9,9 +9,9 @@
     "enex2sb": "dist/command/index.js"
   },
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "build": "tsc --outDir dist --project .",
-    "watch": "npm run build -- --watch",
+    "watch": "pnpm run build -- --watch",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
     "test": "vitest run",

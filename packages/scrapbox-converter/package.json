@@ -15,11 +15,11 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "build": "tsc --outDir dist --project .",
     "lint": "biome check ./src",
     "lint:fix": "biome check --write ./src",
-    "watch": "npm run build -- --watch"
+    "watch": "pnpm run build -- --watch"
   },
   "dependencies": {
     "@types/node": "20.14.8",
