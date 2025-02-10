@@ -24,10 +24,10 @@
   "dependencies": {
     "@types/node": "20.14.8",
     "commander": "^5.1.0",
-    "enex2sb": "^6.0.0",
-    "html2sb-compiler": "^6.0.0",
+    "enex2sb": "workspace:*",
+    "html2sb-compiler": "workspace:*",
     "lodash": "^4.17.19",
-    "md2sb": "^6.0.0"
+    "md2sb": "workspace:*"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

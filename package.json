@@ -4,8 +4,7 @@
     "preinstall": "npx only-allow pnpm",
     "clean": "rm -rf packages/*/dist",
     "lint": "pnpm run -r lint",
-    "prepublishOnly": "pnpm run -r build",
-    "bump": "lerna version --conventional-commits --create-release github"
+    "prepublishOnly": "pnpm run -r build"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter#readme",
   "repository": {
@@ -15,8 +14,7 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "^2.27.12",
-    "lerna": "^8.1.9"
+    "@changesets/cli": "^2.27.12"
   },
   "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
 }
