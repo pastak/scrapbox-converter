@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.1
+
+### Patch Changes
+
+- 7ca3583: Organize `package.json`s
+
 ## 6.0.0
 
 ### Major Changes
