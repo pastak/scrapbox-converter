@@ -1,6 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { expect, test } from 'vitest';
+import { expect, test } from "vitest";
 import html2sb from "../src/main";
 
 test("convert html exported by evernote", async (t) => {
