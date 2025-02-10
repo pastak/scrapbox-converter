@@ -28,26 +28,13 @@
     "commander": "^5.1.0",
     "gyazo-api": "^0.3.1",
     "gyazo-browser-upload": "^1.0.0",
-    "html2sb-compiler": "^6.0.0",
-    "into-stream": "^3.1.0",
-    "ts-node": "^8.10.1"
+    "html2sb-compiler": "workspace:*",
+    "into-stream": "^3.1.0"
   },
   "devDependencies": {
-    "@ava/typescript": "^1.1.1",
     "@biomejs/biome": "^1.9.4",
     "@types/node": "20.14.8",
-    "ava": "^3.8.1",
     "typescript": "5.7.3",
     "vitest": "^3.0.5"
-  },
-  "ava": {
-    "typescript": {
-      "rewritePaths": {
-        "src/": "dist/"
-      }
-    },
-    "require": [
-      "ts-node/register"
-    ]
   }
 }

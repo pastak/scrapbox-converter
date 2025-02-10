@@ -27,25 +27,12 @@
   "dependencies": {
     "@types/node": "20.14.8",
     "commander": "^5.1.0",
-    "enex2sb": "^6.0.0",
-    "html2sb-compiler": "^6.0.0"
+    "enex2sb": "workspace:*",
+    "html2sb-compiler": "workspace:*"
   },
   "devDependencies": {
-    "@ava/typescript": "^1.1.1",
     "@biomejs/biome": "^1.9.4",
-    "ava": "^3.8.1",
-    "ts-node": "^8.10.1",
     "typescript": "5.7.3",
     "vitest": "^3.0.5"
-  },
-  "ava": {
-    "typescript": {
-      "rewritePaths": {
-        "src/": "dist/"
-      }
-    },
-    "require": [
-      "ts-node/register"
-    ]
   }
 }
