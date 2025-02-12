@@ -29,7 +29,7 @@ jobs:
       run: |
         pnpm install
         pnpm run -r build
-        pnpm run -r eslint
+        pnpm run -r lint:ci
         pnpm -r test
       env:
         CI: true
