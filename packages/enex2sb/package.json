@@ -9,11 +9,11 @@
     "enex2sb": "dist/command/index.js"
   },
   "scripts": {
-    "prepublishOnly": "pnpm run build",
     "build": "tsc --outDir dist --project .",
     "watch": "pnpm run build -- --watch",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
+    "lint:ci": "biome ci ./src ./test",
     "test": "vitest run",
     "test:watch": "yarn test -- --watch"
   },

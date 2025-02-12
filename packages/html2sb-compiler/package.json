@@ -9,6 +9,7 @@
     "build": "tsc --outDir dist --project .",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
+    "lint:ci": "biome ci ./src ./test",
     "test": "vitest run",
     "test:update-token": "UPDATE_TOKEN=1 pnpm run test"
   },

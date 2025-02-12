@@ -15,10 +15,10 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "pnpm run build",
     "build": "tsc --outDir dist --project .",
     "lint": "biome check ./src",
     "lint:fix": "biome check --write ./src",
+    "lint:ci": "biome ci ./src",
     "watch": "pnpm run build -- --watch"
   },
   "dependencies": {

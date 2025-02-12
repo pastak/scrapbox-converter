@@ -4,7 +4,8 @@
     "preinstall": "npx only-allow pnpm",
     "clean": "rm -rf packages/*/dist",
     "lint": "pnpm run -r lint",
-    "prepublishOnly": "pnpm run -r build"
+    "lint:fix": "pnpm run -r lint:fix",
+    "lint:ci": "pnpm run -r lint:ci"
   },
   "homepage": "https://github.com/pastak/scrapbox-converter#readme",
   "repository": {
