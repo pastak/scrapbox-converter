@@ -17,12 +17,12 @@
   "author": "pastak <pasta0915@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "pnpm run build",
     "build": "tsc --outDir dist --project .",
     "watch": "pnpm run build -- --watch",
     "test": "vitest run",
     "lint": "biome check ./src ./test",
     "lint:fix": "biome check --write ./src ./test",
+    "lint:ci": "biome ci ./src ./test",
     "test:watch": "pnpm test -- --watch"
   },
   "dependencies": {
