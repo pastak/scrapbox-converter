@@ -89,7 +89,8 @@ class Compiler {
         ) {
           result += (node.children as Node[])
             .map((n) => {
-              if (n.type === "image" && "url" in n) return `[${n.url} ${node.url}]`;
+              if (n.type === "image" && "url" in n)
+                return `[${n.url} ${node.url}]`;
               return `[${this.compile(n, context)} ${node.url}]`;
             })
             .join("");
@@ -158,7 +159,9 @@ class Compiler {
         result +=
           (isChangedDepth ? "\n" : "") +
           " ".repeat(depth) +
-          ("listItemCount" in node && node.listItemCount ? node.listItemCount + ". " : "") +
+          ("listItemCount" in node && node.listItemCount
+            ? node.listItemCount + ". "
+            : "") +
           inner +
           (isChangedDepth ? "" : "\n");
         break;

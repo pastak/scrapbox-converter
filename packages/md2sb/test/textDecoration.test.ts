@@ -1,4 +1,4 @@
-import { test } from 'vitest'
+import { test } from "vitest";
 import loadAndAssert from "./helpers/loadAndAssert";
 
 [

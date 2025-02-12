@@ -1,4 +1,4 @@
-import { test } from 'vitest';
+import { test } from "vitest";
 import loadAndAssert from "./helpers/loadAndAssert";
 
 ["link-includes-image", "list-strong-style-text"].forEach((type) => {

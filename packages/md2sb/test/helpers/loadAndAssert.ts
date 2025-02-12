@@ -1,6 +1,6 @@
-import { expect } from 'vitest'
 import fs from "node:fs";
 import path from "node:path";
+import { expect } from "vitest";
 import md2sb from "../../src/main";
 
 export default async (type) => {
@@ -11,5 +11,5 @@ export default async (type) => {
   const expected = fs
     .readFileSync(path.resolve("test/fixtures/scrapbox/" + type + ".txt"))
     .toString();
-    expect(input).toEqual(expected);
+  expect(input).toEqual(expected);
 };
