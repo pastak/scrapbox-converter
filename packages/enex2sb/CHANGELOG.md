@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.2
+
+### Patch Changes
+
+- 1780f6a: fix linting with CI
+- Updated dependencies [1780f6a]
+  - html2sb-compiler@6.0.2
+
 ## 6.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.2
+
+### Patch Changes
+
+- 1780f6a: fix linting with CI
+
 ## 6.0.1
 
 ### Patch Changes
