@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.3
+
+### Patch Changes
+
+- Updated dependencies [65f02c8]
+  - enex2sb@7.0.0
+
 ## 6.0.2
 
 ### Patch Changes

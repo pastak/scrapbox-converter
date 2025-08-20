@@ -1,6 +1,6 @@
 {
   "name": "html2sb",
-  "version": "6.0.2",
+  "version": "7.0.0",
   "description": "Encode HTML to Scrapbox.io style text",
   "files": [
     "dist"

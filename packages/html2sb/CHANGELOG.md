@@ -1,5 +1,17 @@
 # Change Log
 
+## 7.0.0
+
+### Major Changes
+
+- 65f02c8: Change default table title `_` to ` `
+
+### Patch Changes
+
+- Updated dependencies [65f02c8]
+  - enex2sb@7.0.0
+  - html2sb-compiler@7.0.0
+
 ## 6.0.2
 
 ### Patch Changes
