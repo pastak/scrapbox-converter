@@ -1,6 +1,7 @@
 {
   "name": "enex2sb",
   "version": "6.0.2",
+  "description": "Encode Evernote's XML Export Format to Scrapbox.io style text",
   "main": "dist/index.js",
   "files": [
     "dist"
