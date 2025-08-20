@@ -132,7 +132,7 @@ const stringifier = {
     return result;
   },
   table: (node) =>
-    "table:_\n" +
+    "table: \n" +
     node.children
       .map((row) => {
         const children = row.children ?? [];

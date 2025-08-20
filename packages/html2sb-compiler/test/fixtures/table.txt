@@ -1,5 +1,5 @@
 Table (Untitled)
-table:_
+table: 
 	whos	[/ house]	[_ runs]
 	[* superhouse]	I	[http://test.com said]
 			

@@ -1,4 +1,4 @@
 Table (Untitled)
-table:_
+table: 
 	
 	cell

@@ -47,6 +47,6 @@ done
 
 [/icons/hr.icon]
 
-table:_
+table: 
 	1x1	1x2
 	2x1	2x2
