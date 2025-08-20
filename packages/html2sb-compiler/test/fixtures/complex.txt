@@ -96,7 +96,7 @@ And a table
 
 
 
-table:_
+table: 
 	whos	[/ house]	[_ runs]
 	[* house]	I	[http://test.com said]
 			
