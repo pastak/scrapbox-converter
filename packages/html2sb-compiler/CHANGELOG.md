@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.0
+
+### Major Changes
+
+- 65f02c8: Change default table title `_` to ` `
+
 ## 6.0.2
 
 ### Patch Changes
